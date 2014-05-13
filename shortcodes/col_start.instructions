@@ -1,0 +1,7 @@
+<p style="display:block; width:90%; padding: 10px; background:#eee;font-weight:100;">Available Options</p>
+<div style="padding:0 0 0 5%; width:85%">
+<p>Instructions for the [col_start] shortcode are super easy.</p>
+<p>Options: Column count. Used as col="#". This is a 1 - 12 function, and follows the <a href="http://foundation.zurb.com/grid.php" target="_blank">Zurb Foundation grid</a>. Columns can be spaced in as many combonations as desired, but must add up to no more than 12. Ex: 2 | 4 | 6</p>
+
+<p>Features: This is simply a way to add a css class to the column. This has no internal funcationality other than connecting this div column to a css class you have in your stylesheet. </p>
+</div>
