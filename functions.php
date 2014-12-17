@@ -1,8 +1,5 @@
 <?php
 	
-// Add RSS links to <head> section
-	automatic_feed_links();
-	
 // Lets make some shortcodes
 include(get_template_directory().'/shortcode_maker.php');
 
@@ -14,7 +11,7 @@ add_filter( 'the_content', 'wpautop' , 12);
 // Load jQuery
 	if ( !is_admin() ) {
 	   wp_deregister_script('jquery');
-	   wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"), false);
+	   wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"), false);
 	   wp_enqueue_script('jquery');
 	}
 	
@@ -43,7 +40,7 @@ add_filter( 'the_content', 'wpautop' , 12);
 	
 	// add custom footer text
 	function modify_footer_admin () {
-		echo 'Created by <a href="http://factor1studios.com">factor1</a>.';
+		echo 'Created by <a href="http://factor1studios.com"><strong>factor1</strong></a>. ';
 		echo 'Powered by<a href="http://WordPress.org">WordPress</a>.';
 		}
 
@@ -116,30 +113,8 @@ $image_set = get_option( 'image_default_link_type' );
 		'before_title' => '<h4 class="widget-title">',
 		'after_title' => '</h4>',
 	) );
-	
-	register_sidebar( array(
-		'name' => __( 'Page Sidebar', 'f1' ),
-		'id' => 'pade-sidebar',
-		'description' => __( 'The primary widget area on the right side', 'f1' ),
-		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h4 class="widget-title">',
-		'after_title' => '</h4>',
-	) );
 
 }
-
-// build header information
-	add_action( 'wp_head', 'f1_head' );
-	function f1_head() {
-	?>
-	<meta name="author" content="Factor1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<!--[if IE]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<?php
-	}
 
 // change default "read more" link
 	function f1_continue_reading_link() {
@@ -193,30 +168,15 @@ $image_set = get_option( 'image_default_link_type' );
         remove_meta_box( 'postexcerpt','post','normal' ); // Excerpt Metabox
         remove_meta_box( 'commentstatusdiv','post','normal' ); // Comments Metabox
         remove_meta_box( 'trackbacksdiv','post','normal' ); // Talkback Metabox
-        remove_meta_box( 'authordiv','post','normal' ); // Author Metabox
+        //remove_meta_box( 'authordiv','post','normal' ); // Author Metabox
 }
 
 // remove meta boxes from default pages screen
 	add_action('admin_menu','f1_remove_default_page_metaboxes');
 	function f1_remove_default_page_metaboxes() {
 	remove_meta_box( 'postcustom','page','normal' ); // Custom Fields Metabox
-	remove_meta_box( 'commentstatusdiv','page','normal' ); // Discussion Metabox
-	remove_meta_box( 'authordiv','page','normal' ); // Author Metabox
+	//remove_meta_box( 'commentstatusdiv','page','normal' ); // Discussion Metabox
+	//remove_meta_box( 'authordiv','page','normal' ); // Author Metabox
 }
-
-// remove lame user profit data
-add_filter('user_contactmethods','hide_profile_fields',10,1);
-
-function hide_profile_fields( $contactmethods ) {
-unset($contactmethods['aim']);
-unset($contactmethods['jabber']);
-unset($contactmethods['yim']);
-return $contactmethods;
-}
-
-
-// make TinyMCE allow iframes
-	add_filter( 'tiny_mce_before_init', create_function( '$a', '$a["extended_valid_elements"] = "iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width]"; return $a;' ) );
-
 
 ?>
