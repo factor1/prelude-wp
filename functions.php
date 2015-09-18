@@ -11,10 +11,6 @@ add_theme_support( 'title-tag' );
 // Lets make some shortcodes
 include(get_template_directory().'/shortcode_maker.php');
 
-// Strip P and BR tags for shortcodes
-remove_filter( 'the_content', 'wpautop' );
-add_filter( 'the_content', 'wpautop' , 12);
-
 	
 // Load jQuery
 	if ( !is_admin() ) {
