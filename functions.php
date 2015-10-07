@@ -45,7 +45,7 @@ include(get_template_directory().'/shortcode_maker.php');
 	// add custom footer text
 	function modify_footer_admin () {
 		echo 'Created by <a href="http://factor1studios.com"><strong>factor1</strong></a>. ';
-		echo 'Powered by<a href="http://WordPress.org">WordPress</a>.';
+		echo ' |  Powered by<a href="http://WordPress.org">WordPress</a>.';
 		}
 
 	add_filter('admin_footer_text', 'modify_footer_admin');
