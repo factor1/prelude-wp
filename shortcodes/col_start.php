@@ -1,2 +1,1 @@
-<? # span, features ?>
-<div class="large-<?=$span ?> <?=$features ?> columns">
+<div class="large-<?php $span; ?> <?php $features; ?> columns">
