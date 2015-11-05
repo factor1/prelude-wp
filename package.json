@@ -1,0 +1,25 @@
+{
+  "name": "factor1-blankwp",
+  "version": "2.0.0",
+  "description": "A custom starter Wordpress theme developed by Factor1",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://buschschwick@github.com/factor1/factor1_blankwp.git"
+  },
+  "keywords": [
+    "Wordpress",
+    "Theme",
+    "Blank",
+    "Factor1"
+  ],
+  "author": "Factor1 Studios <http://factor1studios.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/factor1/factor1_blankwp/issues"
+  },
+  "homepage": "https://github.com/factor1/factor1_blankwp#readme"
+}
