@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/factor1/factor1_blankwp/issues"
   },
-  "homepage": "https://github.com/factor1/factor1_blankwp#readme"
+  "homepage": "https://github.com/factor1/factor1_blankwp#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
 }
