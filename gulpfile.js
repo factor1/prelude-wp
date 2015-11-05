@@ -27,7 +27,10 @@ gulp.task('sass', function() {
 
 // Minimize CSS
 gulp.task('minify-css', function() {
-  	return gulp.src('src/css/*.css')
+  	return gulp.src([
+  		'src/css/*.css',
+  		'!src/css/*.min.css'
+  	])
 	  	.pipe(rename({
 		        suffix: '.min'
 	        }))
@@ -42,7 +45,9 @@ gulp.task('minify-css', function() {
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
     return gulp.src([
-    	'src/js/*.js'
+    	'src/js/*.js',
+    	'!src/js/global.js',
+    	'!src/js/global.min.js'
     	])
         .pipe(concat('global.js'))
         .pipe(gulp.dest('src/js'))
@@ -66,12 +71,11 @@ gulp.task('images', function() {
 gulp.task('copy', function() {
 	gulp.src([
 		// set up what you want to copy or ignore
-		'!src/scss/',
-		'!src/node_modules/',
-		'!src/bower_components',
-		'src/**/**/*'
+		'!src/scss',
+		'!src/scss/**/*',
+		'src/**/*'
 	])
-	.pipe(gulp.dest('../dist/'));
+	.pipe(gulp.dest('dist/'));
 });
 
 // Watch Files For Changes
