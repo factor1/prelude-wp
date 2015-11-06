@@ -16,7 +16,7 @@ Factor1 Blank Wordpress Theme uses Gulp to:
 Factor1 Blank Wordpress Theme has some nifty features built into `functions.php` to make developing a custom Wordpress theme a little easier.
 * Shortcode Maker - allows for easy creation of custom shortcodes. Useful for buttons or custom media embeds.
 * Defer jQuery Parsing using the HTML5 defer property
-* Customize Wordpress Admin Login / Footer Text
+* Customize Wordpress Admin Login / Admin Footer Text
 * Customized Read More Links
 * Other various improvements to default Wordpress functions that are too long and/or small to list here
 
@@ -83,15 +83,15 @@ You can modify the file structure however you like as long as it is also updated
 
 As mentioned in the getting started section, when the default Gulp task is ran, a theme folder will be created in the project root folder. Default compile paths are as follows:
 
-`src/images/src` compresses images and moves them up a level to `images`
-`src/scss/theme.scss` compiles to `src/css/theme.css`
-`src/css/` all css files are minified in place, with a suffix of `.min.css`. Files that are already minified will be ignored.  
-`src/js/*.js` is concatenated and added to `global.js` then minified to `global.min.js`
+* `src/images/src` compresses images and moves them up a level to `images`
+* `src/scss/theme.scss` compiles to `src/css/theme.css`
+* `src/css/` all css files are minified in place, with a suffix of `.min.css`. Files that are already minified will be ignored.  
+* `src/js/*.js` is concatenated and added to `global.js` then minified to `global.min.js`
 
 ## List Of Gulp Tasks ##
 There are 8 Gulp tasks available by default.
 
-* `gulp lint` - a Javascript helper to find and catch errors.
+* `gulp lint` - a Javascript helper to find and catch errors
 * `gulp sass` - compiles sass files
 * `gulp minify-css` - minifies css files
 * `gulp scripts` - concatenates and minifies JS files
