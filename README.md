@@ -25,7 +25,7 @@ Factor1 Blank Wordpress Theme requires that you have Node and npm installed on y
 
 1. Clone this repository to your machine, or download the .zip and place its contents in your project folder
 2. Install from the project folder using `npm install`
-3. Using the `theme` variable found in `gulpfile.js` name your theme
+3. Using the `theme` variable found in `gulpfile.js` name your theme (Don't forget to also fill out the theme information found in `style.css` in the root of `src/`)
 4. Run the default Gulp task while editing files using `gulp` or `gulp default`
 
 When running the default gulp task, a theme folder will be created based on the `theme` variable. You can use this folder as your theme when running locally. When you're ready to package your theme you can run `gulp package` to create a zip folder of your production theme.
