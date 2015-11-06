@@ -13,6 +13,7 @@ var rename = require('gulp-rename');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var minifyCss = require('gulp-minify-css');
+var zip = require('gulp-zip');
 
 // Lint Task
 gulp.task('lint', function() {
@@ -76,6 +77,7 @@ gulp.task('copy', function() {
 		// set up what you want to copy or ignore
 		'!src/scss',
 		'!src/scss/**/*',
+		'!src/images/src/*',
 		'src/**/*'
 	])
 	.pipe(gulp.dest(theme));
@@ -84,9 +86,16 @@ gulp.task('copy', function() {
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch('src/js/*.js', ['lint', 'scripts']);
-    gulp.watch('src/sass/*.scss', ['sass']);
+    gulp.watch('src/scss/**/*.scss', ['sass']);
     gulp.watch('src/css/*.css', ['minify-css']);
     gulp.watch('src/images/src/*.{jpg,png}', ['images']);
+});
+
+// Package a zip for theme upload
+gulp.task('package', function() {
+	return gulp.src(theme+'/**/*')
+		.pipe(zip(theme+'.zip'))
+		.pipe(gulp.dest('./'));
 });
 
 // Default Task
