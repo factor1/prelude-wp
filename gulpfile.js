@@ -13,6 +13,7 @@ var rename = require('gulp-rename');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var minifyCss = require('gulp-minify-css');
+var zip = require('gulp-zip');
 
 // Lint Task
 gulp.task('lint', function() {
@@ -88,6 +89,13 @@ gulp.task('watch', function() {
     gulp.watch('src/scss/**/*.scss', ['sass']);
     gulp.watch('src/css/*.css', ['minify-css']);
     gulp.watch('src/images/src/*.{jpg,png}', ['images']);
+});
+
+// Package a zip for theme upload
+gulp.task('package', function() {
+	return gulp.src(theme+'/**/*')
+		.pipe(zip(theme+'.zip'))
+		.pipe(gulp.dest('./'));
 });
 
 // Default Task
