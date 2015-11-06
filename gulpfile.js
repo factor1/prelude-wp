@@ -76,6 +76,7 @@ gulp.task('copy', function() {
 		// set up what you want to copy or ignore
 		'!src/scss',
 		'!src/scss/**/*',
+		'!src/images/src/*',
 		'src/**/*'
 	])
 	.pipe(gulp.dest(theme));
