@@ -2,9 +2,6 @@
 
 Factor1 Blank Wordpress Theme is a starter theme for custom Wordpress themes.
 
-<<<<<<< HEAD
-Version 2.0.0 integrates gulp tasks, file restructures, and as a npm package. More detailed documentation to follow.
-=======
 ## Features ##
 
 ### Gulp Tasks ###
@@ -107,4 +104,3 @@ Running `gulp` or `gulp default` will run all tasks except `package` and watch f
 
 ## Bugs, Contributions & Questions ##
 We are always looking for ways to improve. If you find a bug, have a question, or wish to add a contribution please open an issue.
->>>>>>> develop
