@@ -1,3 +1,6 @@
+// Theme Specific Variables
+var theme = 'your-theme-name';
+
 // Include gulp
 var gulp = require('gulp'); 
 
@@ -75,7 +78,7 @@ gulp.task('copy', function() {
 		'!src/scss/**/*',
 		'src/**/*'
 	])
-	.pipe(gulp.dest('dist/'));
+	.pipe(gulp.dest(theme));
 });
 
 // Watch Files For Changes
