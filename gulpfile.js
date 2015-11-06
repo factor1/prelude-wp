@@ -84,7 +84,7 @@ gulp.task('copy', function() {
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch('src/js/*.js', ['lint', 'scripts']);
-    gulp.watch('src/sass/*.scss', ['sass']);
+    gulp.watch('src/scss/*.scss', ['sass']);
     gulp.watch('src/css/*.css', ['minify-css']);
     gulp.watch('src/images/src/*.{jpg,png}', ['images']);
 });
