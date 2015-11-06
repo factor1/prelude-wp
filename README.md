@@ -24,4 +24,5 @@ Factor1 Blank Wordpress Theme has some nifty features built into `functions.php`
 Factor1 Blank Wordpress Theme requires that you have Node and npm installed on your machine. If you need help with that, please visit the [npm documentation](https://docs.npmjs.com/getting-started/installing-node).
 
 1. Clone this repository to your machine, or download the .zip and place it in your project folder
-2. Run `npm install` to install
+2. Install from the project folder using `npm install`
+3. Run the default Gulp task while editing files using `gulp` or `gulp default`
