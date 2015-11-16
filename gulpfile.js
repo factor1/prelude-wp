@@ -17,7 +17,10 @@ var zip = require('gulp-zip');
 
 // Lint Task
 gulp.task('lint', function() {
-    return gulp.src('src/js/*.js')
+    return gulp.src([
+	    '!src/js/global.min.js',
+    	'src/js/*.js'
+    	])
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
@@ -85,7 +88,10 @@ gulp.task('copy', function() {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('src/js/*.js', ['lint', 'scripts']);
+    gulp.watch([
+	    '!src/js/global.min.js',
+    	'src/js/*.js'
+    	], ['lint', 'scripts']);
     gulp.watch('src/scss/**/*.scss', ['sass']);
     gulp.watch('src/css/*.css', ['minify-css']);
     gulp.watch('src/images/src/*.{jpg,png}', ['images']);
