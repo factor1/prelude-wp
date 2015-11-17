@@ -13,6 +13,7 @@ var rename = require('gulp-rename');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var minifyCss = require('gulp-minify-css');
+var sourcemaps = require('gulp-sourcemaps');
 var zip = require('gulp-zip');
 
 // Lint Task
@@ -37,15 +38,17 @@ gulp.task('minify-css', function() {
   	return gulp.src([
   		'src/css/*.css',
   		'!src/css/*.min.css'
-  	])
-	  	.pipe(rename({
-		        suffix: '.min'
-	        }))
-	    .pipe(minifyCss({
-		    compatibility: 'ie8',
-		    aggressiveMerging: false,
-		    processImport: true
-		    }))
+  		])
+  		.pipe(sourcemaps.init())
+		  	.pipe(rename({
+			        suffix: '.min'
+		        }))
+		    .pipe(minifyCss({
+			    compatibility: 'ie8',
+			    aggressiveMerging: false,
+			    processImport: true
+			    }))
+		.pipe(sourcemaps.write())
 	    .pipe(gulp.dest('src/css/'));
 });
 

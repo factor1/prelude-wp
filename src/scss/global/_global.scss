@@ -129,8 +129,14 @@ padding:2px;
 .float-left 	{ float:left; }
 .float-right 	{ float:right; }
 
+.alignleft{
+text-align: left;
+}
 
-.img-left, .align-left 			{ float:left;margin:4px 10px 4px 0; }
-.img-right, .align-right 		{ float:right;margin:4px 0 4px 10px; }
+.alignright{
+text-align: right;
+}
 
-
+.aligncenter{
+text-align: center;
+}
