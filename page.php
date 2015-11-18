@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<article role="article">
+	<article>
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<div class="post" id="post-<?php the_ID(); ?>">
 				<?php if( has_post_thumbnail() ) the_post_thumbnail(); ?>

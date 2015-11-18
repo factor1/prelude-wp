@@ -1,1 +1,1 @@
-<div class="large-<?php $span; ?> <?php $features; ?> columns">
+<div class="large-<?php echo $span; ?> <?php echo $features; ?> columns">

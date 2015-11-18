@@ -52,7 +52,7 @@
 			<p>You must be <a href="<?php echo wp_login_url( get_permalink() ); ?>">logged in</a> to post a comment.</p>
 		<?php else : ?>
 			<?php // TODO: is there a better option that get_option ?>
-			<form action="<?php echo get_option( 'siteurl' ); ?>/wp-comments-post.php" method="post" id="commentform" role="form">
+			<form action="<?php echo get_option( 'siteurl' ); ?>/wp-comments-post.php" method="POST" id="commentform" role="form">
 				<?php if ( is_user_logged_in() ) : ?>
 					<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url( get_permalink() ); ?>" title="Log out of this account">Log out &raquo;</a></p>
 				<?php else : ?>

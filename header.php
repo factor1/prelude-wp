@@ -1,22 +1,3 @@
-<?php
-    // Set the defaults for the menu
-    $defaults = array(
-    	'theme_location'  => 'primary',
-    	'menu'            => '',
-    	'container'       => 'nav',
-    	'container_class' => 'primary-nav',
-    	'container_id'    => '',
-    	'menu_class'      => 'menu',
-    	'menu_id'         => '',
-    	'echo'            => true,
-    	'fallback_cb'     => 'wp_page_menu',
-    	'before'          => '',
-    	'after'           => '',
-    	'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-    	'depth'           => 2
-    );
-?>
-
 <!doctype html>
 <!--[if lt IE 7 ]><html lang="en" class="no-js ie ie6"><![endif]-->
 <!--[if IE 7 ]><html lang="en" class="no-js ie ie7"><![endif]-->
@@ -44,17 +25,27 @@
 	<?php wp_head(); ?>
 	<!--[if IE 8]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<script src="<?php bloginfo( 'template_url' ); ?>/js/vendor/modernizer.js"></script>
+		<script src="<?php bloginfo( 'template_url' ); ?>/js/modernizer.js"></script>
 	<![endif]-->
 </head>
-<body <?php body_class(); ?> role="document">
+<body <?php body_class(); ?>>
 
 	<header role="banner">
-		<h1>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-		</h1>
+        <div class="site-logo">
+            <h1>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
+            </h1>
+        </div>
 	</header>
 
-    <?php wp_nav_menu( $defaults ); ?>
+    <!-- Navigation menu -->
+    <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 
+    <!-- Custom social menu -->
+    <?php f1_social_menu(); ?>
+
+    <!-- Search form -->
     <?php get_search_form(); ?>
+
+    <!-- Begin main content -->
+    <main role="main">

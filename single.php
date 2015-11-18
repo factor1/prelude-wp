@@ -1,12 +1,12 @@
 <?php get_header(); ?>
 
-	<article role="article">
+	<article>
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<div <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 				<h1><?php the_title(); ?></h1>
 
-				<?php get_template_part( 'inc/meta' ); ?>
+				<?php get_template_part( 'template-parts/meta' ); ?>
 
 				<?php if( has_post_thumbnail() ) the_post_thumbnail(); ?>
 

@@ -1,3 +1,6 @@
+/**
+ * Global site styles
+ */
 html,
 body {
     border : 0;
@@ -86,7 +89,7 @@ article ol li {
 }
 
 [class*="block-grid-"]>li {
-    
+
     //fix margins on block grids inside of articles
     margin: 0;
 }

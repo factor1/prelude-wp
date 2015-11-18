@@ -5,6 +5,6 @@
  */
 jQuery(document).ready(function($) {
 
-    // Inside of this function, $() will work as an alias for jQuery()
+    console.log('hello');
 
 });
