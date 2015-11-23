@@ -24,6 +24,7 @@
   "homepage": "https://github.com/factor1/factor1_blankwp#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-imagemin": "^2.4.0",
     "gulp-jshint": "^1.12.0",
