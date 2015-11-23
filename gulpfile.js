@@ -13,7 +13,8 @@ var rename = require('gulp-rename');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var minifyCss = require('gulp-minify-css');
-var sourcemaps = require('gulp-sourcemaps');
+// var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
 var zip = require('gulp-zip');
 
 // Lint Task
@@ -30,6 +31,10 @@ gulp.task('lint', function() {
 gulp.task('sass', function() {
     return gulp.src('src/scss/theme.scss')
         .pipe(sass())
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
         .pipe(gulp.dest('src/css/'));
 });
 
