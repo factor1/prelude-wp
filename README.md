@@ -7,6 +7,7 @@ Factor1 Blank Wordpress Theme is a starter theme for custom Wordpress themes.
 ### Gulp Tasks ###
 Factor1 Blank Wordpress Theme uses Gulp to: 
 * Compile & minify Sass/CSS
+* Auto-prefix your Sass/CSS
 * Minify and concatenate JavaScript/jQuery
 * Compress PNG & JPGs
 * Create a theme distribution folder for local testing
@@ -92,7 +93,7 @@ As mentioned in the getting started section, when the default Gulp task is ran, 
 There are 8 Gulp tasks available by default.
 
 * `gulp lint` - a Javascript helper to find and catch errors
-* `gulp sass` - compiles sass files
+* `gulp sass` - compiles sass files and auto-prefixes the styles
 * `gulp minify-css` - minifies css files
 * `gulp scripts` - concatenates and minifies JS files
 * `gulp images` - compresses images
