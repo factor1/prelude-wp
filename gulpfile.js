@@ -44,16 +44,14 @@ gulp.task('minify-css', function() {
   		'src/css/*.css',
   		'!src/css/*.min.css'
   		])
-  		.pipe(sourcemaps.init())
-		  	.pipe(rename({
-			        suffix: '.min'
-		        }))
-		    .pipe(minifyCss({
-			    compatibility: 'ie8',
-			    aggressiveMerging: false,
-			    processImport: true
-			    }))
-		.pipe(sourcemaps.write())
+	  	.pipe(rename({
+		        suffix: '.min'
+	        }))
+	    .pipe(minifyCss({
+		    compatibility: 'ie8',
+		    aggressiveMerging: false,
+		    processImport: true
+		    }))
 	    .pipe(gulp.dest('src/css/'));
 });
 
