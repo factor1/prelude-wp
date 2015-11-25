@@ -84,8 +84,6 @@ gulp.task('images', function() {
 gulp.task('copy', function() {
 	gulp.src([
 		// set up what you want to copy or ignore
-		'!src/scss',
-		'!src/scss/**/*',
 		'!src/images/src/*',
 		'src/**/*'
 	])
