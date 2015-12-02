@@ -109,4 +109,4 @@ gulp.task('package', function() {
 });
 
 // Default Task
-gulp.task('default', ['lint', 'sass', 'minify-css', 'scripts', 'images', 'copy', 'watch']);
+gulp.task('default', ['lint', 'sass', 'minify-css', 'scripts', 'images', 'copy']);
