@@ -101,7 +101,7 @@ There are 8 Gulp tasks available by default.
 * `gulp watch` - watches folder and files for changes and runs tasks based on what was updated
 * `gulp package` - creates a production ready `.zip` file based on your production theme folder
 
-Running `gulp` or `gulp default` will run all tasks except `package` and watch folders and files for changes.
+Running `gulp` or `gulp default` will run all tasks except `package` and `watch`.
 
 ## Bugs, Contributions & Questions ##
 We are always looking for ways to improve. If you find a bug, have a question, or wish to add a contribution please open an issue.
