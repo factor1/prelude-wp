@@ -39,7 +39,7 @@ gulp.task('sass', function() {
 });
 
 // Minimize CSS
-gulp.task('minify-css', function() {
+gulp.task('minify-css', ['sass'], function() {
   	return gulp.src([
   		'src/css/*.css',
   		'!src/css/*.min.css'
@@ -109,4 +109,4 @@ gulp.task('package', function() {
 });
 
 // Default Task
-gulp.task('default', ['lint', 'sass', 'minify-css', 'scripts', 'images', 'copy']);
+gulp.task('default', ['lint', 'sass', 'minify-css', 'scripts', 'images']);
