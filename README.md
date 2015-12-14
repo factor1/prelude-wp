@@ -62,7 +62,7 @@ You can modify the file structure however you like as long as it is also updated
     │   ├── global
     │   │   └── _global.scss
     │   ├── page-templates
-    │   ├── setttings
+    │   ├── settings
     │   │   └── _variables.scss
     │   ├── theme.scss
     │   └── vendor
