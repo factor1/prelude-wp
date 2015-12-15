@@ -29,7 +29,7 @@
 
 <?php wp_head(); ?>
 
-<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" />
+
 <!--[if IE 8]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/modernizer.js"></script>
