@@ -58,9 +58,9 @@ You can modify the file structure however you like as long as it is also updated
     │   ├── components
     │   │   ├── _footer.scss
     │   │   ├── _header.scss
-    │   │   └── _typography.scss
     │   ├── global
     │   │   └── _global.scss
+    │   │   └── _typography.scss
     │   ├── page-templates
     │   ├── settings
     │   │   └── _variables.scss
@@ -75,6 +75,7 @@ You can modify the file structure however you like as long as it is also updated
     │   ├── col_start.instructions
     │   ├── col_start.php
     │   ├── fluidvideo.php
+    │   ├── fluidvideo.instructions
     │   ├── row_end.php
     │   └── row_start.php
     ├── sidebar.php
@@ -94,14 +95,15 @@ There are 8 Gulp tasks available by default.
 
 * `gulp lint` - a Javascript helper to find and catch errors
 * `gulp sass` - compiles sass files and auto-prefixes the styles
-* `gulp minify-css` - minifies css files
+* `gulp minify-css` - minifies css files but first runs `sass`.
+* `gulp styles` - runs `sass` and then `minify-css`, in that order.
 * `gulp scripts` - concatenates and minifies JS files
 * `gulp images` - compresses images
 * `gulp copy` - copies files from `src/` to the theme folder as named in `gulpfile.js` (This task only copies production files and leaves behind uncompiled/uncompressed files)
 * `gulp watch` - watches folder and files for changes and runs tasks based on what was updated
 * `gulp package` - creates a production ready `.zip` file based on your production theme folder
 
-Running `gulp` or `gulp default` will run all tasks except `package` and `watch`.
+Running `gulp` or `gulp default` will run all tasks except `package`.
 
 ## Bugs, Contributions & Questions ##
 We are always looking for ways to improve. If you find a bug, have a question, or wish to add a contribution please open an issue.
