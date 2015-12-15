@@ -1,0 +1,9 @@
+<p style="display:block; width:90%; padding: 10px; background:#eee;font-weight:100;">Available Options</p>
+<div style="padding:0 0 0 5%; width:85%">
+<p>Instructions for the [fluidvideo] shortcode are super easy. All you need to do is add the URL attribute. For instance, if your video URL is https://vimeo.com/148845534 your shortcode would look like this: <br>
+	<code>
+		[fluidvideo url="https://vimeo.com/148845534"]
+	</code>
+</p>
+
+</div>
