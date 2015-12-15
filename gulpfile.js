@@ -96,8 +96,8 @@ gulp.task('watch', function() {
 	    '!src/js/global.min.js',
     	'src/js/*.js'
     	], ['lint', 'scripts']);
-    gulp.watch('src/scss/**/*.scss', ['sass']);
-    gulp.watch('src/css/*.css', ['minify-css']);
+    gulp.watch('src/scss/**/*.scss', ['styles']);
+    gulp.watch('src/css/*.css', ['styles']);
     gulp.watch('src/images/src/*.{jpg,png}', ['images']);
 });
 
@@ -108,5 +108,8 @@ gulp.task('package', function() {
 		.pipe(gulp.dest('./'));
 });
 
+// Styles Task - minify-css is the only task we call, because it is dependent upon sass running first.
+gulp.task('styles', ['minify-css']);
+
 // Default Task
-gulp.task('default', ['lint', 'sass', 'minify-css', 'scripts', 'images']);
+gulp.task('default', ['lint', 'styles', 'scripts', 'images', 'watch']);
