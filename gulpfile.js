@@ -20,8 +20,9 @@ var zip = require('gulp-zip');
 // Lint Task
 gulp.task('lint', function() {
     return gulp.src([
-	    '!src/js/global.min.js',
-    	'src/js/*.js'
+    	'src/js/*.js',
+    	'!src/js/global.js',
+    	'!src/js/global.min.js'
     	])
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
@@ -93,8 +94,9 @@ gulp.task('copy', function() {
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch([
-	    '!src/js/global.min.js',
-    	'src/js/*.js'
+    	'src/js/*.js',
+    	'!src/js/global.js',
+    	'!src/js/global.min.js'
     	], ['lint', 'scripts']);
     gulp.watch('src/scss/**/*.scss', ['styles']);
     gulp.watch('src/css/*.css', ['styles']);
@@ -112,4 +114,4 @@ gulp.task('package', function() {
 gulp.task('styles', ['minify-css']);
 
 // Default Task
-gulp.task('default', ['lint', 'styles', 'scripts', 'images','copy', 'watch']);
+gulp.task('default', ['lint', 'styles', 'scripts', 'images', 'copy', 'watch']);
