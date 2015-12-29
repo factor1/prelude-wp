@@ -2,7 +2,7 @@
 var theme = 'your-theme-name';
 
 // Include gulp
-var gulp = require('gulp'); 
+var gulp = require('gulp');
 
 // Include Our Plugins
 var jshint = require('gulp-jshint');
@@ -12,7 +12,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
-var minifyCss = require('gulp-minify-css');
+var minifyCss = require('gulp-cssnano');
 // var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var zip = require('gulp-zip');
@@ -48,11 +48,7 @@ gulp.task('minify-css', ['sass'], function() {
 	  	.pipe(rename({
 		        suffix: '.min'
 	        }))
-	    .pipe(minifyCss({
-		    compatibility: 'ie8',
-		    aggressiveMerging: false,
-		    processImport: true
-		    }))
+	    .pipe(nano())
 	    .pipe(gulp.dest('src/css/'));
 });
 
