@@ -48,7 +48,10 @@ gulp.task('minify-css', ['sass'], function() {
 	  	.pipe(rename({
 		        suffix: '.min'
 	        }))
-	    .pipe(nano())
+	    .pipe(nano({
+        discardComments: {removeAll: true},
+        autoprefixer: false
+      }))
 	    .pipe(gulp.dest('src/css/'));
 });
 
