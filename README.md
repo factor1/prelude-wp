@@ -1,6 +1,6 @@
 # Prelude #
 
-Prelude is a starter theme, gulp stack and structure for crafting custom Wordpress themes.
+Prelude is a starter theme, gulp tasks and structure for crafting custom Wordpress themes.
 
 ## Features ##
 
