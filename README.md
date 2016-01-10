@@ -1,11 +1,11 @@
-# Factor1 Blank Wordpress Theme #
+# Prelude #
 
-Factor1 Blank Wordpress Theme is a starter theme for custom Wordpress themes.
+Prelude is a starter theme, gulp tasks and structure for crafting custom Wordpress themes.
 
 ## Features ##
 
 ### Gulp Tasks ###
-Factor1 Blank Wordpress Theme uses Gulp to: 
+Prelude uses Gulp to:
 * Compile & minify Sass/CSS
 * Auto-prefix your Sass/CSS
 * Minify and concatenate JavaScript/jQuery
@@ -14,7 +14,7 @@ Factor1 Blank Wordpress Theme uses Gulp to:
 * Package a theme for upload to Wordpress
 
 ### Wordpress Functions ###
-Factor1 Blank Wordpress Theme has some nifty features built into `functions.php` to make developing a custom Wordpress theme a little easier.
+Prelude has some nifty features built into `functions.php` to make developing a custom Wordpress theme a little easier.
 * Shortcode Maker - allows for easy creation of custom shortcodes. Useful for buttons or custom media embeds.
 * Defer jQuery Parsing using the HTML5 defer property
 * Customize Wordpress Admin Login / Admin Footer Text
@@ -22,7 +22,7 @@ Factor1 Blank Wordpress Theme has some nifty features built into `functions.php`
 * Other various improvements to default Wordpress functions that are too long and/or small to list here
 
 ## Getting Started ##
-Factor1 Blank Wordpress Theme requires that you have Node and npm installed on your machine. If you need help with that, please visit the [npm documentation](https://docs.npmjs.com/getting-started/installing-node).
+Prelude requires that you have Node and npm installed on your machine. If you need help with that, please visit the [npm documentation](https://docs.npmjs.com/getting-started/installing-node).
 
 1. Clone this repository to your machine, or download the .zip and place its contents in your project folder
 2. Install from the project folder using `npm install`
@@ -49,35 +49,35 @@ You can modify the file structure however you like as long as it is also updated
     ├── images
     │	├── src
     ├── inc
-    │   ├── meta.php
-    │   └── nav.php
+    │   ├── meta.php
+    │   └── nav.php
     ├── index.php
     ├── page.php
     ├── screenshot.png
     ├── scss
-    │   ├── components
-    │   │   ├── _footer.scss
-    │   │   ├── _header.scss
-    │   ├── global
-    │   │   └── _global.scss
-    │   │   └── _typography.scss
-    │   ├── page-templates
-    │   ├── settings
-    │   │   └── _variables.scss
-    │   ├── theme.scss
-    │   └── vendor
+    │   ├── components
+    │   │   ├── _footer.scss
+    │   │   ├── _header.scss
+    │   ├── global
+    │   │   └── _global.scss
+    │   │   └── _typography.scss
+    │   ├── page-templates
+    │   ├── settings
+    │   │   └── _variables.scss
+    │   ├── theme.scss
+    │   └── vendor
     ├── search.php
     ├── searchform.php
     ├── shortcode_maker.php
     ├── shortcodes
-    │   ├── _instructions.php
-    │   ├── col_end.php
-    │   ├── col_start.instructions
-    │   ├── col_start.php
-    │   ├── fluidvideo.php
-    │   ├── fluidvideo.instructions
-    │   ├── row_end.php
-    │   └── row_start.php
+    │   ├── _instructions.php
+    │   ├── col_end.php
+    │   ├── col_start.instructions
+    │   ├── col_start.php
+    │   ├── fluidvideo.php
+    │   ├── fluidvideo.instructions
+    │   ├── row_end.php
+    │   └── row_start.php
     ├── sidebar.php
     ├── single.php
     └── style.css
