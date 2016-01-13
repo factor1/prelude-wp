@@ -71,7 +71,7 @@ gulp.task('scripts', ['lint'], function() {
 
 // Minimize Images
 gulp.task('images', function() {
-    return gulp.src('src/images/src/*.{jpg,png}')
+    return gulp.src('src/images/src/*.{jpg,png,gif}')
     .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
