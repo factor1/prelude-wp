@@ -113,4 +113,4 @@ gulp.task('package', function() {
 gulp.task('styles', ['minify-css']);
 
 // Default Task
-gulp.task('default', ['lint', 'styles', 'scripts', 'images', 'copy', 'watch']);
+gulp.task('default', ['styles', 'scripts', 'images', 'copy', 'watch']);
