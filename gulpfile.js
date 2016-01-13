@@ -56,7 +56,7 @@ gulp.task('minify-css', ['sass'], function() {
 });
 
 // Concatenate & Minify JS
-gulp.task('scripts', function() {
+gulp.task('scripts', ['lint'], function() {
     return gulp.src([
     	'src/js/*.js',
     	'!src/js/global.js',
