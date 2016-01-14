@@ -56,7 +56,7 @@ gulp.task('minify-css', ['sass'], function() {
 });
 
 // Concatenate & Minify JS
-gulp.task('scripts', function() {
+gulp.task('scripts', ['lint'], function() {
     return gulp.src([
     	'src/js/*.js',
     	'!src/js/global.js',
@@ -71,7 +71,7 @@ gulp.task('scripts', function() {
 
 // Minimize Images
 gulp.task('images', function() {
-    return gulp.src('src/images/src/*.{jpg,png}')
+    return gulp.src('src/images/src/*.{jpg,png,gif}')
     .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
@@ -96,7 +96,7 @@ gulp.task('watch', function() {
     	'src/js/*.js',
     	'!src/js/global.js',
     	'!src/js/global.min.js'
-    	], ['lint', 'scripts']);
+    	], ['scripts']);
     gulp.watch('src/scss/**/*.scss', ['styles']);
     gulp.watch('src/css/*.css', ['styles']);
     gulp.watch('src/images/src/*.{jpg,png}', ['images']);
@@ -113,4 +113,4 @@ gulp.task('package', function() {
 gulp.task('styles', ['minify-css']);
 
 // Default Task
-gulp.task('default', ['lint', 'styles', 'scripts', 'images', 'copy', 'watch']);
+gulp.task('default', ['styles', 'scripts', 'images', 'copy', 'watch']);

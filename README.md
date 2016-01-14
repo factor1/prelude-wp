@@ -7,7 +7,11 @@ and more.
 ## Features ##
 
 ### Gulp Tasks ###
+<<<<<<< HEAD
 Prelude uses Gulp to: 
+=======
+Prelude uses Gulp to:
+>>>>>>> develop
 * Compile & minify Sass/CSS
 * Auto-prefix your Sass/CSS
 * Minify and concatenate JavaScript/jQuery
@@ -51,35 +55,35 @@ You can modify the file structure however you like as long as it is also updated
     ├── images
     │	├── src
     ├── inc
-    │   ├── meta.php
-    │   └── nav.php
+    │   ├── meta.php
+    │   └── nav.php
     ├── index.php
     ├── page.php
     ├── screenshot.png
     ├── scss
-    │   ├── components
-    │   │   ├── _footer.scss
-    │   │   ├── _header.scss
-    │   ├── global
-    │   │   └── _global.scss
-    │   │   └── _typography.scss
-    │   ├── page-templates
-    │   ├── settings
-    │   │   └── _variables.scss
-    │   ├── theme.scss
-    │   └── vendor
+    │   ├── components
+    │   │   ├── _footer.scss
+    │   │   ├── _header.scss
+    │   ├── global
+    │   │   └── _global.scss
+    │   │   └── _typography.scss
+    │   ├── page-templates
+    │   ├── settings
+    │   │   └── _variables.scss
+    │   ├── theme.scss
+    │   └── vendor
     ├── search.php
     ├── searchform.php
     ├── shortcode_maker.php
     ├── shortcodes
-    │   ├── _instructions.php
-    │   ├── col_end.php
-    │   ├── col_start.instructions
-    │   ├── col_start.php
-    │   ├── fluidvideo.php
-    │   ├── fluidvideo.instructions
-    │   ├── row_end.php
-    │   └── row_start.php
+    │   ├── _instructions.php
+    │   ├── col_end.php
+    │   ├── col_start.instructions
+    │   ├── col_start.php
+    │   ├── fluidvideo.php
+    │   ├── fluidvideo.instructions
+    │   ├── row_end.php
+    │   └── row_start.php
     ├── sidebar.php
     ├── single.php
     └── style.css
