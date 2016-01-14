@@ -7,11 +7,11 @@
  * provide it for us.
  */
  	add_theme_support( 'title-tag' );
-	
+
 // Lets make some shortcodes
 	include(get_template_directory().'/shortcode_maker.php');
 
-	
+
 // Load jQuery
 	if ( !is_admin() ) {
 	   wp_deregister_script('jquery');
@@ -29,36 +29,36 @@
 	    }
 	    add_filter( 'clean_url', 'defer_parsing_of_js', 11, 1 );
 	}
-	
+
 //Enqueue Scripts and Theme Styles
 	function theme_styles(){
 	        wp_enqueue_style('theme-styles', get_template_directory_uri() . '/css/theme.min.css', array(), false , 'all');
 	    }
 	    add_action( 'wp_enqueue_scripts', 'theme_styles' );
-	
+
 //Customize Wordpress Admin
 
 	// add login logo
 	function custom_loginlogo() {
 	echo '<style type="text/css">
 	h1 a {
-		height: 100% !important; 
+		height: 100% !important;
 		width:100% !important;
 		background-image: url('.get_bloginfo('template_directory').'/images/logo-login.png) !important;
 		background-postion-x: center !important;
-		background-size:100% !important; 
+		background-size:100% !important;
 		margin-bottom:10px !important; }
-	
+
 	h1 {
-		width: 320px !important; 
+		width: 320px !important;
 		Height: 120px !important}
-		
+
 	</style>';
 	}
-	
+
 	add_action('login_head', 'custom_loginlogo');
-	
-	
+
+
 	// add custom footer text
 	function modify_footer_admin () {
 		echo 'Created by <a href="http://factor1studios.com"><strong>factor1</strong></a>. ';
@@ -69,40 +69,40 @@
 
 /// Dump the yoast SEO columns that are ugly and messy
 	add_filter( 'wpseo_use_page_analysis', '__return_false' );
-	
+
 // Clean up the <head>
 	function removeHeadLinks() {
     	remove_action('wp_head', 'rsd_link');
     	remove_action('wp_head', 'wlwmanifest_link');
     }
-    
-// Remove WP version from html header  
+
+// Remove WP version from html header
     add_action('init', 'removeHeadLinks');
     remove_action('wp_head', 'wp_generator');
-   
-    
+
+
 //  Stop automatically hyperlinking images to themselves
 	$image_set = get_option( 'image_default_link_type' );
-	
+
     if (!$image_set == 'none') {
         update_option('image_default_link_type', 'none');
     }
-        
+
 // add theme supports and nav menus
 	add_action( 'after_setup_theme', 'f1_setup' );
-	
+
 	function f1_setup() {
 		add_theme_support( 'menus' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'automatic-feed-links' );
-	
+
 		remove_action( 'wp_head', 'rsd_link' );
 		remove_action( 'wp_head', 'wlwmanifest_link' );
 		remove_action( 'wp_head', 'wp_generator' );
 		remove_action( 'wp_head', 'start_post_rel_link' );
 		remove_action( 'wp_head', 'index_rel_link' );
 		remove_action( 'wp_head', 'adjacent_posts_rel_link' );
-	
+
 		register_nav_menus( array(
 			'primary' => __( 'Primary Navigation', 'f1' ),
 		) );
@@ -112,18 +112,18 @@
 	function page_excerpt() {
 		add_post_type_support('page', array('excerpt'));
 	}
-	
+
 	add_action('init', 'page_excerpt');
-	
+
 // register widget areas
 	add_action( 'widgets_init', 'f1_widgets_init', 1 );
-	
+
 	function f1_widgets_init() {
 		unregister_widget( 'WP_Widget_Calendar' );
 		unregister_widget( 'WP_Widget_Links' );
 		unregister_widget( 'WP_Widget_Meta' );
 		unregister_widget( 'WP_Widget_Search' );
-		unregister_widget( 'WP_Widget_Recent_Comments' );
+		//unregister_widget( 'WP_Widget_Recent_Comments' );
 
 		register_sidebar( array(
 			'name' => __( 'Sidebar', 'f1' ),
@@ -143,21 +143,21 @@
 
 // change default [...]
 	add_filter( 'excerpt_more', 'f1_auto_excerpt_more' );
-	
+
 	function f1_auto_excerpt_more( $more ) {
 		return ' &hellip;' . f1_continue_reading_link();
 	}
 
 // remove the gallery style that is automatically added
 	add_filter( 'gallery_style', 'f1_remove_gallery_css' );
-	
+
 	function f1_remove_gallery_css( $css ) {
 		return preg_replace( "#<style type='text/css'>(.*?)</style>#s", '', $css );
 	}
 
 // remove the recent comments style that is automatically added
 	add_action( 'widgets_init', 'f1_remove_recent_comments_style' );
-	
+
 	function f1_remove_recent_comments_style() {
 		global $wp_widget_factory;
 		remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'  ) );
@@ -166,7 +166,7 @@
 // remove update notifications for everybody except admin users
 	global $user_login;
 	get_currentuserinfo();
-	if ( ! current_user_can( 'update_plugins' ) ) { // checks to see if current user can update plugins 
+	if ( ! current_user_can( 'update_plugins' ) ) { // checks to see if current user can update plugins
 		add_action( 'init', create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ), 2 );
 		add_filter( 'pre_option_update_core', create_function( '$a', "return null;" ) );
 	}
@@ -179,7 +179,7 @@
         remove_meta_box( 'dashboard_quick_press', 'dashboard', 'core' ); // Quick Press Box
         remove_meta_box( 'dashboard_plugins', 'dashboard', 'core' ); // Plugins Box
         remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'core' ); // Recent Drafts Box
-        remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'core' ); // Recent Comments
+        //remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'core' ); // Recent Comments
         remove_meta_box( 'dashboard_primary', 'dashboard', 'core' ); // WordPress Development Blog
         remove_meta_box( 'dashboard_secondary', 'dashboard', 'core' ); // Other WordPress News
 	}
@@ -189,7 +189,7 @@
 	function f1_remove_default_post_metaboxes() {
         remove_meta_box( 'postcustom','post','normal' ); // Custom Fields Metabox
         remove_meta_box( 'postexcerpt','post','normal' ); // Excerpt Metabox
-        remove_meta_box( 'commentstatusdiv','post','normal' ); // Comments Metabox
+        //remove_meta_box( 'commentstatusdiv','post','normal' ); // Comments Metabox
         remove_meta_box( 'trackbacksdiv','post','normal' ); // Talkback Metabox
         //remove_meta_box( 'authordiv','post','normal' ); // Author Metabox
 	}
