@@ -7,11 +7,7 @@ and more.
 ## Features ##
 
 ### Gulp Tasks ###
-<<<<<<< HEAD
-Prelude uses Gulp to: 
-=======
 Prelude uses Gulp to:
->>>>>>> develop
 * Compile & minify Sass/CSS
 * Auto-prefix your Sass/CSS
 * Minify and concatenate JavaScript/jQuery
