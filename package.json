@@ -1,27 +1,28 @@
 {
-  "name": "factor1-blankwp",
-  "version": "2.1.0",
-  "description": "A custom starter Wordpress theme developed by Factor1",
+  "name": "prelude-wp",
+  "version": "2.1.4",
+  "description": "Prelude is a Wordpress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.",
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://buschschwick@github.com/factor1/factor1_blankwp.git"
+    "url": "git+https://github.com/factor1/Prelude.git"
   },
   "keywords": [
     "Wordpress",
     "Theme",
     "Blank",
+    "Prelude",
     "Factor1"
   ],
   "author": "Factor1 Studios <http://factor1studios.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/factor1/factor1_blankwp/issues"
+    "url": "https://github.com/factor1/Prelude/issues"
   },
-  "homepage": "https://github.com/factor1/factor1_blankwp#readme",
+  "homepage": "https://github.com/factor1/Prelude#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
