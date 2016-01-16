@@ -1,35 +1,32 @@
-<?php get_header(); ?>
+<?php
+  /**
+   * The default page template.
+   */
+  get_header();
+  get_template_part( 'parts/hero' );
+?>
 
+  <section class="main-content">
+    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+      <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+        <h1 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+        <?php
+          if ( has_post_thumbnail() ) {
+            the_post_thumbnail();
+          }
+          get_template_part( 'parts/meta' );
+          the_content();
+        ?>
+      </article>
+      <?php
+    endwhile;
+      get_template_part( 'parts/post-nav' ); // TODO: check to see which function is better here
+      the_posts_pagination( array('mid_size' => 2) );
+    else :
+      ?>
+      <h2>Not Found</h2>
+    <?php endif; ?>
+  </section>
 
-<article>
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-		<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
-
-			<h1><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h1>
-			
-			<?php if(has_post_thumbnail()) {
-			the_post_thumbnail();
-			} else {	}
-			?>
-
-			<?php include (TEMPLATEPATH . '/inc/meta.php' ); ?>
-			<?php the_content(); ?>
-			
-		</div>
-
-	<?php endwhile; ?>
-
-	<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
-
-	<?php else : ?>
-
-		<h2>Not Found</h2>
-
-	<?php endif; ?>
-</article>
-
-
-<?php get_sidebar(); ?>
-
-<?php get_footer(); ?>
+<?php
+  get_footer();
