@@ -18,7 +18,8 @@
 
   // Customize the default read more link
   function f1_continue_reading_link() {
-    return ' <a href="' . get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'f1' ) .
+    return ' <a href="' . get_permalink() . '">' .
+           __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'f1' ) .
            '</a>';
   }
 
@@ -40,7 +41,10 @@
   function f1_remove_recent_comments_style() {
     global $wp_widget_factory;
     remove_action(
-      'wp_head', array($wp_widget_factory->widgets[ 'WP_Widget_Recent_Comments' ], 'recent_comments_style') );
+      'wp_head', array(
+      $wp_widget_factory->widgets[ 'WP_Widget_Recent_Comments' ],
+      'recent_comments_style'
+    ) );
   }
 
   add_action( 'widgets_init', 'f1_remove_recent_comments_style' );
@@ -51,20 +55,31 @@
   get_currentuserinfo();
 
   if ( !current_user_can( 'update_plugins' ) ) {
-    add_action( 'init', create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ), 2 );
-    add_filter( 'pre_option_update_core', create_function( '$a', 'return null;' ) );
+    add_action(
+      'init',
+      create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ),
+      2 );
+    add_filter(
+      'pre_option_update_core', create_function( '$a', 'return null;' ) );
   }
 
   // Customize which dashboard widgets show
   function f1_remove_dashboard_boxes() {
-    remove_meta_box( 'dashboard_right_now', 'dashboard', 'core' ); // Right Now Overview Box
-    remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'core' ); // Incoming Links Box
-    remove_meta_box( 'dashboard_quick_press', 'dashboard', 'core' ); // Quick Press Box
+    remove_meta_box(
+      'dashboard_right_now', 'dashboard', 'core' ); // Right Now Overview Box
+    remove_meta_box(
+      'dashboard_incoming_links', 'dashboard', 'core' ); // Incoming Links Box
+    remove_meta_box(
+      'dashboard_quick_press', 'dashboard', 'core' ); // Quick Press Box
     remove_meta_box( 'dashboard_plugins', 'dashboard', 'core' ); // Plugins Box
-    remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'core' ); // Recent Drafts Box
-    remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'core' ); // Recent Comments
-    remove_meta_box( 'dashboard_primary', 'dashboard', 'core' ); // WordPress Development Blog
-    remove_meta_box( 'dashboard_secondary', 'dashboard', 'core' ); // Other WordPress News
+    remove_meta_box(
+      'dashboard_recent_drafts', 'dashboard', 'core' ); // Recent Drafts Box
+    remove_meta_box(
+      'dashboard_recent_comments', 'dashboard', 'core' ); // Recent Comments
+    remove_meta_box(
+      'dashboard_primary', 'dashboard', 'core' ); // WordPress Development Blog
+    remove_meta_box(
+      'dashboard_secondary', 'dashboard', 'core' ); // Other WordPress News
   }
 
   add_action( 'admin_menu', 'f1_remove_dashboard_boxes' );
@@ -83,7 +98,8 @@
   // Remove meta boxes from default pages screen
   function f1_remove_default_page_metaboxes() {
     remove_meta_box( 'postcustom', 'page', 'normal' ); // Custom Fields Metabox
-    remove_meta_box( 'commentstatusdiv', 'page', 'normal' ); // Discussion Metabox
+    remove_meta_box(
+      'commentstatusdiv', 'page', 'normal' ); // Discussion Metabox
     remove_meta_box( 'authordiv', 'page', 'normal' ); // Author Metabox
   }
 

@@ -30,7 +30,8 @@
 
         <?php while ( have_posts() ) : the_post(); ?>
           <div <?php post_class(); ?>>
-            <h2 id="post-<?php the_ID(); ?>"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+            <h2 id="post-<?php the_ID(); ?>"><a
+                href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
             <?php
               get_template_part( 'parts/meta' );
               the_content();
@@ -38,10 +39,7 @@
           </div>
         <?php endwhile; ?>
 
-        <?php
-          get_template_part( 'parts/post-nav' ); // TODO: check to see which function is better here
-          the_posts_pagination( array('mid_size' => 2) );
-        ?>
+        <?php the_posts_pagination( array('mid_size' => 2) ); ?>
       </div>
     <?php else : ?>
       <h2>Nothing found</h2>

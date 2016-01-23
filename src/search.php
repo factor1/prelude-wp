@@ -11,10 +11,7 @@
     <?php if ( have_posts() ) : ?>
       <h2>Search Results</h2>
 
-      <?php
-      get_template_part( 'parts/post-nav' ); // TODO: check to see which function is better here
-      the_posts_pagination( array('mid_size' => 2) );
-      ?>
+      <?php the_posts_pagination( array('mid_size' => 2) ); ?>
 
       <?php while ( have_posts() ) : the_post(); ?>
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -26,7 +23,6 @@
         </div>
         <?php
       endwhile;
-      get_template_part( 'parts/post-nav' ); // TODO: check to see which function is better here
       the_posts_pagination( array('mid_size' => 2) );
     else : ?>
       <h2>No posts found.</h2>

@@ -47,7 +47,8 @@
 
   // Add a custom WordPress dashboard widget
   function f1_dashboard_widgets() {
-    wp_add_dashboard_widget( 'wp_dashboard_widget', 'Keep In Touch With factor1', 'f1_theme_info' );
+    wp_add_dashboard_widget(
+      'wp_dashboard_widget', 'Keep In Touch With factor1', 'f1_theme_info' );
   }
 
   add_action( 'wp_dashboard_setup', 'f1_dashboard_widgets' );

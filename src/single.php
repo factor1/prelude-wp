@@ -19,8 +19,7 @@
           the_content();
           wp_link_pages(
             array(
-              'before'         => 'Pages: ',
-              'next_or_number' => 'number'
+              'before' => 'Pages: ', 'next_or_number' => 'number'
             ) );
           the_tags( 'Tags: ', ', ', '' );
           edit_post_link( 'Edit this entry', '', '.' );

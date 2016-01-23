@@ -27,7 +27,8 @@
   </section>
 
   <section class="footer-bottom">
-    <a class="copyright" href="http://factor1studios.com" target="_blank">Site by <strong>factor1</strong></a>
+    <a class="copyright" href="http://factor1studios.com" target="_blank">Site
+      by <strong>factor1</strong></a>
   </section>
 </footer>
 

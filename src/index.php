@@ -9,7 +9,8 @@
   <section class="main-content">
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
       <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <h1 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+        <h1 class="post-title"><a
+            href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
         <?php
           if ( has_post_thumbnail() ) {
             the_post_thumbnail();
@@ -20,7 +21,6 @@
       </article>
       <?php
     endwhile;
-      get_template_part( 'parts/post-nav' ); // TODO: check to see which function is better here
       the_posts_pagination( array('mid_size' => 2) );
     else :
       ?>

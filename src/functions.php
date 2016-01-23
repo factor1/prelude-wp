@@ -9,13 +9,18 @@
 
       // Add theme support for Post Formats
       add_theme_support(
-        'post-formats', array('status', 'quote', 'gallery', 'image', 'video', 'audio', 'link', 'aside') );
+        'post-formats', array(
+        'status', 'quote', 'gallery', 'image', 'video', 'audio', 'link', 'aside'
+      ) );
 
       // Add theme support for Featured Images
       add_theme_support( 'post-thumbnails' );
 
       // Add theme support for HTML5 Semantic Markup
-      add_theme_support( 'html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption') );
+      add_theme_support(
+        'html5', array(
+        'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
+      ) );
 
       // Add theme support for document Title tag
       add_theme_support( 'title-tag' );
@@ -28,6 +33,7 @@
       remove_action( 'wp_head', 'index_rel_link' );
       remove_action( 'wp_head', 'adjacent_posts_rel_link' );
     }
+
     add_action( 'after_setup_theme', 'f1_features' );
   }
 
@@ -36,12 +42,15 @@
    */
   function f1_theme_scripts() {
     // CSS
-    wp_enqueue_style( 'theme-css', get_template_directory_uri() . '/assets/css/theme.min.css' );
+    wp_enqueue_style(
+      'theme-css', get_template_directory_uri() . '/assets/css/theme.css' );
 
     // JS
     wp_enqueue_script(
-      'theme-js', get_template_directory_uri() . '/assets/js/theme.min.js', array(), '', true );
+      'theme-js', get_template_directory_uri() . '/assets/js/theme.js',
+      array(), '', true );
   }
+
   add_action( 'wp_enqueue_scripts', 'f1_theme_scripts' );
 
   /**
