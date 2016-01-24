@@ -1,6 +1,8 @@
 <?php
   /**
    * Template file for displaying the navigation between paginated blog posts
+   *
+   * Can be used in place of the_posts_pagination();
    */
 ?>
 
