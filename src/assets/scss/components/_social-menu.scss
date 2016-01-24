@@ -1,0 +1,109 @@
+/*----------------------------------------------------------------------------
+  WordPress Social Menu
+  - make sure to include FontAwesome for this to work!
+----------------------------------------------------------------------------*/
+.menu-social {
+  ul {
+    text-align: inherit;
+    list-style: none;
+    padding   : 0;
+  }
+}
+
+
+@media only screen and (max-width: 640px) {
+  .menu-social {
+    float     : none;
+    text-align: center;
+  }
+}
+
+
+.menu-social ul li {
+  position: relative;
+  display : inline-block;
+  padding : 0 .625rem;
+
+  
+  a {
+    display         : inline-block;
+    width           : 22px;
+    height          : 22px;
+    background-color: $light-blue;
+    border-radius   : 10px;
+    text-align      : center;
+    
+    &:hover {
+      background-color: $primary-color;
+      font-style      : normal;
+    }
+  }
+}
+
+.menu-social li a:before {
+  padding-bottom        : .25rem;
+  display               : inline-block;
+  vertical-align        : middle;
+  font-family           : 'FontAwesome';
+  font-size             : .7rem;
+  color                 : #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Adding the icons
+.menu-social li a[href*="facebook.com"]::before {
+  content: '\f09a';
+}
+
+.menu-social li a[href*="twitter.com"]::before {
+  content: '\f099';
+}
+
+.menu-social li a[href*="dribbble.com"]::before {
+  content: '\f17d';
+}
+
+.menu-social li a[href*="plus.google.com"]::before {
+  content: '\f0d5';
+}
+
+.menu-social li a[href*="pinterest.com"]::before {
+  content: '\f0d2';
+}
+
+.menu-social li a[href*="github.com"]::before {
+  content: '\f09b';
+}
+
+.menu-social li a[href*="tumblr.com"]::before {
+  content: '\f173';
+}
+
+.menu-social li a[href*="youtube.com"]::before {
+  content: '\f167';
+}
+
+.menu-social li a[href*="flickr.com"]::before {
+  content: '\f16e';
+}
+
+.menu-social li a[href*="vimeo.com"]::before {
+  content: '\f194';
+}
+
+.menu-social li a[href*="instagram.com"]::before {
+  content: '\f16d';
+}
+
+.menu-social li a[href*="linkedin.com"]::before {
+  content: '\f0e1';
+}
+
+.menu-social li a[href*="mailto:"]::before {
+  content: '\f003';
+}
+
+// Hide the default Screen Reader text
+.screen-reader-text {
+  display: none;
+}
