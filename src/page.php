@@ -1,23 +1,26 @@
-<?php get_header(); ?>
+<?php
+  /**
+   * The page template.
+   * 
+   * Used when an individual Page is queried.
+   */
+  get_header();
+?>
 
-<article>
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-		
-		<div class="post" id="post-<?php the_ID(); ?>">
-	
-		<?php if(has_post_thumbnail()) {
-			the_post_thumbnail();
-			} else {	}
-			?>
-			
-			<h1><?php the_title(); ?></h1>
-			<?php the_content(); ?>
-			<?php edit_post_link('Edit this entry.', '<hr><p>', '</p>'); ?>
-		</div>
-		
-		<?php endwhile; endif; ?>
-</article>
+  <section class="main-content">
+    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+      <article id="post-<?php the_ID(); ?>" class="post">
+        <?php if ( has_post_thumbnail() ) {
+          the_post_thumbnail();
+        } ?>
+        <h1><?php the_title(); ?></h1>
+        <?php
+          the_content();
+          edit_post_link( 'Edit this entry.', '<hr><p>', '</p>' );
+        ?>
+      </article>
+    <?php endwhile; endif; ?>
+  </section>
 
-<?php get_sidebar('page'); ?>
-
-<?php get_footer(); ?>
+<?php
+  get_footer();
