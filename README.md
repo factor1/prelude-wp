@@ -1,31 +1,24 @@
-# Prelude #
+# Prelude
+Prelude is a WordPress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.
 
-Prelude is a Wordpress starter theme that helps you craft custom themes. It uses
-Gulp to compile and minify scss/css, concatenate and minify JS, compress images,
-and more.
-
-## Features ##
-
-### Gulp Tasks ###
+## Features
+### Gulp Tasks
 Prelude uses Gulp to:
-* Compile & minify Sass/CSS
-* Auto-prefix your Sass/CSS
-* Minify and concatenate JavaScript/jQuery
-* Compress PNG & JPGs
-* Create a theme distribution folder for local testing
-* Package a theme for upload to Wordpress
+- Compile & minify Sass/CSS
+- Auto-prefix your Sass/CSS
+- Minify and concatenate JavaScript/jQuery
+- Compress PNG & JPGs
+- Create a theme distribution folder for local testing
+- Package a theme for upload to WordPress
 
-### Wordpress Functions ###
-Prelude has some nifty features built into `functions.php` to make developing a custom Wordpress theme a little easier.
-* Shortcode Maker - allows for easy creation of custom shortcodes. Useful for buttons or custom media embeds.
-* Defer jQuery Parsing using the HTML5 defer property
-* Customize Wordpress Admin Login / Admin Footer Text
-* Customized Read More Links
-* Other various improvements to default Wordpress functions that are too long and/or small to list here
+### WordPress Functions
+Prelude has some nifty features built into `functions.php` to make developing a custom WordPress theme a little easier.
+- Defer jQuery Parsing using the HTML5 defer property
+- Customized Read More Links
+- Other various improvements to default WordPress functions that are too long and/or small to list here
 
-## Getting Started ##
+## Getting Started
 Prelude requires that you have Node and npm installed on your machine. If you need help with that, please visit the [npm documentation](https://docs.npmjs.com/getting-started/installing-node).
-
 1. Clone this repository to your machine, or download the .zip and place its contents in your project folder
 2. Install from the project folder using `npm install`
 3. Using the `theme` variable found in `gulpfile.js` name your theme (Don't forget to also fill out the theme information found in `style.css` in the root of `src/`)
@@ -33,7 +26,7 @@ Prelude requires that you have Node and npm installed on your machine. If you ne
 
 When running the default gulp task, a theme folder will be created based on the `theme` variable. You can use this folder as your theme when running locally. When you're ready to package your theme you can run `gulp package` to create a zip folder of your production theme.
 
-## File Structure ##
+## File Structure
 You can modify the file structure however you like as long as it is also updated in `gulpfile.js`. Of course your project files may vary. By default it is as follows:
 
 ```
@@ -41,71 +34,92 @@ You can modify the file structure however you like as long as it is also updated
 ├── README.md
 ├── gulpfile.js
 ├── package.json
-└── src
+├── .editorconfig
+├── .jshintrc
+└── src/
+    ├── acf-json/
+    │   └── index.php
+    ├── assets/
+    │   ├── fonts/
+    │   ├── img/
+    │   │   ├── icons/
+    │   ├── js/
+    │   │   ├── plugins/
+    │   │   ├── vendor/
+    │   │   └── theme.js
+    │   ├── scss/
+    │   │   ├── components/
+    │   │   │   └── _footer.scss
+    │   │   │   └── _header.scss
+    │   │   │   └── _social-menu.scss
+    │   │   ├── globals/
+    │   │   │   └── _global.scss
+    │   │   │   └── _reset.scss
+    │   │   │   └── _typography.scss
+    │   │   │   └── _WordPress.scss
+    │   │   ├── pages/
+    │   │   ├── parts/
+    │   │   ├── plugins/
+    │   │   │   └── _overrides.scss
+    │   │   ├── vendor/
+    │   │   └── _variables.scss
+    │   │   └── theme.scss
+    ├── inc/
+    │   └── acf.php
+    │   └── custom-post-types.php
+    │   └── menus.php
+    │   └── shortcodes.php
+    │   └── tweaks.php
+    │   └── widgets.php
+    ├── page-templates/
+    ├── parts/
+    │   └── meta.php
+    │   └── post-nav.php
     ├── 404.php
     ├── archive.php
     ├── comments.php
     ├── footer.php
     ├── functions.php
     ├── header.php
-    ├── images
-    │	├── src
-    ├── inc
-    │   ├── meta.php
-    │   └── nav.php
     ├── index.php
     ├── page.php
     ├── screenshot.png
-    ├── scss
-    │   ├── components
-    │   │   ├── _footer.scss
-    │   │   ├── _header.scss
-    │   ├── global
-    │   │   └── _global.scss
-    │   │   └── _typography.scss
-    │   ├── page-templates
-    │   ├── settings
-    │   │   └── _variables.scss
-    │   ├── theme.scss
-    │   └── vendor
     ├── search.php
-    ├── searchform.php
-    ├── shortcode_maker.php
-    ├── shortcodes
-    │   ├── _instructions.php
-    │   ├── col_end.php
-    │   ├── col_start.instructions
-    │   ├── col_start.php
-    │   ├── fluidvideo.php
-    │   ├── fluidvideo.instructions
-    │   ├── row_end.php
-    │   └── row_start.php
     ├── sidebar.php
     ├── single.php
     └── style.css
 ```
 
-As mentioned in the getting started section, when the default Gulp task is ran, a theme folder will be created in the project root folder. Default compile paths are as follows:
+As mentioned in the getting started section, when the default Gulp task is ran, a theme folder will be created in the project root folder.
 
-* `src/images/src` compresses images and moves them up a level to `images`
-* `src/scss/theme.scss` compiles to `src/css/theme.css`
-* `src/css/` all css files are minified in place, with a suffix of `.min.css`. Files that are already minified will be ignored.  
-* `src/js/*.js` is concatenated and added to `global.js` then minified to `global.min.js`
+## Setting your default compile paths in Gulp
+We have created variables to hold an array of your desired paths. This makes it so that you only need to update paths in one location. These variables are then passed into the Gulp tasks for processing.
 
-## List Of Gulp Tasks ##
-There are 8 Gulp tasks available by default.
+The variables are:
+- `phpFiles` - accepts an array of .php files
+- `htmlFiles` - accepts an array of .html files
+- `cssFiles` - accepts an array of .css file
+- `sassFiles` - accepts an array of .scss/.sass files
+- `jsFiles` - accepts an array of .js files
+- `imageFiles` - accepts an array of image files (.jpg, .png, .gif, etc)
+- `concatFiles` - accepts an array of .js files. These are used to concatenate your .js files into one file, and as such the files must be listed in the order you desire
+- `copyFiles` - accepts an array of files
+- `url` - accepts a string to use as the BrowserSync proxy
 
-* `gulp lint` - a Javascript helper to find and catch errors
-* `gulp sass` - compiles sass files and auto-prefixes the styles
-* `gulp minify-css` - minifies css files but first runs `sass`.
-* `gulp styles` - runs `sass` and then `minify-css`, in that order.
-* `gulp scripts` - concatenates and minifies JS files
-* `gulp images` - compresses images
-* `gulp copy` - copies files from `src/` to the theme folder as named in `gulpfile.js` (This task only copies production files and leaves behind uncompiled/uncompressed files)
-* `gulp watch` - watches folder and files for changes and runs tasks based on what was updated
-* `gulp package` - creates a production ready `.zip` file based on your production theme folder
+## List Of Gulp Tasks
+There are 9 Gulp tasks available by default.
+- `gulp serve` - creates a local development server with live reloading and CSS injection via [BrowserSync](https://www.browsersync.io/docs/)
+- `gulp sass` - compiles SASS/SCSS files into CSS, adds vendor prefixes, and creates a sourcemap
+- `gulp lint` - a JavaScript helper to find and catch errors, and creates a sourcemap
+- `gulp minify-css` - ensures all SASS/SCSS is compiled to CSS and minifies them
+- `gulp scripts` - concatenates and minifies JS files (in the order you declare)
+- `gulp styles` - runs the `sass` and `minify-css` tasks, in that order
+- `gulp images` - compresses images
+- `gulp copy` - copies files from `src/` to the theme folder as named in `gulpfile.js` (This task only copies production files and leaves behind uncompiled/uncompressed files)
+- `gulp watch` - watches files for changes and runs tasks based on what was updated
+- `gulp package` - creates a production ready `.zip` file based on your production theme folder
 
 Running `gulp` or `gulp default` will run all tasks except `package`.
 
-## Bugs, Contributions & Questions ##
+## Bugs, Contributions & Questions
 We are always looking for ways to improve. If you find a bug, have a question, or wish to add a contribution please open an issue.
