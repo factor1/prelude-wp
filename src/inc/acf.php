@@ -9,5 +9,6 @@
         'page_title' => 'Theme Settings', 'menu_title' => 'Theme Settings',
         'menu_slug'  => 'theme-settings', 'capability' => 'edit_posts',
         'redirect'   => false
-      ) );
+      )
+    );
   }
