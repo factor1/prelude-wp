@@ -12,8 +12,8 @@ var phpFiles     = [],
     jsFiles      = ['src/assets/js/theme.js'],
     imageFiles   = ['src/assets/img/*.{jpg,png,gif}'],
     concatFiles  = [],
-    copyFiles    = ['!src/assets/img/**/*', 'src/**/*'],
-    url          = 'wp-dev:8888'; // See https://browsersync.io/docs/options/#option-proxy
+    copyFiles    = ['!src/assets/img/**/*', '!src/assets/scss/**/*', 'src/**/*'],
+    url          = 'your-local-virtual-host'; // See https://browsersync.io/docs/options/#option-proxy
 
 // Include gulp
 var gulp         = require('gulp');
@@ -114,7 +114,7 @@ gulp.task('images', function() {
     svgoPlugins: [{removeViewBox: false}],
     use: [pngquant()]
   }))
-  .pipe(gulp.dest( 'src/assets/img' ));
+  .pipe(gulp.dest( 'src/assets/img/min' ));
 });
 
 // Copy essential files to Dist
@@ -148,6 +148,3 @@ gulp.task('watch', function() {
   gulp.watch( phpFiles, browserSync.reload );
   gulp.watch( htmlFiles, browserSync.reload );
 });
-
-// When you are ready to ship
-gulp.task('build', ['minify-css', 'scripts', 'images', 'copy', 'package']);
