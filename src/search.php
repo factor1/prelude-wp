@@ -1,10 +1,10 @@
 <?php
   /**
    * The search results template.
+   *
    * Used when a search is performed.
    */
   get_header();
-  get_template_part( 'parts/hero' );
 ?>
 
   <section class="main-content">
@@ -25,7 +25,7 @@
       endwhile;
       the_posts_pagination( array('mid_size' => 2) );
     else : ?>
-      <h2>No posts found.</h2>
+      <h2>Sorry, no posts have been found.</h2>
     <?php endif; ?>
   </section>
 

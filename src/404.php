@@ -1,10 +1,10 @@
 <?php
   /**
    * The 404 Not Found template.
+   * 
    * Used when WordPress encounters an unknown URL.
    */
   get_header();
-  get_template_part( 'parts/hero' );
 ?>
 
   <section class="error-404">

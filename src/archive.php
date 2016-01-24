@@ -1,10 +1,10 @@
 <?php
   /**
    * The archive template.
+   *
    * Used when a category, author, or date is queried.
    */
   get_header();
-  get_template_part( 'parts/hero' );
 ?>
 
   <section>

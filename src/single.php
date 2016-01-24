@@ -1,10 +1,10 @@
 <?php
   /**
    * The single post template.
+   * 
    * Used when a single post is queried.
    */
   get_header();
-  get_template_part( 'parts/hero' );
 ?>
 
   <section class="main-content">
