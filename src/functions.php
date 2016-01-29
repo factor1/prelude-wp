@@ -72,11 +72,6 @@
   require get_template_directory() . '/inc/widgets.php';
 
   /**
-   * Load ACF
-   */
-  require get_template_directory() . '/inc/acf.php';
-
-  /**
    * Load tweaks
    */
   require get_template_directory() . '/inc/tweaks.php';
