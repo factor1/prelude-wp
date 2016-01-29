@@ -71,8 +71,8 @@
   // Remove meta boxes from default posts screen
   function prelude_remove_default_post_metaboxes() {
     remove_meta_box( 'postcustom', 'post', 'normal' ); // Custom Fields Metabox
-    remove_meta_box( 'postexcerpt', 'post', 'normal' ); // Excerpt Metabox
-    remove_meta_box( 'commentstatusdiv', 'post', 'normal' ); // Comments Metabox
+    //remove_meta_box( 'postexcerpt', 'post', 'normal' ); // Excerpt Metabox
+    //remove_meta_box( 'commentstatusdiv', 'post', 'normal' ); // Comments Metabox
     remove_meta_box( 'trackbacksdiv', 'post', 'normal' ); // Talkback Metabox
     remove_meta_box( 'authordiv', 'post', 'normal' ); // Author Metabox
   }
@@ -81,7 +81,7 @@
   // Remove meta boxes from default pages screen
   function prelude_remove_default_page_metaboxes() {
     remove_meta_box( 'postcustom', 'page', 'normal' ); // Custom Fields Metabox
-    remove_meta_box('commentstatusdiv', 'page', 'normal' ); // Discussion Metabox
+    //remove_meta_box('commentstatusdiv', 'page', 'normal' ); // Discussion Metabox
     remove_meta_box( 'authordiv', 'page', 'normal' ); // Author Metabox
   }
   add_action( 'admin_menu', 'prelude_remove_default_page_metaboxes' );
