@@ -8,3 +8,19 @@
   - Components
 -----------------------------------------------------------------------------*/
 // import the Sass partials in the order that you need here
+
+// Variables
+@import 'settings/variables';
+
+// Global Styles
+@import 'globals/global';
+@import 'globals/wordpress';
+@import 'globals/typography';
+
+// Components
+@import 'components/social-menu';
+@import 'components/header';
+@import 'components/footer';
+
+// Plugin Overrides
+@import 'plugins/_overrides.scss';
