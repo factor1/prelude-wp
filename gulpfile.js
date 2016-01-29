@@ -1,116 +1,150 @@
-// Theme Specific Variables
-var theme = 'your-theme-name';
+/*------------------------------------------------------------------------------
+  Gulpfile.js
+------------------------------------------------------------------------------*/
+// Name your theme
+var theme        = 'your-theme-name';
+
+// Set the paths you will be working with
+var phpFiles     = [],
+    htmlFiles    = [],
+    cssFiles     = ['src/assets/css/*.css', '!src/assets/css/*.min.css'],
+    sassFiles    = ['src/assets/scss/**/*.scss'],
+    jsFiles      = ['src/assets/js/theme.js'],
+    imageFiles   = ['src/assets/img/*.{jpg,png,gif}'],
+    concatFiles  = [],
+    copyFiles    = ['!src/assets/img/**/*', '!src/assets/scss/**/*', 'src/**/*'],
+    url          = 'your-local-virtual-host'; // See https://browsersync.io/docs/options/#option-proxy
 
 // Include gulp
-var gulp = require('gulp');
+var gulp         = require('gulp');
 
-// Include Our Plugins
-var jshint = require('gulp-jshint');
-var sass = require('gulp-sass');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
-var nano = require('gulp-cssnano');
-// var sourcemaps = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
-var zip = require('gulp-zip');
+// Include plugins
+var jshint       = require('gulp-jshint'),
+    sass         = require('gulp-sass'),
+    concat       = require('gulp-concat'),
+    uglify       = require('gulp-uglify'),
+    rename       = require('gulp-rename'),
+    imagemin     = require('gulp-imagemin'),
+    pngquant     = require('imagemin-pngquant'),
+    nano         = require('gulp-cssnano'),
+    sourcemaps   = require('gulp-sourcemaps'),
+    autoprefixer = require('gulp-autoprefixer'),
+    browserSync  = require('browser-sync'),
+    plumber      = require('gulp-plumber'),
+    stylish      = require('jshint-stylish');
+    zip          = require('gulp-zip');
 
-// Lint Task
-gulp.task('lint', function() {
-    return gulp.src([
-    	'src/js/*.js',
-    	'!src/js/global.js',
-    	'!src/js/global.min.js'
-    	])
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+/*------------------------------------------------------------------------------
+  Development Tasks
+------------------------------------------------------------------------------*/
+// Launch a development server
+gulp.task( 'serve', function() {
+  browserSync.init({
+    proxy: url
+      // port: 3000
+  });
 });
 
-// Compile Our Sass
+// Compile Sass
 gulp.task('sass', function() {
-    return gulp.src('src/scss/theme.scss')
-        .pipe(sass())
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
-        .pipe(gulp.dest('src/css/'));
+  return gulp.src( sassFiles )
+    .pipe(sourcemaps.init())
+      .pipe(plumber())
+      .pipe(sass())
+      .pipe(autoprefixer({
+        browsers: ['last 2 versions'],
+        cascade: false
+      }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest( 'src/assets/css' ))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
+// Lint JavaScript
+gulp.task('lint', function() {
+  return gulp.src( jsFiles )
+    .pipe(sourcemaps.init())
+      .pipe(plumber())
+      .pipe(jshint())
+      .pipe(jshint.reporter(stylish))
+    .pipe(sourcemaps.write())
+    .pipe(browserSync.reload({
+      stream: true
+    }));
+});
+
+/*------------------------------------------------------------------------------
+  Production Tasks
+------------------------------------------------------------------------------*/
 // Minimize CSS
 gulp.task('minify-css', ['sass'], function() {
-  	return gulp.src([
-  		'src/css/*.css',
-  		'!src/css/*.min.css'
-  		])
-	  	.pipe(rename({
-		        suffix: '.min'
-	        }))
-	    .pipe(nano({
-        discardComments: {removeAll: true},
-        autoprefixer: false
-      }))
-	    .pipe(gulp.dest('src/css/'));
+	return gulp.src( cssFiles )
+  	.pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(nano({
+      discardComments: {removeAll: true},
+      autoprefixer: false
+    }))
+    .pipe(gulp.dest( 'src/assets/css' ))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
-// Concatenate & Minify JS
+// Concatenate & Minify JavaScript
 gulp.task('scripts', ['lint'], function() {
-    return gulp.src([
-    	'src/js/*.js',
-    	'!src/js/global.js',
-    	'!src/js/global.min.js'
-    	])
-        .pipe(concat('global.js'))
-        .pipe(gulp.dest('src/js'))
-        .pipe(rename('global.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('src/js'));
+  return gulp.src( concatFiles )
+    .pipe(concat( 'all.js' ))
+    .pipe(gulp.dest('src/assets/js'))
+    .pipe(rename('theme.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest( 'src/assets/js' ));
 });
 
-// Minimize Images
+// Compress Images
 gulp.task('images', function() {
-    return gulp.src('src/images/src/*.{jpg,png,gif}')
-    .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngquant()]
-        }))
-    .pipe(gulp.dest('src/images'));
+  return gulp.src( imageFiles )
+  .pipe(plumber())
+  .pipe(imagemin({
+    progressive: true,
+    interlaced: true,
+    svgoPlugins: [{removeViewBox: false}],
+    use: [pngquant()]
+  }))
+  .pipe(gulp.dest( 'src/assets/img/min' ));
 });
 
-// Copy Essential Files To Dist
+// Copy essential files to Dist
 gulp.task('copy', function() {
-	gulp.src([
-		// set up what you want to copy or ignore
-		'!src/images/src/*',
-		'src/**/*'
-	])
-	.pipe(gulp.dest(theme));
-});
-
-// Watch Files For Changes
-gulp.task('watch', function() {
-    gulp.watch([
-    	'src/js/*.js',
-    	'!src/js/global.js',
-    	'!src/js/global.min.js'
-    	], ['scripts']);
-    gulp.watch('src/scss/**/*.scss', ['styles']);
-    gulp.watch('src/css/*.css', ['styles']);
-    gulp.watch('src/images/src/*.{jpg,png}', ['images']);
+	return gulp.src( copyFiles )
+	.pipe(gulp.dest( theme ));
 });
 
 // Package a zip for theme upload
 gulp.task('package', function() {
-	return gulp.src(theme+'/**/*')
-		.pipe(zip(theme+'.zip'))
-		.pipe(gulp.dest('./'));
+	return gulp.src( theme + '/**/*' )
+		.pipe(zip( theme + '.zip' ))
+		.pipe(gulp.dest( './' ));
 });
 
 // Styles Task - minify-css is the only task we call, because it is dependent upon sass running first.
 gulp.task('styles', ['minify-css']);
 
+/*------------------------------------------------------------------------------
+  Default Tasks
+------------------------------------------------------------------------------*/
 // Default Task
-gulp.task('default', ['styles', 'scripts', 'images', 'copy', 'watch']);
+gulp.task('default', ['sass', 'scripts', 'images', 'serve', 'watch']);
+
+// Watch Files For Changes
+gulp.task('watch', function() {
+  gulp.watch( sassFiles, ['sass']);
+  gulp.watch( jsFiles, ['scripts']);
+  gulp.watch( cssFiles, ['styles']);
+  gulp.watch( imageFiles, ['images'], browserSync.reload );
+  gulp.watch( phpFiles, browserSync.reload );
+  gulp.watch( htmlFiles, browserSync.reload );
+});
