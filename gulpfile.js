@@ -5,8 +5,8 @@
 var theme        = 'your-theme-name';
 
 // Set the paths you will be working with
-var phpFiles     = [],
-    htmlFiles    = [],
+var phpFiles     = ['src/**/*.php'],
+    htmlFiles    = ['src/**/*.html'],
     cssFiles     = ['src/assets/css/*.css', '!src/assets/css/*.min.css'],
     sassFiles    = ['src/assets/scss/**/*.scss'],
     jsFiles      = ['src/assets/js/theme.js'],
