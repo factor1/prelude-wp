@@ -120,13 +120,12 @@ gulp.task('images', function() {
 
 // Clean dist folder
 gulp.task('clean', function(){
-  return gulp.src( theme, {read: false} );
+  return gulp.src( theme, {read: false} )
     .pipe(clean());
-    echo 'Cleaned the theme folder';
 });
 
 // Copy essential files to Dist
-gulp.task('copy', function() {
+gulp.task('copy', ['clean'], function() {
 	return gulp.src( copyFiles )
 	.pipe(gulp.dest( theme ));
 });
