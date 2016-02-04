@@ -124,7 +124,7 @@ gulp.task('copy', function() {
 });
 
 // Package a zip for theme upload
-gulp.task('package', function() {
+gulp.task('package', ['copy'], function() {
 	return gulp.src( theme + '/**/*' )
 		.pipe(zip( theme + '.zip' ))
 		.pipe(gulp.dest( './' ));
