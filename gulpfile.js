@@ -33,6 +33,7 @@ var jshint       = require('gulp-jshint'),
     plumber      = require('gulp-plumber'),
     stylish      = require('jshint-stylish');
     zip          = require('gulp-zip');
+    clean        = require('gulp-clean');
 
 /*------------------------------------------------------------------------------
   Development Tasks
@@ -117,6 +118,13 @@ gulp.task('images', function() {
   .pipe(gulp.dest( 'src/assets/img/min' ));
 });
 
+// Clean dist folder
+gulp.task('clean', function(){
+  return gulp.src( theme, {read: false} );
+    .pipe(clean());
+    echo 'Cleaned the theme folder';
+});
+
 // Copy essential files to Dist
 gulp.task('copy', function() {
 	return gulp.src( copyFiles )
@@ -130,7 +138,7 @@ gulp.task('package', ['copy'], function() {
 		.pipe(gulp.dest( './' ));
 });
 
-// Build task to run all tasks and and package for distribution 
+// Build task to run all tasks and and package for distribution
 gulp.task('build', ['sass', 'scripts', 'images', 'package']);
 
 // Styles Task - minify-css is the only task we call, because it is dependent upon sass running first.
