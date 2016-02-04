@@ -130,6 +130,9 @@ gulp.task('package', ['copy'], function() {
 		.pipe(gulp.dest( './' ));
 });
 
+// Build task to run all tasks and and package for distribution 
+gulp.task('build', ['sass', 'scripts', 'images', 'package']);
+
 // Styles Task - minify-css is the only task we call, because it is dependent upon sass running first.
 gulp.task('styles', ['minify-css']);
 
