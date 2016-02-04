@@ -6,14 +6,14 @@
   ul {
     text-align: inherit;
     list-style: none;
-    padding   : 0;
+    padding: 0;
   }
 }
 
 
 @media only screen and (max-width: 640px) {
   .menu-social {
-    float     : none;
+    float: none;
     text-align: center;
   }
 }
@@ -21,32 +21,30 @@
 
 .menu-social ul li {
   position: relative;
-  display : inline-block;
-  padding : 0 .625rem;
+  display: inline-block;
+  padding: 0 .625rem;
 
-  
+
   a {
-    display         : inline-block;
-    width           : 22px;
-    height          : 22px;
-    background-color: $light-blue;
-    border-radius   : 10px;
-    text-align      : center;
-    
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 10px;
+    text-align: center;
+
     &:hover {
-      background-color: $primary-color;
-      font-style      : normal;
+      font-style: normal;
     }
   }
 }
 
 .menu-social li a:before {
-  padding-bottom        : .25rem;
-  display               : inline-block;
-  vertical-align        : middle;
-  font-family           : 'FontAwesome';
-  font-size             : .7rem;
-  color                 : #fff;
+  padding-bottom: .25rem;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: 'FontAwesome';
+  font-size: .7rem;
+  color: #fff;
   -webkit-font-smoothing: antialiased;
 }
 
