@@ -4,25 +4,24 @@ Prelude is a WordPress starter theme that helps you craft custom themes. It uses
 ## Features
 ### Gulp Tasks
 Prelude uses Gulp to:
-- Compile & minify Sass/CSS
+- Compile & minify Sass/CSS with sourcemaps
 - Auto-prefix your Sass/CSS
 - Minify and concatenate JavaScript/jQuery
-- Compress PNG & JPGs
-- Create a theme distribution folder for local testing
-- Package a theme for upload to WordPress
+- Compress images
+- Create a theme distribution folder for local testing / production based on your theme name
+- Package a theme for upload to WordPress or distribution
 
 ### WordPress Functions
 Prelude has some nifty features built into `functions.php` to make developing a custom WordPress theme a little easier.
 - Defer jQuery Parsing using the HTML5 defer property
 - Customized Read More Links
-- Other various improvements to default WordPress functions that are too long and/or small to list here
+- Other various improvements to default WordPress functions that are too long and/or small to list here, check 'em out!
 
 ## Getting Started
 Prelude requires that you have Node and npm installed on your machine. If you need help with that, please visit the [npm documentation](https://docs.npmjs.com/getting-started/installing-node).
-1. Clone this repository to your machine, or download the .zip and place its contents in your project folder
-2. Install from the project folder using `npm install`
-3. Using the `theme` variable found in `gulpfile.js` name your theme (Don't forget to also fill out the theme information found in `style.css` in the root of `src/`)
-4. Run the default Gulp task while editing files using `gulp` or `gulp default`
+1. Install Prelude into your project using `npm install prelude-wp --save` - your theme files will automatically copy out of the `node_modules` folder and into your project folder.
+2. Using the `theme` variable found in `gulpfile.js` name your theme (Don't forget to also fill out the theme information found in `style.css` in the root of `src/`)
+3. Run the default Gulp task while editing files using `gulp` or `gulp default`
 
 When running the default gulp task, a theme folder will be created based on the `theme` variable. You can use this folder as your theme when running locally. When you're ready to package your theme you can run `gulp package` to create a zip folder of your production theme.
 
@@ -54,7 +53,6 @@ You can modify the file structure however you like as long as it is also updated
     │   │   │   └── _social-menu.scss
     │   │   ├── globals/
     │   │   │   └── _global.scss
-    │   │   │   └── _reset.scss
     │   │   │   └── _typography.scss
     │   │   │   └── _WordPress.scss
     │   │   ├── pages/
@@ -65,7 +63,6 @@ You can modify the file structure however you like as long as it is also updated
     │   │   └── _variables.scss
     │   │   └── theme.scss
     ├── inc/
-    │   └── acf.php
     │   └── custom-post-types.php
     │   └── menus.php
     │   └── shortcodes.php
@@ -115,9 +112,11 @@ There are 9 Gulp tasks available by default.
 - `gulp scripts` - concatenates and minifies JS files (in the order you declare)
 - `gulp styles` - runs the `sass` and `minify-css` tasks, in that order
 - `gulp images` - compresses images
-- `gulp copy` - copies files from `src/` to the theme folder as named in `gulpfile.js` (This task only copies production files and leaves behind uncompiled/uncompressed files)
+- `gulp copy` - copies files from `src/` to the theme folder as named in `gulpfile.js` but cleans the theme folder to ensure all removed files are not saved
 - `gulp watch` - watches files for changes and runs tasks based on what was updated
+- `gulp clean` - removes the distribution folder
 - `gulp package` - creates a production ready `.zip` file based on your production theme folder
+- `gulp build` - runs all tasks except `serve` and `watch`
 
 Running `gulp` or `gulp default` will run all tasks except `package`.
 
