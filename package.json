@@ -24,7 +24,7 @@
     "url": "https://github.com/factor1/Prelude/issues"
   },
   "homepage": "https://github.com/factor1/Prelude#readme",
-  "devDependencies": {
+  "dependencies": {
     "browser-sync": "^2.11.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
