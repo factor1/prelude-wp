@@ -1,31 +1,33 @@
-<?php get_header(); ?>
+<?php
+  /**
+   * The search results template.
+   *
+   * Used when a search is performed.
+   */
+  get_header();
+?>
 
-	<?php if (have_posts()) : ?>
+  <section class="main-content">
+    <?php if ( have_posts() ) : ?>
+      <h2>Search Results</h2>
 
-		<h2>Search Results</h2>
+      <?php the_posts_pagination( array('mid_size' => 2) ); ?>
 
-		<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
+      <?php while ( have_posts() ) : the_post(); ?>
+        <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+          <h2><?php the_title(); ?></h2>
+          <?php
+            get_template_part( 'parts/meta' );
+            the_excerpt();
+          ?>
+        </div>
+        <?php
+      endwhile;
+      the_posts_pagination( array('mid_size' => 2) );
+    else : ?>
+      <h2>Sorry, no posts have been found.</h2>
+    <?php endif; ?>
+  </section>
 
-		<?php while (have_posts()) : the_post(); ?>
-
-<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
-<h2><?php the_title(); ?></h2>
-<?php include (TEMPLATEPATH . '/inc/meta.php' ); ?>
-
-<?php the_excerpt(); ?>
-
-</div>
-
-		<?php endwhile; ?>
-
-		<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
-
-	<?php else : ?>
-
-		<h2>No posts found.</h2>
-
-	<?php endif; ?>
-
-<?php get_sidebar(); ?>
-
-<?php get_footer(); ?>
+<?php
+  get_footer();
