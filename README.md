@@ -105,7 +105,7 @@ The variables are:
 - `url` - accepts a string to use as the BrowserSync proxy
 
 ## List Of Gulp Tasks
-There are 9 Gulp tasks available by default.
+Below are a list of the default gulp tasks.
 - `gulp serve` - creates a local development server with live reloading and CSS injection via [BrowserSync](https://www.browsersync.io/docs/)
 - `gulp sass` - compiles SASS/SCSS files into CSS, adds vendor prefixes, and creates a sourcemap
 - `gulp lint` - a JavaScript helper to find and catch errors, and creates a sourcemap
