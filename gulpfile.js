@@ -11,7 +11,7 @@ var phpFiles     = ['src/**/*.php'],
     sassFiles    = ['src/assets/scss/**/*.scss'],
     jsFiles      = ['src/assets/js/theme.js'],
     imageFiles   = ['src/assets/img/*.{jpg,png,gif}'],
-    concatFiles  = [],
+    concatFiles  = ['src/assets/js/*.js', '!src/assets/js/theme.min.js', '!src/assets/js/all.js'],
     copyFiles    = ['!src/assets/img/**/*', '!src/assets/scss/**/*', 'src/**/*'],
     url          = 'your-local-virtual-host'; // See https://browsersync.io/docs/options/#option-proxy
 
