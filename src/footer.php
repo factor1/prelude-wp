@@ -1,7 +1,8 @@
-</main><!-- close Main -->
+<!-- close Main -->
+</main>
 
-<footer class="footer"><!-- Footer -->
-  
+<footer>
+
 </footer>
 
 <?php wp_footer(); ?>
