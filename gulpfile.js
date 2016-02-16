@@ -9,6 +9,7 @@ var phpFiles     = ['src/**/*.php'],
     htmlFiles    = ['src/**/*.html'],
     cssFiles     = ['src/assets/css/*.css', '!src/assets/css/*.min.css'],
     sassFiles    = ['src/assets/scss/**/*.scss'],
+    styleFiles   = [cssFiles, sassFiles],
     jsFiles      = ['src/assets/js/theme.js'],
     imageFiles   = ['src/assets/img/*.{jpg,png,gif}'],
     concatFiles  = ['src/assets/js/*.js', '!src/assets/js/theme.min.js', '!src/assets/js/all.js'],
@@ -151,9 +152,8 @@ gulp.task('default', ['sass', 'scripts', 'images', 'serve', 'watch']);
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-  gulp.watch( sassFiles, ['sass']);
+  gulp.watch( styleFiles, ['styles']);
   gulp.watch( jsFiles, ['scripts']);
-  gulp.watch( cssFiles, ['styles']);
   gulp.watch( imageFiles, ['images'], browserSync.reload );
   gulp.watch( phpFiles, browserSync.reload );
   gulp.watch( htmlFiles, browserSync.reload );
