@@ -1,19 +1,21 @@
 /*------------------------------------------------------------------------------
   Gulpfile.js
 ------------------------------------------------------------------------------*/
-// Name your theme
+// Name your theme - this should match the theme folder name
 var theme        = 'your-theme-name';
 
 // Set the paths you will be working with
-var phpFiles     = ['src/**/*.php'],
-    htmlFiles    = ['src/**/*.html'],
-    cssFiles     = ['src/assets/css/*.css', '!src/assets/css/*.min.css'],
-    sassFiles    = ['src/assets/scss/**/*.scss'],
+var phpFiles     = [theme + '/**/*.php'],
+    htmlFiles    = [theme + '/**/*.html'],
+    cssFiles     = [theme + '/assets/css/*.css', '!' +theme + '/assets/css/*.min.css'],
+    cssDest      = [theme + '/assets/css'],
+    sassFiles    = [theme + '/assets/scss/**/*.scss'],
     styleFiles   = [cssFiles, sassFiles],
-    jsFiles      = ['src/assets/js/theme.js'],
-    imageFiles   = ['src/assets/img/*.{jpg,png,gif}'],
-    concatFiles  = ['src/assets/js/*.js', '!src/assets/js/theme.min.js', '!src/assets/js/all.js'],
-    copyFiles    = ['!src/assets/img/**/*', '!src/assets/scss/**/*', 'src/**/*'],
+    jsFiles      = [theme + '/assets/js/theme.js'],
+    jsDest       = [theme + '/assets/js'],
+    imageFiles   = [theme + '/assets/img/*.{jpg,png,gif}'],
+    imageDest    = [theme + '/assets/img'],
+    concatFiles  = [theme + '/assets/js/*.js', '!' + theme + '/assets/js/theme.min.js', '!' + theme + '/assets/js/all.js'],
     url          = 'your-local-virtual-host'; // See https://browsersync.io/docs/options/#option-proxy
 
 // Include gulp
@@ -34,7 +36,6 @@ var jshint       = require('gulp-jshint'),
     plumber      = require('gulp-plumber'),
     stylish      = require('jshint-stylish');
     zip          = require('gulp-zip');
-    clean        = require('gulp-clean');
 
 /*------------------------------------------------------------------------------
   Development Tasks
@@ -90,7 +91,7 @@ gulp.task('minify-css', ['sass'], function() {
       discardComments: {removeAll: true},
       autoprefixer: false
     }))
-    .pipe(gulp.dest( 'src/assets/css' ))
+    .pipe(gulp.dest( cssDest ))
     .pipe(browserSync.reload({
       stream: true
     }));
@@ -100,10 +101,10 @@ gulp.task('minify-css', ['sass'], function() {
 gulp.task('scripts', ['lint'], function() {
   return gulp.src( concatFiles )
     .pipe(concat( 'all.js' ))
-    .pipe(gulp.dest('src/assets/js'))
+    .pipe(gulp.dest( jsDest ))
     .pipe(rename('theme.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest( 'src/assets/js' ));
+    .pipe(gulp.dest( jsDest ));
 });
 
 // Compress Images
@@ -116,23 +117,11 @@ gulp.task('images', function() {
     svgoPlugins: [{removeViewBox: false}],
     use: [pngquant()]
   }))
-  .pipe(gulp.dest( 'src/assets/img/min' ));
-});
-
-// Clean dist folder
-gulp.task('clean', function(){
-  return gulp.src( theme, {read: false} )
-    .pipe(clean());
-});
-
-// Copy essential files to Dist
-gulp.task('copy', ['clean'], function() {
-	return gulp.src( copyFiles )
-	.pipe(gulp.dest( theme ));
+  .pipe(gulp.dest( imageDest ));
 });
 
 // Package a zip for theme upload
-gulp.task('package', ['copy'], function() {
+gulp.task('package', function() {
 	return gulp.src( theme + '/**/*' )
 		.pipe(zip( theme + '.zip' ))
 		.pipe(gulp.dest( './' ));
@@ -157,4 +146,8 @@ gulp.task('watch', function() {
   gulp.watch( imageFiles, ['images'], browserSync.reload );
   gulp.watch( phpFiles, browserSync.reload );
   gulp.watch( htmlFiles, browserSync.reload );
+});
+
+gulp.task('test', function(){
+  console.log(phpFiles);
 });
