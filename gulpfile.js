@@ -1,21 +1,18 @@
 /*------------------------------------------------------------------------------
   Gulpfile.js
 ------------------------------------------------------------------------------*/
-// Name your theme - this should match the theme folder name
+// Name your theme - this is outputted only when packaging your project.
 var theme        = 'your-theme-name';
 
 // Set the paths you will be working with
-var phpFiles     = [theme + '/**/*.php'],
-    htmlFiles    = [theme + '/**/*.html'],
-    cssFiles     = [theme + '/assets/css/*.css', '!' +theme + '/assets/css/*.min.css'],
-    cssDest      = [theme + '/assets/css'],
-    sassFiles    = [theme + '/assets/scss/**/*.scss'],
+var phpFiles     = ['/**/*.php'],
+    htmlFiles    = ['/**/*.html'],
+    cssFiles     = ['./assets/css/*.css', '!./assets/css/*.min.css'],
+    sassFiles    = ['./assets/scss/**/*.scss'],
     styleFiles   = [cssFiles, sassFiles],
-    jsFiles      = [theme + '/assets/js/theme.js'],
-    jsDest       = [theme + '/assets/js'],
-    imageFiles   = [theme + '/assets/img/*.{jpg,png,gif}'],
-    imageDest    = [theme + '/assets/img'],
-    concatFiles  = [theme + '/assets/js/*.js', '!' + theme + '/assets/js/theme.min.js', '!' + theme + '/assets/js/all.js'],
+    jsFiles      = ['./assets/js/theme.js'],
+    imageFiles   = ['./assets/img/*.{jpg,png,gif}'],
+    concatFiles  = ['./assets/js/*.js', '!./assets/js/theme.min.js', '!./assets/js/all.js'],
     url          = 'your-local-virtual-host'; // See https://browsersync.io/docs/options/#option-proxy
 
 // Include gulp
@@ -59,7 +56,7 @@ gulp.task('sass', function() {
         cascade: false
       }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest( 'src/assets/css' ))
+    .pipe(gulp.dest( './assets/css' ))
     .pipe(browserSync.reload({
       stream: true
     }));
@@ -91,7 +88,7 @@ gulp.task('minify-css', ['sass'], function() {
       discardComments: {removeAll: true},
       autoprefixer: false
     }))
-    .pipe(gulp.dest( cssDest ))
+    .pipe(gulp.dest( './assets/css' ))
     .pipe(browserSync.reload({
       stream: true
     }));
@@ -101,10 +98,10 @@ gulp.task('minify-css', ['sass'], function() {
 gulp.task('scripts', ['lint'], function() {
   return gulp.src( concatFiles )
     .pipe(concat( 'all.js' ))
-    .pipe(gulp.dest( jsDest ))
+    .pipe(gulp.dest( './assets/js/' ))
     .pipe(rename('theme.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest( jsDest ));
+    .pipe(gulp.dest( './assets/js/' ));
 });
 
 // Compress Images
@@ -117,12 +114,12 @@ gulp.task('images', function() {
     svgoPlugins: [{removeViewBox: false}],
     use: [pngquant()]
   }))
-  .pipe(gulp.dest( imageDest ));
+  .pipe(gulp.dest( './assets/img/' ));
 });
 
 // Package a zip for theme upload
 gulp.task('package', function() {
-	return gulp.src( theme + '/**/*' )
+	return gulp.src( '/**/*' )
 		.pipe(zip( theme + '.zip' ))
 		.pipe(gulp.dest( './' ));
 });
@@ -146,8 +143,4 @@ gulp.task('watch', function() {
   gulp.watch( imageFiles, ['images'], browserSync.reload );
   gulp.watch( phpFiles, browserSync.reload );
   gulp.watch( htmlFiles, browserSync.reload );
-});
-
-gulp.task('test', function(){
-  console.log(phpFiles);
 });
