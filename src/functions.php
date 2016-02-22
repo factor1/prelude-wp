@@ -31,6 +31,16 @@
   }
 
   /**
+   * Load jQuery
+  */
+
+  if ( !is_admin() ) {
+     wp_deregister_script('jquery');
+     wp_register_script('jquery', ('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js'), false);
+     wp_enqueue_script('jquery');
+  }
+
+  /**
    * Defer jQuery Parsing using the HTML5 defer property
    */
 
