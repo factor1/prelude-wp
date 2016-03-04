@@ -14,7 +14,6 @@
   <meta property="og:title" content="<?php the_title(); ?>" />
   <meta property="og:site_name" content="<?php bloginfo('name') ?>">
 
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 
   <?php wp_head(); ?>
@@ -31,4 +30,5 @@
     <?php get_search_form(); ?>
   </header>
 
-  <main><!-- Main -->
+  <?php // Main Content ?>
+  <main>
