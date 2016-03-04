@@ -32,14 +32,6 @@ body {
 }
 
 // Common Formatting
-[class*="block-grid-"] > li {
-  //fix margins on block grids inside of articles
-  margin : 0;
-}
-
-[class*="block-grid-"] {
-  margin : 0;
-}
 
 blockquote {
   margin  : 22px 40px;
