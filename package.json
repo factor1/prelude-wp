@@ -1,11 +1,12 @@
 {
   "name": "prelude-wp",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Prelude is a Wordpress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.",
   "main": "index.php",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cp gulpfile.js ./../../ && cp -R src/* ./../../ && echo \"Go make rad stuff!\""
+    "test": "echo \"Error: no test specified doggie\" && exit 1",
+    "postinstall": "echo \"Thank you for installing Prelude! If this is a fresh install be sure to run prelude-copy to copy your theme files.\"",
+    "prelude-copy": "cp gulpfile.js ./../../ && cp -R src/* ./../../ && echo \"Go make rad stuff!\""
   },
   "repository": {
     "type": "git",
