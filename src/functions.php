@@ -87,6 +87,11 @@
   require get_template_directory() . '/inc/tweaks.php';
 
   /**
+   * Load thumbnail support and sizes
+   */
+  require get_template_directory() . '/inc/thumbnails.php';
+
+  /**
    * Load shortcodes
    */
   require get_template_directory() . '/inc/shortcodes.php';
