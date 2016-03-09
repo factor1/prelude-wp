@@ -62,6 +62,7 @@ You can modify the file structure however you like as long as it is also updated
 │   └── custom-post-types.php
 │   └── menus.php
 │   └── shortcodes.php
+│   └── thumbnails.php
 │   └── tweaks.php
 │   └── widgets.php
 ├── page-templates/
