@@ -5,7 +5,7 @@
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified doggie\" && exit 1",
-    "postinstall": "console.log('Thank you for installing Prelude! If this is a fresh install be sure to run `npm prelude-copy` to copy your theme files.');",
+    "postinstall": "echo \"Thank you for installing Prelude! If this is a fresh install be sure to run prelude-copy to copy your theme files.\"",
     "prelude-copy": "cp gulpfile.js ./../../ && cp -R src/* ./../../ && echo \"Go make rad stuff!\""
   },
   "repository": {
