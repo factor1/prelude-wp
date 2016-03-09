@@ -19,10 +19,9 @@ Prelude has some nifty features built into `functions.php` to make developing a 
 ## Getting Started
 Prelude requires that you have Node and npm installed on your machine. If you need help with that, please visit the [npm documentation](https://docs.npmjs.com/getting-started/installing-node).
 
-1. Install Prelude into your project using `npm install prelude-wp --save`
-2. Copy the Prelude theme files to your project using `npm run prelude-copy` (Note: This is no longer done on install to avoid overriding theme files when Prelude is updated)
-3. Using the `theme` variable found in `gulpfile.js` name your theme. This is only used for packaging purposes and is not critical (Don't forget to also fill out the theme information found in `style.css` in the root)
-4. Run the default Gulp task while editing files using `gulp` or `gulp default`
+1. Install Prelude into your project using `npm install prelude-wp --save`, Prelude will automatically move theme files into your project folder. (Note: when updating Prelude files will not be overwritten.)
+2. Using the `theme` variable found in `gulpfile.js` name your theme. This is only used for packaging purposes and is not critical (Don't forget to also fill out the theme information found in `style.css` in the root)
+3. Run the default Gulp task while editing files using `gulp` or `gulp default`
 
 
 ## File Structure
