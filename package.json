@@ -5,8 +5,7 @@
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified doggie\" && exit 1",
-    "postinstall": "echo \"Thank you for installing Prelude! If this is a fresh install be sure to run prelude-copy to copy your theme files.\"",
-    "prelude-copy": "cp gulpfile.js ./../../ && cp -R src/* ./../../ && echo \"Go make rad stuff!\""
+    "postinstall": "echo \"Thank you for installing Prelude!\" && rsync -a -v --ignore-existing gulpfile.js ./../../ && rsync -a -v --ignore-existing src/* ./../../ && echo \"Go make rad stuff!\" "
   },
   "repository": {
     "type": "git",
