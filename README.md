@@ -104,8 +104,8 @@ The variables are:
 ## List Of Gulp Tasks
 Below are a list of the default gulp tasks.
 - `gulp serve` - creates a local development server with live reloading and CSS injection via [BrowserSync](https://www.browsersync.io/docs/)
-- `gulp sass` - compiles SASS/SCSS files into CSS, adds vendor prefixes, and creates a sourcemap
-- `gulp minify-css` - ensures all SASS/SCSS is compiled to CSS and minifies them
+- `gulp sass` - compiles Sass/SCSS files into CSS, adds vendor prefixes, and creates a sourcemap
+- `gulp minify-css` - ensures all Sass/SCSS is compiled to CSS and minifies them
 - `gulp styles` - runs the `sass` and `minify-css` tasks, in that order
 - `gulp lint` - a JavaScript helper to find and catch errors, and creates a sourcemap
 - `gulp scripts` - concatenates and minifies JS files (in the order you declare)
