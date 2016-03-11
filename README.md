@@ -1,7 +1,7 @@
 # Prelude
 Prelude is a WordPress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.
 
-> **Compatibility Note:**  Officially only Mac OS X is supported. Currently this build fails in Ubuntu 14.04 (and presumably other Linux builds as well) due to the `gulp images` task failing because of a needed dependency error (See: https://github.com/imagemin/imagemin/issues/149). To build in Linux until a fix is found, simply remove the `images` task from your `gulpfile.js` and you will be able to complete your builds.
+> **Compatibility Note:**  Officially only Mac OS X is supported. Currently this build fails in Ubuntu 14.04 (and presumably other Linux builds as well) due to the `gulp images` task failing because of a needed dependency error (See: https://github.com/imagemin/imagemin/issues/149). To build in Linux until a fix is found, simply remove the `images` task from your `gulpfile.js` and you will be able to complete your builds. Windows functionality has not been tested.
 
 ## Features
 ### Gulp Tasks
