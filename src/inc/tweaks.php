@@ -23,7 +23,7 @@
 
   // Customize the default ellipsis (...)
   function prelude_auto_excerpt_more( $more ) {
-    return ' &hellip;' . prelude_continue_reading_link();
+    return '&hellip;' . prelude_continue_reading_link();
   }
   add_filter( 'excerpt_more', 'prelude_auto_excerpt_more' );
 
