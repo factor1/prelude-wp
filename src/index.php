@@ -1,6 +1,6 @@
 <?php
   /**
-   * The default page template.
+   * The default blog / index template.
    */
   get_header();
 ?>
