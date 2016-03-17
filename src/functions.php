@@ -62,7 +62,7 @@
     wp_enqueue_style('prelude-css', get_template_directory_uri() . '/assets/css/theme.css' );
 
     // JS
-    wp_enqueue_script('prelude-js', get_template_directory_uri() . '/assets/js/all.js', array(), '', true );
+    wp_enqueue_script('prelude-js', get_template_directory_uri() . '/assets/js/theme.min.js', array(), '', true );
   }
   add_action( 'wp_enqueue_scripts', 'prelude_theme_scripts' );
 
