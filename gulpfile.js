@@ -31,7 +31,7 @@ var jshint       = require('gulp-jshint'),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync  = require('browser-sync'),
     plumber      = require('gulp-plumber'),
-    stylish      = require('jshint-stylish');
+    stylish      = require('jshint-stylish'),
     zip          = require('gulp-zip');
 
 /*------------------------------------------------------------------------------
