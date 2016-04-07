@@ -31,7 +31,7 @@ var jshint       = require('gulp-jshint'),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync  = require('browser-sync'),
     plumber      = require('gulp-plumber'),
-    stylish      = require('jshint-stylish');
+    stylish      = require('jshint-stylish'),
     zip          = require('gulp-zip');
 
 /*------------------------------------------------------------------------------
@@ -134,13 +134,12 @@ gulp.task('styles', ['minify-css']);
   Default Tasks
 ------------------------------------------------------------------------------*/
 // Default Task
-gulp.task('default', ['sass', 'scripts', 'images', 'serve', 'watch']);
+gulp.task('default', ['sass', 'scripts', 'serve', 'watch']);
 
 // Watch Files For Changes
 gulp.task('watch', function() {
   gulp.watch( styleFiles, ['styles']);
   gulp.watch( jsFiles, ['scripts']);
-  gulp.watch( imageFiles, ['images'], browserSync.reload );
   gulp.watch( phpFiles, browserSync.reload );
   gulp.watch( htmlFiles, browserSync.reload );
 });
