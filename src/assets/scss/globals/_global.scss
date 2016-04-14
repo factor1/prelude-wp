@@ -129,3 +129,9 @@ table tr td {
 .float-right {
   float : right;
 }
+
+/* keep images from spilling out of columns */
+img{
+  max-width: 100%;
+  height: auto;
+}
