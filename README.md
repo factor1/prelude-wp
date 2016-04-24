@@ -16,6 +16,7 @@ Prelude uses Gulp to:
 Prelude has some nifty features built into `functions.php` to make developing a custom WordPress theme a little easier.
 - Defer jQuery Parsing using the HTML5 defer property
 - Customized Read More Links
+- [Get Featured image as URL](https://github.com/factor1/prelude-wp/wiki/Get-Featured-Image-As-URL)
 - Other various improvements to default WordPress functions that are too long and/or small to list here, check 'em out!
 
 ## Getting Started
