@@ -36,6 +36,11 @@
   // Remove the default recent comments styling
   function prelude_remove_recent_comments_style() {
     global $wp_widget_factory;
+
+    if(!isset($wp_widget_factory->widgets[ 'WP_Widget_Recent_Comments' ])) {
+      return;
+    }
+
     remove_action(
       'wp_head', array(
         $wp_widget_factory->widgets[ 'WP_Widget_Recent_Comments' ],
