@@ -36,6 +36,11 @@
   // Remove the default recent comments styling
   function prelude_remove_recent_comments_style() {
     global $wp_widget_factory;
+
+    if(!isset($wp_widget_factory->widgets[ 'WP_Widget_Recent_Comments' ])) {
+      return;
+    }
+
     remove_action(
       'wp_head', array(
         $wp_widget_factory->widgets[ 'WP_Widget_Recent_Comments' ],
@@ -46,14 +51,12 @@
   add_action( 'widgets_init', 'prelude_remove_recent_comments_style' );
 
   // Ensure only admin users receive update notifications
-  global $user_login;
-
-  get_currentuserinfo();
-
-  if ( !current_user_can( 'update_plugins' ) ) {
-    add_action('init', create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ), 2);
-    add_filter('pre_option_update_core', create_function( '$a', 'return null;' ) );
-  }
+  add_action('plugins_loaded',function() {
+    if ( !current_user_can( 'update_plugins' ) ) {
+      add_action('init', create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ), 2);
+      add_filter('pre_option_update_core', create_function( '$a', 'return null;' ) );
+      }
+    });
 
   // Customize which dashboard widgets show
   function prelude_remove_dashboard_boxes() {
