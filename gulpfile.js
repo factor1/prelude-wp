@@ -5,14 +5,14 @@
 var theme        = 'your-theme-name';
 
 // Set the paths you will be working with
-var phpFiles     = ['./src/**/*.php', './src/*.php'],
-    htmlFiles    = ['./src/**/*.html', './src/*.html'],
-    cssFiles     = ['./src/assets/css/*.css', '!./src/assets/css/*.min.css'],
-    sassFiles    = ['./src/assets/scss/**/*.scss'],
+var phpFiles     = ['./**/*.php', './*.php'],
+    htmlFiles    = ['./**/*.html', './*.html'],
+    cssFiles     = ['./assets/css/*.css', '!./assets/css/*.min.css'],
+    sassFiles    = ['./assets/scss/**/*.scss'],
     styleFiles   = [cssFiles, sassFiles],
-    jsFiles      = ['./src/assets/js/theme.js'],
-    imageFiles   = ['./src/assets/img/*.{jpg,png,gif}'],
-    concatFiles  = ['./src/assets/js/*.js', '!./src/assets/js/theme.min.js', '!./src/assets/js/all.js'],
+    jsFiles      = ['./assets/js/theme.js'],
+    imageFiles   = ['./assets/img/*.{jpg,png,gif}'],
+    concatFiles  = ['./assets/js/*.js', '!./assets/js/theme.min.js', '!./assets/js/all.js'],
     url          = 'wp-dev:8888'; // See https://browsersync.io/docs/options/#option-proxy
 
 // Include gulp
@@ -60,7 +60,7 @@ gulp.task('sass', function() {
         cascade: false
       }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest( './src/assets/css' ))
+    .pipe(gulp.dest( './assets/css' ))
     .pipe(browserSync.reload({
       stream: true
     }));
@@ -94,7 +94,7 @@ gulp.task('minify-css', ['sass'], function() {
       discardComments: {removeAll: true},
       autoprefixer: false
     }))
-    .pipe(gulp.dest( './src/assets/css' ))
+    .pipe(gulp.dest( './assets/css' ))
     .pipe(browserSync.reload({
       stream: true
     }));
@@ -104,10 +104,10 @@ gulp.task('minify-css', ['sass'], function() {
 gulp.task('scripts', ['lint'], function() {
   return gulp.src( concatFiles )
     .pipe(concat( 'all.js' ))
-    .pipe(gulp.dest( './src/assets/js/' ))
+    .pipe(gulp.dest( './assets/js/' ))
     .pipe(rename('theme.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest( './src/assets/js/' ));
+    .pipe(gulp.dest( './assets/js/' ));
 });
 
 // Compress Images
@@ -120,7 +120,7 @@ gulp.task('images', function() {
     svgoPlugins: [{removeViewBox: false}],
     use: [pngquant()]
   }))
-  .pipe(gulp.dest( './src/assets/img/' ));
+  .pipe(gulp.dest( './assets/img/' ));
 });
 
 // Package a zip for theme upload
