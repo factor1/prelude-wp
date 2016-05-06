@@ -13,7 +13,7 @@ var phpFiles     = ['./**/*.php', './*.php'],
     jsFiles      = ['./assets/js/theme.js'],
     imageFiles   = ['./assets/img/*.{jpg,png,gif}'],
     concatFiles  = ['./assets/js/*.js', '!./assets/js/theme.min.js', '!./assets/js/all.js'],
-    url          = 'your-local-virtual-host'; // See https://browsersync.io/docs/options/#option-proxy
+    url          = 'wp-dev:8888'; // See https://browsersync.io/docs/options/#option-proxy
 
 // Include gulp
 var gulp         = require('gulp');
@@ -32,6 +32,7 @@ var jshint       = require('gulp-jshint'),
     browserSync  = require('browser-sync'),
     plumber      = require('gulp-plumber'),
     stylish      = require('jshint-stylish'),
+    notify       = require('gulp-notify'),
     zip          = require('gulp-zip');
 
 /*------------------------------------------------------------------------------
@@ -50,7 +51,10 @@ gulp.task('sass', function() {
   return gulp.src( sassFiles )
     .pipe(sourcemaps.init())
       .pipe(plumber())
-      .pipe(sass())
+      .pipe(sass()
+        .on('error', sass.logError))
+        .on('error', notify.onError("Error compiling SASS!")
+      )
       .pipe(autoprefixer({
         browsers: ['last 2 versions'],
         cascade: false
@@ -69,6 +73,8 @@ gulp.task('lint', function() {
       .pipe(plumber())
       .pipe(jshint())
       .pipe(jshint.reporter(stylish))
+      .pipe(jshint.reporter('fail'))
+      .on('error', notify.onError({ message: 'Error compiling JavaScript!'}))
     .pipe(sourcemaps.write())
     .pipe(browserSync.reload({
       stream: true
@@ -138,7 +144,7 @@ gulp.task('default', ['sass', 'scripts', 'serve', 'watch']);
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-  gulp.watch( styleFiles, ['styles']);
+  gulp.watch( sassFiles, ['styles']);
   gulp.watch( jsFiles, ['scripts']);
   gulp.watch( phpFiles, browserSync.reload );
   gulp.watch( htmlFiles, browserSync.reload );
