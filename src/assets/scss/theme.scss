@@ -9,6 +9,10 @@
 -----------------------------------------------------------------------------*/
 // import the Sass partials in the order that you need here
 
+// vendor
+@import 'normalize';
+@include normalize();
+
 // Variables
 @import 'settings/variables';
 

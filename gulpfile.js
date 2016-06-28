@@ -51,7 +51,11 @@ gulp.task('sass', function() {
   return gulp.src( sassFiles )
     .pipe(sourcemaps.init())
       .pipe(plumber())
-      .pipe(sass()
+      .pipe(sass({
+        includePaths: [
+          './node_modules/normalize-scss/sass/'
+        ]
+      })
         .on('error', sass.logError))
         .on('error', notify.onError("Error compiling SASS!")
       )
