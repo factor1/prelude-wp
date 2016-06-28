@@ -117,12 +117,7 @@ gulp.task('scripts', ['lint'], function() {
 gulp.task('images', function() {
   return gulp.src( imageFiles )
   .pipe(plumber())
-  .pipe(imagemin({
-    progressive: true,
-    interlaced: true,
-    svgoPlugins: [{removeViewBox: false}],
-    use: [pngquant()]
-  }))
+  .pipe(imagemin())
   .pipe(gulp.dest( './assets/img/' ));
 });
 
