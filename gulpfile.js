@@ -25,7 +25,6 @@ var jshint       = require('gulp-jshint'),
     uglify       = require('gulp-uglify'),
     rename       = require('gulp-rename'),
     imagemin     = require('gulp-imagemin'),
-    pngquant     = require('imagemin-pngquant'),
     nano         = require('gulp-cssnano'),
     sourcemaps   = require('gulp-sourcemaps'),
     autoprefixer = require('gulp-autoprefixer'),
@@ -51,7 +50,11 @@ gulp.task('sass', function() {
   return gulp.src( sassFiles )
     .pipe(sourcemaps.init())
       .pipe(plumber())
-      .pipe(sass()
+      .pipe(sass({
+        includePaths: [
+          './node_modules/normalize-scss/sass/'
+        ]
+      })
         .on('error', sass.logError))
         .on('error', notify.onError("Error compiling SASS!")
       )
@@ -114,12 +117,7 @@ gulp.task('scripts', ['lint'], function() {
 gulp.task('images', function() {
   return gulp.src( imageFiles )
   .pipe(plumber())
-  .pipe(imagemin({
-    progressive: true,
-    interlaced: true,
-    svgoPlugins: [{removeViewBox: false}],
-    use: [pngquant()]
-  }))
+  .pipe(imagemin())
   .pipe(gulp.dest( './assets/img/' ));
 });
 
