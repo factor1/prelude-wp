@@ -1,10 +1,14 @@
-var source = fs.createReadStream('./src/**/*');
-var dest = fs.createWriteStream('../');
+var  ncp     = require('ncp').ncp,
+    source   = './src/',
+destination  = '../';
 
-source.pipe(dest);
-source.on('end', function() {
-  console.log('[Prelude]: Files successfully moved. Go make rad stuff!');
-});
-source.on('error', function(err) {
-  console.log('[Prelude]: Move of Prelude files failed.');
+
+ncp.limit = 16;
+
+
+ncp(source, destination, function (err) {
+ if (err) {
+   return console.error(err);
+ }
+ console.log('[Prelude]: Files copied to project directory.');
 });
