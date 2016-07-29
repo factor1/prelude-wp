@@ -1,4 +1,4 @@
-<!-- close Main -->
+<?php // Close main ?>
 </main>
 
 <footer>

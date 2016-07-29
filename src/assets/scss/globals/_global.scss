@@ -31,103 +31,9 @@ body {
   box-sizing         : border-box;
 }
 
-// Common Formatting
-
-blockquote {
-  margin  : 22px 40px;
-  padding : 0;
-}
-
-small {
-  font-size : .85em;
-}
-
-sup {
-  position       : relative;
-  bottom         : .3em;
-  vertical-align : baseline;
-}
-
-sub {
-  position       : relative;
-  bottom         : -0.2em;
-  vertical-align : baseline;
-}
-
-acronym,
-abbr {
-  cursor         : help;
-  letter-spacing : 1px;
-  border-bottom  : 1px dashed;
-}
-
-// Forms
-form {
-  margin  : 0;
-  padding : 0;
-  display : inline;
-}
-
-input,
-select,
-textarea {
-  font : 1em arial, helvetica, sans-serif;
-}
-
-textarea {
-  line-height : 1.25;
-}
-
-label {
-  cursor : pointer;
-}
-
 // Tables
 table {
-  border  : 0;
   margin  : 0 0 18px;
-  padding : 0;
-}
-
-table tr td {
-  padding : 2px;
-}
-
-// Utility Classes
-.clear {
-  clear : both;
-}
-
-.clearfix:after {
-  visibility : hidden;
-  display    : block;
-  font-size  : 0;
-  content    : ' ';
-  clear      : both;
-  height     : 0;
-}
-
-.clearfix {
-  display : inline-block;
-}
-
-/* start commented backslash hack \*/
-* html .clearfix {
-  height : 1%;
-}
-
-.clearfix {
-  display : block;
-}
-
-/* close commented backslash hack */
-
-.float-left {
-  float : left;
-}
-
-.float-right {
-  float : right;
 }
 
 /* keep images from spilling out of columns */
@@ -136,7 +42,7 @@ img{
   height: auto;
 }
 
-// Flex Video Based on Zurb Foundation
+// Flex Video Based on Zurb's Foundation Framework
 .flex-video {
   position: relative;
   height: 0;
