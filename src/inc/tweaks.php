@@ -98,3 +98,10 @@
 
   // Customize the Yoast SEO columns
   add_filter( 'wpseo_use_page_analysis', '__return_false' );
+
+  // Add touch detection class to body
+  function be_body_classes( $classes ) {
+    $classes[] = 'no-touch';
+    return $classes;
+  }
+  add_filter( 'body_class', 'be_body_classes' );
