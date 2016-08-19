@@ -1,6 +1,13 @@
 /*------------------------------------------------------------------------------
   Global Styles
 ------------------------------------------------------------------------------*/
+/* Set box sizing to elimate math in the padding */
+* {
+  -webkit-box-sizing : border-box;
+  -moz-box-sizing    : border-box;
+  box-sizing         : border-box;
+}
+
 html,
 body {
   border      : 0;
@@ -24,11 +31,9 @@ body {
   -webkit-overflow-scrolling : touch;
 }
 
-/* Set box sizing to elimate math in the padding */
-* {
-  -webkit-box-sizing : border-box;
-  -moz-box-sizing    : border-box;
-  box-sizing         : border-box;
+// Hide empty paragraphs
+p:empty{
+  display: none !important;
 }
 
 // Tables
