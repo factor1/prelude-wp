@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 No unreleased changes at this time.
 
+## [3.3.3] - 2016-08-18
+### Added
+- Hides empty paragraphs with p:empty style from @bebaps / Issue #74
+
 ## [3.3.2] - 2015-12-03
 ### Added
 - Change log
