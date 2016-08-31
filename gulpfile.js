@@ -59,7 +59,7 @@ gulp.task('sass', function() {
         .on('error', notify.onError("Error compiling SASS!")
       )
       .pipe(autoprefixer({
-        browsers: ['last 2 versions'],
+        browsers: ['last 3 versions', 'Safari > 7'],
         cascade: false
       }))
     .pipe(sourcemaps.write())
