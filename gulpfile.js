@@ -95,7 +95,12 @@ gulp.task('minify-css', ['sass'], function() {
     }))
     .pipe(nano({
       discardComments: {removeAll: true},
-      autoprefixer: false
+      autoprefixer: false,
+      discardUnused: false,
+      mergeIdents: false,
+      reduceIdents: false,
+      calc: {mediaQueries: true},
+      zindex: false
     }))
     .pipe(gulp.dest( './assets/css' ))
     .pipe(browserSync.reload({
