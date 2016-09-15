@@ -128,7 +128,13 @@ gulp.task('images', function() {
 
 // Package a zip for theme upload
 gulp.task('package', function() {
-	return gulp.src( '/**/*' )
+  return gulp.src( [
+    './**/*',
+    '!bower_components',
+    '!node_modules',
+    '!bower_components/**',
+    '!node_modules/**'
+  ] )
 		.pipe(zip( theme + '.zip' ))
 		.pipe(gulp.dest( './' ));
 });
