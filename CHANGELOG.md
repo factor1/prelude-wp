@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 Release branch 3.4 has some potential changes to install script.
 
+## [3.3.6] - 2016-09-15
+### Update
+- Updates package gulp task to compile correctly and ignore `node_modules` & `bower_components` / Issue #77
+
 ## [3.3.5] - 2016-09-13
 ### Update
 - Updates cssnano optimizations in `gulpfile.js`
