@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 Release branch 3.4 has some potential changes to install script.
 
+## [3.3.7] - 2016-09-21
+### Update
+- Adds SVG as a supported file time for image compression.
+
 ## [3.3.6] - 2016-09-15
 ### Update
 - Updates package gulp task to compile correctly and ignore `node_modules` & `bower_components` / Issue #77
