@@ -11,7 +11,7 @@ var phpFiles     = ['./**/*.php', './*.php'],
     sassFiles    = ['./assets/scss/**/*.scss'],
     styleFiles   = [cssFiles, sassFiles],
     jsFiles      = ['./assets/js/theme.js'],
-    imageFiles   = ['./assets/img/*.{jpg,png,gif}'],
+    imageFiles   = ['./assets/img/*.{jpg,png,gif,svg}'],
     concatFiles  = ['./assets/js/*.js', '!./assets/js/theme.min.js', '!./assets/js/all.js'],
     url          = 'wp-dev:8888'; // See https://browsersync.io/docs/options/#option-proxy
 
