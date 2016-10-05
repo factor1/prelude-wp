@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 Release branch 3.4 has some potential changes to install script.
 
+## [3.3.8] - 2016-10-05
+### Change
+- Changes the WordPress jQuery handle from `prelude_wp` to `jquery` for better plugin compatibility.
+
 ## [3.3.7] - 2016-09-21
 ### Update
 - Adds SVG as a supported file time for image compression.
