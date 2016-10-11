@@ -1,7 +1,7 @@
 # Prelude
 Prelude is a WordPress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.
 
-> **Compatibility Note:**  Officially only Mac OS X is supported. Currently this build fails in Ubuntu 14.04 (and presumably other Linux builds as well) due to the `gulp images` task failing because of a needed dependency error (See: https://github.com/imagemin/imagemin/issues/149). To build in Linux until a fix is found, simply remove the `images` task from your `gulpfile.js` and you will be able to complete your builds. Windows functionality has not been tested.
+> **Compatibility Note:**  Officially only Mac OS X is supported. Currently this build fails in Ubuntu 14.04 (and presumably other Linux builds as well) due to the `gulp images` task failing because of a needed dependency error (See: https://github.com/imagemin/imagemin/issues/149). To build in Linux until a fix is found, simply remove the `images` task from your `gulpfile.js` and you will be able to complete your builds. Windows functionality has been tested but is still rough. Some changes have been made to increase compatibility but are yet to be tested.
 
 ## Features
 ### Gulp Tasks
@@ -22,7 +22,7 @@ Prelude has some nifty features built into `functions.php` to make developing a 
 ## Getting Started
 Prelude requires that you have Node and npm installed on your machine. If you need help with that, please visit the [npm documentation](https://docs.npmjs.com/getting-started/installing-node).
 
-1. Install Prelude into your project using `npm install prelude-wp --save`, Prelude will automatically move theme files into your project folder. (Note: when updating Prelude files will not be overwritten.)
+1. Install Prelude into your project using `npm install prelude-wp --save` and copy all theme files to your root directory. **NOTE: As of `3.3.9` Prelude no longer automatically moves theme files into your root directory.**
 2. Using the `theme` variable found in `gulpfile.js` name your theme. This is only used for packaging purposes and is not critical (Don't forget to also fill out the theme information found in `style.css` in the root)
 3. Run the default Gulp task while editing files using `gulp` or `gulp default`
 
