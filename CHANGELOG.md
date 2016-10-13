@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 Release branch 3.4 has some potential changes to install script.
 
+## [3.3.10] - 2016-10-13
+### Added
+- Adds function to expand WordPress toolkit/kitchen sink for all users by default.
+
 ## [3.3.9] - 2016-10-11
 ### Removed
 - Removes the `postinstall` script all together to avoid changes to user themes and also greatly increase compatibility across platforms. Also updates readme with this change.
