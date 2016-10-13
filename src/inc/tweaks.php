@@ -105,3 +105,20 @@
     return $classes;
   }
   add_filter( 'body_class', 'be_body_classes' );
+
+  // Keep the WordPress Kitchen Sink Toolkit open for all users.
+  function enable_more_buttons($buttons) {
+    $buttons[] = 'fontselect';
+    $buttons[] = 'fontsizeselect';
+    $buttons[] = 'styleselect';
+    $buttons[] = 'backcolor';
+    $buttons[] = 'newdocument';
+    $buttons[] = 'cut';
+    $buttons[] = 'copy';
+    $buttons[] = 'charmap';
+    $buttons[] = 'hr';
+    $buttons[] = 'visualaid';
+
+    return $buttons;
+  }
+  add_filter("mce_buttons_3", "enable_more_buttons");
