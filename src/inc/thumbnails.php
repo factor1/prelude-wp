@@ -3,7 +3,7 @@
 /*-----------------------------------------------------------------------------
   Get featured image as url
 -----------------------------------------------------------------------------*/
-function featuredURL($size){
+function featuredURL($size = 'full'){
   $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), $size );
   $url = $thumb['0'];
   echo $url;
