@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 Release branch 3.4 has some potential changes to install script.
 
+## [3.3.11] - 2016-11-21
+### Fixes and Additions
+- Fixes missing dependency `imagemin-pngquant`
+- Fixes missing default argument for `featuredURL()`
+- Adds `THEME_VERSION` constant to better enqueue JS and CSS files (avoiding cache issues)
+
 ## [3.3.10] - 2016-10-13
 ### Added
 - Adds function to expand WordPress toolkit/kitchen sink for all users by default.
