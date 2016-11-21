@@ -1,5 +1,7 @@
 <?php
 
+  define( 'THEME_VERSION', '0.0.1' );
+
   if ( !function_exists( 'prelude_features' ) ) {
 
     // Register Theme Features
@@ -61,10 +63,10 @@
    */
   function prelude_theme_scripts() {
     // CSS
-    wp_enqueue_style('prelude-css', get_template_directory_uri() . '/assets/css/theme.min.css' );
+    wp_enqueue_style('prelude-css', get_template_directory_uri() . '/assets/css/theme.min.css', array(), THEME_VERSION );
 
     // JS
-    wp_enqueue_script('prelude-js', get_template_directory_uri() . '/assets/js/theme.min.js', array(), '', true );
+    wp_enqueue_script('prelude-js', get_template_directory_uri() . '/assets/js/theme.min.js', array(), THEME_VERSION, true );
   }
   add_action( 'wp_enqueue_scripts', 'prelude_theme_scripts' );
 
