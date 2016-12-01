@@ -77,7 +77,7 @@
     //remove_meta_box( 'postexcerpt', 'post', 'normal' ); // Excerpt Metabox
     //remove_meta_box( 'commentstatusdiv', 'post', 'normal' ); // Comments Metabox
     remove_meta_box( 'trackbacksdiv', 'post', 'normal' ); // Talkback Metabox
-    remove_meta_box( 'authordiv', 'post', 'normal' ); // Author Metabox
+    //remove_meta_box( 'authordiv', 'post', 'normal' ); // Author Metabox
   }
   add_action( 'admin_menu', 'prelude_remove_default_post_metaboxes' );
 

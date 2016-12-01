@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 Release branch 3.4 has some potential changes to install script.
 
+## [3.3.11] - 2016-12-01
+# Removes
+- Removes hiding of post author div
+
 ## [3.3.11] - 2016-11-21
 ### Fixes and Additions
 - Fixes missing dependency `imagemin-pngquant`
