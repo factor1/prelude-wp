@@ -149,7 +149,7 @@ gulp.task('styles', ['minify-css']);
   Default Tasks
 ------------------------------------------------------------------------------*/
 // Default Task
-gulp.task('default', ['sass', 'scripts', 'serve', 'watch']);
+gulp.task('default', ['styles', 'scripts', 'serve', 'watch']);
 
 // Watch Files For Changes
 gulp.task('watch', function() {
