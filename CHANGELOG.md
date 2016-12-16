@@ -2,8 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
-Release branch 3.4 has some potential changes to install script.
+## [3.4.0] - 2016-12-16
+# Update
+- Updates default gulp task to run `styles` instead of `sass`
+- Moves all theme files out of `/src/` and into the root folder
 
 ## [3.3.11] - 2016-12-01
 # Removes
