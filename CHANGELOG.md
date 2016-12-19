@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.4.1] - 2016-12-19
+# Update
+- Updates npm dependencies 
+
 ## [3.4.0] - 2016-12-16
 # Update
 - Updates default gulp task to run `styles` instead of `sass`
