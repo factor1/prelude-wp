@@ -1,0 +1,8 @@
+title: Prelude
+description: Prelude is a starter theme, gulp tasks and structure for crafting custom Wordpress themes.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
