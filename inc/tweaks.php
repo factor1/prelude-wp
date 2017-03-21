@@ -33,14 +33,6 @@
   }
   add_filter( 'gallery_style', 'prelude_remove_gallery_css' );
 
-  // Ensure only admin users receive update notifications
-  add_action('plugins_loaded',function() {
-    if ( !current_user_can( 'update_plugins' ) ) {
-      add_action('init', create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ), 2);
-      add_filter('pre_option_update_core', create_function( '$a', 'return null;' ) );
-      }
-    });
-
   // Customize which dashboard widgets show
   function prelude_remove_dashboard_boxes() {
     remove_meta_box('dashboard_right_now', 'dashboard', 'core' ); // Right Now Overview Box
