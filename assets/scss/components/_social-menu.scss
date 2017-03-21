@@ -90,15 +90,14 @@
   } // end ul
 } // end .menu-social
 
+// Hide the default Screen Reader text
+.screen-reader-text {
+  display: none;
+}
 
 @media only screen and (max-width: 640px) {
   .menu-social {
     float: none;
     text-align: center;
   }
-}
-
-// Hide the default Screen Reader text
-.screen-reader-text {
-  display: none;
 }
