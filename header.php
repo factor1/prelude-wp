@@ -22,7 +22,7 @@
    <meta name="robots" content="noindex, nofollow" />
 	<?php } ?>
 
-  <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
+  <?php if ( is_singular() && comments_open() ) wp_enqueue_script( 'comment-reply' ); ?>
 
   <?php wp_head(); ?>
 </head>
@@ -31,14 +31,6 @@
 
   <?php // Header ?>
   <header>
-
-    <h1>
-      <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-    </h1>
-
-    <nav class="main-nav">
-      <?php wp_nav_menu( array('theme_location' => 'primary') ); ?>
-    </nav>
 
   </header>
 
