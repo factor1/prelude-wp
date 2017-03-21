@@ -1,7 +1,37 @@
 <?php
   /*-----------------------------------------------------------------------------
-    Custom Theme Tweaks
+    Custom Theme Tweaks and Features
   -----------------------------------------------------------------------------*/
+  if ( !function_exists( 'prelude_features' ) ) {
+
+    // Register Theme Features
+    function prelude_features() {
+      // Add theme support for Automatic Feed Links
+      add_theme_support( 'automatic-feed-links' );
+
+      // Add theme support for Post Formats
+      add_theme_support('post-formats', array('status', 'quote', 'gallery', 'image', 'video', 'audio', 'link', 'aside') );
+
+      // Add theme support for Featured Images
+      add_theme_support( 'post-thumbnails' );
+
+      // Add theme support for HTML5 Semantic Markup
+      add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption') );
+
+      // Add theme support for document Title tag
+      add_theme_support( 'title-tag' );
+
+      // Clean up the default WordPress head section
+      remove_action( 'wp_head', 'rsd_link' );
+      remove_action( 'wp_head', 'wlwmanifest_link' );
+      remove_action( 'wp_head', 'wp_generator' );
+      remove_action( 'wp_head', 'start_post_rel_link' );
+      remove_action( 'wp_head', 'index_rel_link' );
+      remove_action( 'wp_head', 'adjacent_posts_rel_link' );
+    }
+    add_action( 'after_setup_theme', 'prelude_features' );
+  }
+  
   // Set the maximum content width for the theme
   function prelude_content_width() {
     $GLOBALS[ 'content_width' ] = apply_filters( 'prelude_content_width', 1200 );
@@ -32,31 +62,6 @@
     return preg_replace( "#<style type='text/css'>(.*?)</style>#s", '', $css );
   }
   add_filter( 'gallery_style', 'prelude_remove_gallery_css' );
-
-  // Remove the default recent comments styling
-  function prelude_remove_recent_comments_style() {
-    global $wp_widget_factory;
-
-    if(!isset($wp_widget_factory->widgets[ 'WP_Widget_Recent_Comments' ])) {
-      return;
-    }
-
-    remove_action(
-      'wp_head', array(
-        $wp_widget_factory->widgets[ 'WP_Widget_Recent_Comments' ],
-        'recent_comments_style'
-      )
-    );
-  }
-  add_action( 'widgets_init', 'prelude_remove_recent_comments_style' );
-
-  // Ensure only admin users receive update notifications
-  add_action('plugins_loaded',function() {
-    if ( !current_user_can( 'update_plugins' ) ) {
-      add_action('init', create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ), 2);
-      add_filter('pre_option_update_core', create_function( '$a', 'return null;' ) );
-      }
-    });
 
   // Customize which dashboard widgets show
   function prelude_remove_dashboard_boxes() {

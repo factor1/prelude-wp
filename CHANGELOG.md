@@ -2,9 +2,19 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.4.2] - 2017-03-21
+# Removes
+- Removes opinionated structures from template files.
+- Removes WP tweaks that were causing deprecation issues.
+
+# Adds
+- Adds sugar mixins for rems and aspect ratio
+- Adds Yelp CSS for social menu 
+
+
 ## [3.4.1] - 2016-12-19
 # Update
-- Updates npm dependencies 
+- Updates npm dependencies
 
 ## [3.4.0] - 2016-12-16
 # Update
