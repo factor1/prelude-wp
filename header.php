@@ -22,7 +22,7 @@
    <meta name="robots" content="noindex, nofollow" />
 	<?php } ?>
 
-  <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
+  <?php if ( is_singular() && comments_open() ) wp_enqueue_script( 'comment-reply' ); ?>
 
   <?php wp_head(); ?>
 </head>
