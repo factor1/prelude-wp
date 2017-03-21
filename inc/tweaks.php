@@ -33,23 +33,6 @@
   }
   add_filter( 'gallery_style', 'prelude_remove_gallery_css' );
 
-  // Remove the default recent comments styling
-  function prelude_remove_recent_comments_style() {
-    global $wp_widget_factory;
-
-    if(!isset($wp_widget_factory->widgets[ 'WP_Widget_Recent_Comments' ])) {
-      return;
-    }
-
-    remove_action(
-      'wp_head', array(
-        $wp_widget_factory->widgets[ 'WP_Widget_Recent_Comments' ],
-        'recent_comments_style'
-      )
-    );
-  }
-  add_action( 'widgets_init', 'prelude_remove_recent_comments_style' );
-
   // Ensure only admin users receive update notifications
   add_action('plugins_loaded',function() {
     if ( !current_user_can( 'update_plugins' ) ) {
