@@ -56,7 +56,7 @@ gulp.task('sass', function() {
         ]
       })
         .on('error', sass.logError))
-        .on('error', notify.onError("Error compiling SASS!")
+        .on('error', notify.onError("Error compiling scss!")
       )
       .pipe(autoprefixer({
         browsers: ['last 3 versions', 'Safari > 7'],
