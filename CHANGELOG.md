@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.4.3] - 2017-03-27
+# Removes
+- Removes jQuery enqueue from google CDN from issue #100. Thanks for the heads up @jeremyescott 
+
 ## [3.4.2] - 2017-03-21
 # Removes
 - Removes opinionated structures from template files.
@@ -9,7 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 # Adds
 - Adds sugar mixins for rems and aspect ratio
-- Adds Yelp CSS for social menu 
+- Adds Yelp CSS for social menu
 
 
 ## [3.4.1] - 2016-12-19
