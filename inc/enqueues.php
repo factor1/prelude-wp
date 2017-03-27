@@ -1,25 +1,13 @@
 <?php // CSS & JavaScript Enqueues
 
 /**
- * Load jQuery
-*/
-
-if ( !is_admin() ) {
-  add_action('wp_enqueue_scripts',function() {
-    wp_deregister_script('jquery');
-    wp_register_script('jquery', ('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js'), false);
-    wp_enqueue_script('jquery');
-  });
-}
-
-/**
  * Defer jQuery Parsing using the HTML5 defer property
  */
 
 if (!(is_admin() )) {
   function defer_parsing_of_js ( $url ) {
     if ( FALSE === strpos( $url, '.js' ) ) return $url;
-    if ( strpos( $url, 'jquery.min.js' ) ) return $url;
+    if ( strpos( $url, 'jquery.js' ) ) return $url;
     // return "$url' defer ";
     return "$url' defer onload='";
   }
@@ -34,6 +22,6 @@ function prelude_theme_scripts() {
   wp_enqueue_style('prelude-css', get_template_directory_uri() . '/assets/css/theme.min.css', array(), THEME_VERSION );
 
   // JS
-  wp_enqueue_script('prelude-js', get_template_directory_uri() . '/assets/js/theme.min.js', array(), THEME_VERSION, true );
+  wp_enqueue_script('prelude-js', get_template_directory_uri() . '/assets/js/theme.min.js', array('jquery'), THEME_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'prelude_theme_scripts' );
