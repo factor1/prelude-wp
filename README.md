@@ -30,54 +30,50 @@ You can modify the file structure however you like as long as it is also updated
 
 ```
 .
-├── README.md
-├── gulpfile.js
-├── package.json
 ├── .editorconfig
+├── .gitignore
 ├── .jshintrc
-├── assets/
-│   ├── fonts/
-│   ├── img/
-│   │   ├── icons/
-│   ├── js/
-│   │   ├── plugins/
-│   │   ├── vendor/
-│   │   └── theme.js
-│   ├── scss/
-│   │   ├── components/
-│   │   │   └── _footer.scss
-│   │   │   └── _header.scss
-│   │   │   └── _social-menu.scss
-│   │   ├── globals/
-│   │   │   └── _global.scss
-│   │   │   └── _typography.scss
-│   │   │   └── _WordPress.scss
-│   │   ├── pages/
-│   │   ├── parts/
-│   │   ├── plugins/
-│   │   │   └── _overrides.scss
-│   │   ├── vendor/
-│   │   └── _variables.scss
-│   │   └── theme.scss
-├── inc/
-│   └── custom-post-types.php
-│   └── menus.php
-│   └── shortcodes.php
-│   └── thumbnails.php
-│   └── tweaks.php
-│   └── widgets.php
-├── page-templates/
-├── parts/
-│   └── meta.php
-│   └── post-nav.php
 ├── 404.php
+├── CHANGELOG.md
+├── README.md
 ├── archive.php
-├── comments.php
+├── /assets
+|  ├── /js
+|  |  └── theme.js
+|  └── /scss
+|     ├── /components
+|     |  ├── _footer.scss
+|     |  ├── _header.scss
+|     |  └── _social-menu.scss
+|     ├── /globals
+|     |  ├── _global.scss
+|     |  ├── _typography.scss
+|     |  └── _wordpress.scss
+|     ├── /mixins
+|     |  └── _sugar.scss
+|     ├── /plugins
+|     |  └── _overrides.scss
+|     ├── /settings
+|     |  └── _variables.scss
+|     └── theme.scss
 ├── footer.php
 ├── functions.php
+├── gulpfile.js
 ├── header.php
+├── /inc
+|  ├── custom-post-types.php
+|  ├── enqueues.php
+|  ├── menus.php
+|  ├── shortcodes.php
+|  ├── thumbnails.php
+|  ├── tweaks.php
+|  └── widgets.php
 ├── index.php
+├── package.json
 ├── page.php
+├── /parts
+|  ├── meta.php
+|  └── post-nav.php
 ├── screenshot.png
 ├── search.php
 ├── sidebar.php
