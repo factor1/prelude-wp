@@ -25,6 +25,7 @@
   "homepage": "https://github.com/factor1/Prelude#readme",
   "dependencies": {
     "browser-sync": "^2.13.0",
+    "colors": "^1.1.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean": "^0.3.2",

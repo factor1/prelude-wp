@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------------*/
 // Theme information (name, starting theme version)
 var theme        = 'your-theme-name',
-    version      = '0.0.3';
+    version      = '0.0.11';
 
 // Set the paths you will be working with
 var phpFiles     = ['./**/*.php', './*.php'],
@@ -34,7 +34,8 @@ var jshint       = require('gulp-jshint'),
     stylish      = require('jshint-stylish'),
     notify       = require('gulp-notify'),
     replace      = require('replace'),
-    argv         = require('yargs').argv;
+    argv         = require('yargs').usage('Usage: $ gulp version [--major, --minor, --patch]').argv,
+    colors       = require('colors'),
     zip          = require('gulp-zip');
 
 /*------------------------------------------------------------------------------
@@ -146,25 +147,22 @@ gulp.task('package', function() {
 gulp.task('version', function() {
 
   // log current version
-  console.log('Current version is: '+version);
+  console.log('Current version is: '+version.yellow);
 
   // get current version
   var currentVersion = version.split(/[.]+/);
-  console.log('Current Version Split: '+ currentVersion);
 
   if( argv.patch ){
     console.log('Updating theme version as a patch.');
-    console.log('Current Version inside patch arg: ' + currentVersion[2]);
 
     // increment patch number
     currentVersion[2]++
     var newPatch = currentVersion[2];
-    console.log('New Patch Number: ' + newPatch);
 
     // New Version Number
     var newVersion = currentVersion[0]+'.'+currentVersion[1]+'.'+newPatch;
 
-    console.log('New theme version is: '+ newVersion);
+    console.log('New theme version is: '.green+ newVersion.green.bold);
 
     // first replace updates strings
     replace({
@@ -175,16 +173,10 @@ gulp.task('version', function() {
         './functions.php',
         './gulpfile.js'
       ],
+      silent: true,
     });
-
-    // second replace updates object
-    // replace({
-    //   regex: ['major: /(?:\d*\.)?\d+/', 'minor: /(?:\d*\.)?\d+/', 'patch: /(?:\d*\.)?\d+/'],
-    //   replacement: ['major: version.major', 'minor: version.minor', 'patch: version.patch'],
-    //   paths: [
-    //     './gulpfile.js'
-    //   ],
-    // });
+  } else{
+    console.log('🚨 No arguments or invalid arguments were passed. Include one of the following arguments: [--major, --minor, --patch]'.red.bold);
   }
 });
 
