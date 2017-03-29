@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------------*/
 // Theme information (name, starting theme version)
 var theme        = 'your-theme-name',
-    version      = '0.0.11';
+    version      = '0.4.0';
 
 // Set the paths you will be working with
 var phpFiles     = ['./**/*.php', './*.php'],
@@ -153,7 +153,7 @@ gulp.task('version', function() {
   var currentVersion = version.split(/[.]+/);
 
   if( argv.patch ){
-    console.log('Updating theme version as a patch.');
+    console.log('Updating theme version as a patch.'.cyan);
 
     // increment patch number
     currentVersion[2]++
@@ -161,7 +161,6 @@ gulp.task('version', function() {
 
     // New Version Number
     var newVersion = currentVersion[0]+'.'+currentVersion[1]+'.'+newPatch;
-
     console.log('New theme version is: '.green+ newVersion.green.bold);
 
     // first replace updates strings
@@ -175,8 +174,32 @@ gulp.task('version', function() {
       ],
       silent: true,
     });
+  } else if ( argv.minor ) {
+
+    console.log('Updating theme version as minor.'.cyan);
+
+    // increment minor number
+    currentVersion[1]++
+    var newMinor = currentVersion[1];
+
+    // New Version Number
+    var newVersion = currentVersion[0]+'.'+newMinor+'.'+'0';
+    console.log('New theme version is: '.green+ newVersion.green.bold);
+
+    replace({
+      regex: version,
+      replacement: newVersion,
+      paths: [
+        './style.css',
+        './functions.php',
+        './gulpfile.js'
+      ],
+      silent: true,
+    });
+
+
   } else{
-    console.log('🚨 No arguments or invalid arguments were passed. Include one of the following arguments: [--major, --minor, --patch]'.red.bold);
+    console.error('🚨 No arguments or invalid arguments were passed. Include one of the following arguments: [--major, --minor, --patch]'.red.bold);
   }
 });
 
