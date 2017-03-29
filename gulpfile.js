@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------------*/
 // Theme information (name, starting theme version)
 var theme        = 'your-theme-name',
-    version      = '0.4.0';
+    version      = '2.0.0';
 
 // Set the paths you will be working with
 var phpFiles     = ['./**/*.php', './*.php'],
@@ -34,7 +34,7 @@ var jshint       = require('gulp-jshint'),
     stylish      = require('jshint-stylish'),
     notify       = require('gulp-notify'),
     replace      = require('replace'),
-    argv         = require('yargs').usage('Usage: $ gulp version [--major, --minor, --patch]').argv,
+    argv         = require('yargs').usage('Usage: $ gulp version [--major, --minor, --patch, --current]').argv,
     colors       = require('colors'),
     zip          = require('gulp-zip');
 
@@ -146,13 +146,13 @@ gulp.task('package', function() {
 // Update Theme Version
 gulp.task('version', function() {
 
-  // log current version
-  console.log('Current version is: '+version.yellow);
-
   // get current version
   var currentVersion = version.split(/[.]+/);
 
   if( argv.patch ){
+    // log current version
+    console.log('Current version is: '+version.yellow);
+
     console.log('Updating theme version as a patch.'.cyan);
 
     // increment patch number
@@ -175,8 +175,10 @@ gulp.task('version', function() {
       silent: true,
     });
   } else if ( argv.minor ) {
+    // log current version
+    console.log('Current version is: '+version.yellow);
 
-    console.log('Updating theme version as minor.'.cyan);
+    console.log('Updating theme version as a minor release.'.cyan);
 
     // increment minor number
     currentVersion[1]++
@@ -198,8 +200,40 @@ gulp.task('version', function() {
     });
 
 
-  } else{
-    console.error('🚨 No arguments or invalid arguments were passed. Include one of the following arguments: [--major, --minor, --patch]'.red.bold);
+  } else if ( argv.major ) {
+    // log current version
+    console.log('Current version is: '+version.yellow);
+
+     console.log('Updating theme version as a major release.'.cyan);
+
+     // increment minor number
+     currentVersion[0]++
+     var newMajor = currentVersion[0];
+
+     // New Version Number
+     var newVersion = newMajor+'.'+'0'+'.'+'0';
+     console.log('New theme version is: '.green+ newVersion.green.bold);
+
+     replace({
+       regex: version,
+       replacement: newVersion,
+       paths: [
+         './style.css',
+         './functions.php',
+         './gulpfile.js'
+       ],
+       silent: true,
+     });
+
+   } else if ( argv.current ) {
+
+     // log current version
+     console.log('Current version is: '+version.yellow);
+
+   } else{
+     // log current version
+     console.log('Current version is: '+version.yellow);
+     console.error('🚨 No arguments or invalid arguments were passed. Include one of the following arguments: [--major, --minor, --patch, --current]'.red.bold);
   }
 });
 
