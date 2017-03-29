@@ -1,7 +1,7 @@
 <?php
 
   define( 'THEME_VERSION', '0.0.1' );
-  
+
   /**
    * Load tweaks
    */

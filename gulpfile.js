@@ -1,8 +1,9 @@
 /*------------------------------------------------------------------------------
   Gulpfile.js
 ------------------------------------------------------------------------------*/
-// Name your theme - this is outputted only when packaging your project.
-var theme        = 'your-theme-name';
+// Theme information (name, starting theme version)
+var theme        = 'your-theme-name',
+    version      = {major: '0', minor: '0', patch: '1'};
 
 // Set the paths you will be working with
 var phpFiles     = ['./**/*.php', './*.php'],
@@ -32,6 +33,8 @@ var jshint       = require('gulp-jshint'),
     plumber      = require('gulp-plumber'),
     stylish      = require('jshint-stylish'),
     notify       = require('gulp-notify'),
+    replace      = require('replace'),
+    argv         = require('yargs').argv;
     zip          = require('gulp-zip');
 
 /*------------------------------------------------------------------------------
@@ -137,6 +140,44 @@ gulp.task('package', function() {
   ] )
 		.pipe(zip( theme + '.zip' ))
 		.pipe(gulp.dest( './' ));
+});
+
+// Update Theme Version
+gulp.task('version', function() {
+
+  // get current version
+  var currentVersion = version.major+'.'+version.minor+'.'+version.patch;
+
+  // log current version
+  console.log('Current version is: '+currentVersion);
+
+  if( argv.patch ){
+    console.log('Updating theme version as a patch.');
+
+    version.patch++;
+
+    console.log('New theme version is: '+version.major+'.'+version.minor+'.'+version.patch);
+
+    // first replace updates strings
+    replace({
+      regex: currentVersion,
+      replacement: +version.major+'.'+version.minor+'.'+version.patch,
+      paths: [
+        './style.css',
+        './functions.php'
+      ],
+    });
+
+    // second replace updates object
+    replace({
+      regex: currentVersion,
+      replacement: +version.major+'.'+version.minor+'.'+version.patch,
+      paths: [
+        './style.css',
+        './functions.php'
+      ],
+    });
+  }
 });
 
 // Build task to run all tasks and and package for distribution

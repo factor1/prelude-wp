@@ -42,6 +42,8 @@
     "imagemin-pngquant": "^5.0.0",
     "jshint": "^2.9.2",
     "jshint-stylish": "^2.2.0",
-    "normalize-scss": "^6.0.0"
+    "normalize-scss": "^6.0.0",
+    "replace": "^0.3.0",
+    "yargs": "^7.0.2"
   }
 }
