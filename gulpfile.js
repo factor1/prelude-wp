@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------------*/
 // Theme information (name, starting theme version)
 var theme        = 'your-theme-name',
-    version      = '2.0.0';
+    version      = '0.0.1';
 
 // Set the paths you will be working with
 var phpFiles     = ['./**/*.php', './*.php'],
@@ -36,6 +36,7 @@ var jshint       = require('gulp-jshint'),
     replace      = require('replace'),
     argv         = require('yargs').usage('Usage: $ gulp version [--major, --minor, --patch, --current]').argv,
     colors       = require('colors'),
+    exec         = require('child_process').exec,
     zip          = require('gulp-zip');
 
 /*------------------------------------------------------------------------------
@@ -144,7 +145,7 @@ gulp.task('package', function() {
 });
 
 // Update Theme Version
-gulp.task('version', function() {
+gulp.task('version', function(cb) {
 
   // get current version
   var currentVersion = version.split(/[.]+/);
@@ -174,6 +175,13 @@ gulp.task('version', function() {
       ],
       silent: true,
     });
+
+    exec(`git tag ${newVersion}`, function (err, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      cb(err);
+    });
+
   } else if ( argv.minor ) {
     // log current version
     console.log('Current version is: '+version.yellow);
@@ -199,6 +207,11 @@ gulp.task('version', function() {
       silent: true,
     });
 
+    exec(`git tag ${newVersion}`, function (err, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      cb(err);
+    });
 
   } else if ( argv.major ) {
     // log current version
@@ -223,6 +236,12 @@ gulp.task('version', function() {
          './gulpfile.js'
        ],
        silent: true,
+     });
+
+     exec(`git tag ${newVersion}`, function (err, stdout, stderr) {
+       console.log(stdout);
+       console.log(stderr);
+       cb(err);
      });
 
    } else if ( argv.current ) {
