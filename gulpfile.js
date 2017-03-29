@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------------*/
 // Theme information (name, starting theme version)
 var theme        = 'your-theme-name',
-    version      = {major: '0', minor: '0', patch: '1'};
+    version      = '0.0.3';
 
 // Set the paths you will be working with
 var phpFiles     = ['./**/*.php', './*.php'],
@@ -145,38 +145,46 @@ gulp.task('package', function() {
 // Update Theme Version
 gulp.task('version', function() {
 
-  // get current version
-  var currentVersion = version.major+'.'+version.minor+'.'+version.patch;
-
   // log current version
-  console.log('Current version is: '+currentVersion);
+  console.log('Current version is: '+version);
+
+  // get current version
+  var currentVersion = version.split(/[.]+/);
+  console.log('Current Version Split: '+ currentVersion);
 
   if( argv.patch ){
     console.log('Updating theme version as a patch.');
+    console.log('Current Version inside patch arg: ' + currentVersion[2]);
 
-    version.patch++;
+    // increment patch number
+    currentVersion[2]++
+    var newPatch = currentVersion[2];
+    console.log('New Patch Number: ' + newPatch);
 
-    console.log('New theme version is: '+version.major+'.'+version.minor+'.'+version.patch);
+    // New Version Number
+    var newVersion = currentVersion[0]+'.'+currentVersion[1]+'.'+newPatch;
+
+    console.log('New theme version is: '+ newVersion);
 
     // first replace updates strings
     replace({
-      regex: currentVersion,
-      replacement: +version.major+'.'+version.minor+'.'+version.patch,
+      regex: version,
+      replacement: newVersion,
       paths: [
         './style.css',
-        './functions.php'
+        './functions.php',
+        './gulpfile.js'
       ],
     });
 
     // second replace updates object
-    replace({
-      regex: currentVersion,
-      replacement: +version.major+'.'+version.minor+'.'+version.patch,
-      paths: [
-        './style.css',
-        './functions.php'
-      ],
-    });
+    // replace({
+    //   regex: ['major: /(?:\d*\.)?\d+/', 'minor: /(?:\d*\.)?\d+/', 'patch: /(?:\d*\.)?\d+/'],
+    //   replacement: ['major: version.major', 'minor: version.minor', 'patch: version.patch'],
+    //   paths: [
+    //     './gulpfile.js'
+    //   ],
+    // });
   }
 });
 
