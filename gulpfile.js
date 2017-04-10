@@ -1,8 +1,9 @@
 /*------------------------------------------------------------------------------
   Gulpfile.js
 ------------------------------------------------------------------------------*/
-// Name your theme - this is outputted only when packaging your project.
-var theme        = 'your-theme-name';
+// Theme information (name, starting theme version)
+var theme        = 'your-theme-name',
+    version      = '0.0.1';
 
 // Set the paths you will be working with
 var phpFiles     = ['./**/*.php', './*.php'],
@@ -32,6 +33,10 @@ var jshint       = require('gulp-jshint'),
     plumber      = require('gulp-plumber'),
     stylish      = require('jshint-stylish'),
     notify       = require('gulp-notify'),
+    replace      = require('replace'),
+    argv         = require('yargs').usage('Usage: $ gulp version [--major, --minor, --patch, --current]').argv,
+    colors       = require('colors'),
+    exec         = require('child_process').exec,
     zip          = require('gulp-zip');
 
 /*------------------------------------------------------------------------------
@@ -137,6 +142,118 @@ gulp.task('package', function() {
   ] )
 		.pipe(zip( theme + '.zip' ))
 		.pipe(gulp.dest( './' ));
+});
+
+// Update Theme Version
+gulp.task('version', function(cb) {
+
+  // get current version
+  var currentVersion = version.split(/[.]+/);
+
+  if( argv.patch ){
+    // log current version
+    console.log('Current version is: '+version.yellow);
+
+    console.log('Updating theme version as a patch.'.cyan);
+
+    // increment patch number
+    currentVersion[2]++
+    var newPatch = currentVersion[2];
+
+    // New Version Number
+    var newVersion = currentVersion[0]+'.'+currentVersion[1]+'.'+newPatch;
+    console.log('New theme version is: '.green+ newVersion.green.bold);
+
+    // first replace updates strings
+    replace({
+      regex: version,
+      replacement: newVersion,
+      paths: [
+        './style.css',
+        './functions.php',
+        './gulpfile.js'
+      ],
+      silent: true,
+    });
+
+    exec(`git tag ${newVersion}`, function (err, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      cb(err);
+    });
+
+  } else if ( argv.minor ) {
+    // log current version
+    console.log('Current version is: '+version.yellow);
+
+    console.log('Updating theme version as a minor release.'.cyan);
+
+    // increment minor number
+    currentVersion[1]++
+    var newMinor = currentVersion[1];
+
+    // New Version Number
+    var newVersion = currentVersion[0]+'.'+newMinor+'.'+'0';
+    console.log('New theme version is: '.green+ newVersion.green.bold);
+
+    replace({
+      regex: version,
+      replacement: newVersion,
+      paths: [
+        './style.css',
+        './functions.php',
+        './gulpfile.js'
+      ],
+      silent: true,
+    });
+
+    exec(`git tag ${newVersion}`, function (err, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      cb(err);
+    });
+
+  } else if ( argv.major ) {
+    // log current version
+    console.log('Current version is: '+version.yellow);
+
+     console.log('Updating theme version as a major release.'.cyan);
+
+     // increment minor number
+     currentVersion[0]++
+     var newMajor = currentVersion[0];
+
+     // New Version Number
+     var newVersion = newMajor+'.'+'0'+'.'+'0';
+     console.log('New theme version is: '.green+ newVersion.green.bold);
+
+     replace({
+       regex: version,
+       replacement: newVersion,
+       paths: [
+         './style.css',
+         './functions.php',
+         './gulpfile.js'
+       ],
+       silent: true,
+     });
+
+     exec(`git commit -am "Bumps theme version" && git tag ${newVersion}`, function (err, stdout, stderr) {
+       console.log(stdout);
+       console.log(stderr);
+       cb(err);
+     });
+
+   } else if ( argv.current ) {
+
+     // log current version
+     console.log('Current version is: '+version.yellow);
+
+   } else{
+     // log current version
+     console.log('Current version is: '+version.yellow);
+     console.error('🚨 No arguments or invalid arguments were passed. Include one of the following arguments: [--major, --minor, --patch, --current]'.red.bold);
+  }
 });
 
 // Build task to run all tasks and and package for distribution

@@ -2,9 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.5.0] - 2017-04-10
+# Adds
+- Adds new version feature, that allows theme version to be updated by `gulp version --minor` 
+
 ## [3.4.3] - 2017-03-27
 # Removes
-- Removes jQuery enqueue from google CDN from issue #100. Thanks for the heads up @jeremyescott 
+- Removes jQuery enqueue from google CDN from issue #100. Thanks for the heads up @jeremyescott
 
 ## [3.4.2] - 2017-03-21
 # Removes
