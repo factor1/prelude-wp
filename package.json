@@ -25,6 +25,7 @@
   "homepage": "https://github.com/factor1/Prelude#readme",
   "dependencies": {
     "browser-sync": "^2.13.0",
+    "colors": "^1.1.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean": "^0.3.2",
@@ -42,6 +43,8 @@
     "imagemin-pngquant": "^5.0.0",
     "jshint": "^2.9.2",
     "jshint-stylish": "^2.2.0",
-    "normalize-scss": "^6.0.0"
+    "normalize-scss": "^6.0.0",
+    "replace": "^0.3.0",
+    "yargs": "^7.0.2"
   }
 }
