@@ -32,8 +32,8 @@
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.2",
+    "gulp-eslint": "^3.0.1",
     "gulp-imagemin": "^3.0.1",
-    "gulp-jshint": "^2.0.1",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
@@ -42,8 +42,6 @@
     "gulp-uglify": "^2.0.0",
     "gulp-zip": "^3.2.0",
     "imagemin-pngquant": "^5.0.0",
-    "jshint": "^2.9.2",
-    "jshint-stylish": "^2.2.0",
     "normalize-scss": "^6.0.0",
     "replace": "^0.3.0",
     "yargs": "^7.0.2"

@@ -82,16 +82,10 @@ gulp.task('sass', function() {
 // Lint JavaScript
 gulp.task('lint', function() {
   return gulp.src( jsFiles )
-    .pipe(sourcemaps.init())
-      .pipe(plumber())
-      .pipe(jshint())
-      .pipe(jshint.reporter(stylish))
-      .pipe(jshint.reporter('fail'))
-      .on('error', notify.onError({ message: 'Error compiling JavaScript!'}))
-    .pipe(sourcemaps.write())
-    .pipe(browserSync.reload({
-      stream: true
-    }));
+  .pipe(plumber())
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError());
 });
 
 /*------------------------------------------------------------------------------
@@ -125,7 +119,10 @@ gulp.task('scripts', ['lint'], function() {
     .pipe(gulp.dest( './assets/js/' ))
     .pipe(rename('theme.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest( './assets/js/' ));
+    .pipe(gulp.dest( './assets/js/' ))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 // Compress Images
