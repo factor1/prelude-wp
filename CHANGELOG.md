@@ -7,9 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Clean up of global scss from #104
 - Remove vistited link style from #105
 - Remove extra css from social menu - close #106
+- Update nav menu registration - close #112
 
 # Additions
 - Add browser detection via Bowser - closes #107
+- Add ESlint - close #110
+
+# Removes
+- Remove JSHint - close #110
 
 ## [3.5.1] - 2017-06-02
 # Fixes
