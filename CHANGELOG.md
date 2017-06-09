@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [4.0.0] - In-Progress
 # Updates
 - Clean up of global scss from #104
+- Remove vistited link style from #105
 
 ## [3.5.1] - 2017-06-02
 # Fixes
