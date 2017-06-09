@@ -8,5 +8,12 @@ jQuery( document ).ready(function( $ ) {
 	if( isTouchDevice ) {
 		$('body').removeClass('no-touch');
 	}
-  
+
+  // Browser detection via Bowser (https://github.com/lancedikson/bowser) - add detection as needed
+  if( bowser.msie && bower.version === 11 ) {
+    $('body').addClass('ie-11');
+  } else if ( bowser.safari ) {
+    $('body').addClass('safari');
+  }
+
 });

@@ -13,7 +13,12 @@ var phpFiles     = ['./**/*.php', './*.php'],
     styleFiles   = [cssFiles, sassFiles],
     jsFiles      = ['./assets/js/theme.js'],
     imageFiles   = ['./assets/img/*.{jpg,png,gif,svg}'],
-    concatFiles  = ['./assets/js/*.js', '!./assets/js/theme.min.js', '!./assets/js/all.js'],
+    concatFiles  = [
+      './node_modules/bowser/bowser.js',
+      './assets/js/*.js',
+      '!./assets/js/theme.min.js',
+      '!./assets/js/all.js'
+    ],
     url          = 'wp-dev:8888'; // See https://browsersync.io/docs/options/#option-proxy
 
 // Include gulp

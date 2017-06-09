@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 # Updates
 - Clean up of global scss from #104
 - Remove vistited link style from #105
+- Remove extra css from social menu - close #106
+
+# Additions
+- Add browser detection via Bowser - closes #107
 
 ## [3.5.1] - 2017-06-02
 # Fixes
