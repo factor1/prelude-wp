@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.0.0] - In-Progress
+# Updates
+- Clean up of global scss from #104
+
 ## [3.5.1] - 2017-06-02
 # Fixes
 - Missing git commit in gulp version tasks
