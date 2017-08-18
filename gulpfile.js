@@ -27,6 +27,7 @@ var gulp         = require('gulp');
 // Include plugins
 var jshint       = require('gulp-jshint'),
     sass         = require('gulp-sass'),
+    mmq          = require('gulp-merge-media-queries'),
     concat       = require('gulp-concat'),
     uglify       = require('gulp-uglify'),
     rename       = require('gulp-rename'),
