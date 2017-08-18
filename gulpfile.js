@@ -25,8 +25,7 @@ var phpFiles     = ['./**/*.php', './*.php'],
 var gulp         = require('gulp');
 
 // Include plugins
-var jshint       = require('gulp-jshint'),
-    sass         = require('gulp-sass'),
+var sass         = require('gulp-sass'),
     mmq          = require('gulp-merge-media-queries'),
     concat       = require('gulp-concat'),
     uglify       = require('gulp-uglify'),
@@ -37,7 +36,6 @@ var jshint       = require('gulp-jshint'),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync  = require('browser-sync'),
     plumber      = require('gulp-plumber'),
-    stylish      = require('jshint-stylish'),
     notify       = require('gulp-notify'),
     replace      = require('replace'),
     argv         = require('yargs').usage('Usage: $ gulp version [--major, --minor, --patch, --current]').argv,
@@ -73,6 +71,9 @@ gulp.task('sass', function() {
         browsers: ['last 3 versions', 'Safari > 7'],
         cascade: false
       }))
+    .pipe(mmq({
+      log: true
+    }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest( './assets/css' ))
     .pipe(browserSync.reload({
