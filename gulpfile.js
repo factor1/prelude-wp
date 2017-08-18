@@ -12,7 +12,7 @@ var phpFiles     = ['./**/*.php', './*.php'],
     sassFiles    = ['./assets/scss/**/*.scss'],
     styleFiles   = [cssFiles, sassFiles],
     jsFiles      = ['./assets/js/theme.js'],
-    imageFiles   = ['./assets/img/*.{jpg,png,gif,svg}'],
+    imageFiles   = ['./assets/img/*.{jpg,png,gif}'],
     concatFiles  = [
       './node_modules/bowser/bowser.js',
       './assets/js/*.js',
