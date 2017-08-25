@@ -47,6 +47,7 @@
     "normalize-scss": "^7.0.0",
     "prompt": "^1.0.0",
     "replace": "^0.3.0",
+    "slugify": "^1.2.1",
     "yargs": "^8.0.2"
   }
 }

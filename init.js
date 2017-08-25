@@ -1,10 +1,11 @@
-var replace = require('replace'),
+const replace = require('replace'),
+    slugify = require ('slugify'),
     prompt = require('prompt');
 
 prompt.start();
 
 prompt.get(['Theme_Name', 'Theme_URI', 'Author', 'Author_URI', 'Description', 'License', 'License_URI', 'Text_Domain'], function (err, result) {
-   var themeName = result.Theme_Name,
+   let themeName = result.Theme_Name,
        themeURI = result.Theme_URI,
        author = result.Author,
        authorURI = result.Author_URI,
@@ -19,6 +20,18 @@ prompt.get(['Theme_Name', 'Theme_URI', 'Author', 'Author_URI', 'Description', 'L
        replacement: 'Theme Name: '+themeName,
        paths: [
          './style.css'
+       ],
+       silent: true,
+     });
+
+     // make it a slug for the gulpfile theme name
+     const themeName_slug = slugify(themeName, {lower: true});
+
+     replace({
+       regex: 'your-theme-name',
+       replacement: themeName_slug,
+       paths: [
+         './gulpfile.js'
        ],
        silent: true,
      });
