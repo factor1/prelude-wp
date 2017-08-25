@@ -1,1 +1,1 @@
-console.log('🤘');
+var replace = require('replace');

@@ -28,6 +28,7 @@ var gulp         = require('gulp');
 var sass         = require('gulp-sass'),
     mmq          = require('gulp-merge-media-queries'),
     concat       = require('gulp-concat'),
+    eslint       = require('gulp-eslint'),
     uglify       = require('gulp-uglify'),
     rename       = require('gulp-rename'),
     imagemin     = require('gulp-imagemin'),
