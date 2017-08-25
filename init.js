@@ -1,6 +1,6 @@
 const replace = require('replace'),
-    slugify = require ('slugify'),
-    prompt = require('prompt');
+      slugify = require ('slugify'),
+      prompt = require('prompt');
 
 prompt.start();
 
