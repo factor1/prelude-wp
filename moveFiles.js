@@ -9,3 +9,44 @@
  * This script may not work on all operating systems and may produce errors in
  * unsupported OS's.
  */
+
+const prompt = require('prompt'),
+      colors = require('colors'),
+      { exec } = require('child_process');
+
+prompt.start();
+
+prompt.get(['Attempt to move prelude files into project directy? Y/N (Note this may not work on all OS)'], function (err, result) {
+  let userInput = result['Attempt to move prelude files into project directy? Y/N (Note this may not work on all OS)'];
+
+  console.log(userInput);
+
+  if( userInput === 'Y' || userInput === 'y' || userInput === 'yes' ) {
+    console.log('You answered yes... Attempting move.'.green);
+
+    // exec('rsync -a -v --ignore-existing gulpfile.js ./../../ && rsync -a -v --ignore-existing src/* ./../../',(err, stdout, stdeer) => {
+    //   if(err) {
+    //     console.error('There was an error moving the files. Please try manually.');
+    //     return;
+    //   }
+    //
+    //   console.log(`stdout: ${stdout}`);
+    //   console.log(`stderr: ${stderr}`);
+    // });
+
+    exec('echo "It was moved! (test)"',(err, stdout, stdeer) => {
+      if(err) {
+        console.error(err);
+        console.error('There was an error moving the files. Please try manually.'.red);
+        return;
+      }
+
+      console.log(`stdout: ${stdout}`);
+      // console.log(`stderr: ${stderr}`);
+    });
+
+
+  } else if (userInput === 'N' || userInput === 'n' || userInput === 'no') {
+    console.log('No move attempted... Happy Pressing!.'.green);
+  }
+});

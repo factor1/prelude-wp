@@ -13,6 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add browser detection via Bowser - closes #107
 - Add ESlint - close #110
 - Add Merge Media Queries - closes #108
+- Add prelude-init npm script to autopopulate `style.css` and parts of `gulpfile.js` - closes #99
 
 # Removes
 - Remove JSHint - close #110
