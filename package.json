@@ -5,7 +5,7 @@
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified doggie\" && exit 1",
-    "postinstall": "node test.js"
+    "postinstall": "node init.js"
   },
   "repository": {
     "type": "git",
