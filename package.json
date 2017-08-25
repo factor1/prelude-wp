@@ -5,7 +5,7 @@
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified doggie\" && exit 1",
-    "postinstall": "node test.js"
+    "prelude-init": "node init.js"
   },
   "repository": {
     "type": "git",
@@ -45,7 +45,9 @@
     "gulp-zip": "^4.0.0",
     "imagemin-pngquant": "^5.0.1",
     "normalize-scss": "^7.0.0",
+    "prompt": "^1.0.0",
     "replace": "^0.3.0",
+    "slugify": "^1.2.1",
     "yargs": "^8.0.2"
   }
 }
