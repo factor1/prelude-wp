@@ -12,13 +12,11 @@
 
 const prompt = require('prompt'),
       colors = require('colors'),
-      init = require('./init.js'),
       { exec } = require('child_process');
 
 prompt.start();
 
-const promptTextMove = 'Attempt to move prelude files into project directory? Y/N (Note this may not work on all OS)',
-      promptTextInit = 'Run Prelude init script now to run theme setup? Y/N (Can be ran later with [npm explore prelude-wp -- npm run init])';
+const promptTextMove = 'Attempt to move prelude files into project directory? Y/N (Note this may not work on all OS)';
 
 prompt.get([promptTextMove, promptTextInit], (err, result) => {
   let userInputMove = result[promptTextMove],
@@ -46,15 +44,6 @@ prompt.get([promptTextMove, promptTextInit], (err, result) => {
 
     } else if (userInputMove === 'N' || userInputMove === 'n' || userInputMove === 'no') {
       console.log('No move attempted... Happy Pressing!.'.green);
-    }
-
-    // init prompt
-    if( userInputInit === 'Y' || userInputInit === 'y' || userInputInit === 'yes' ) {
-
-      init.themeInfo();
-
-    } else if( userInputInit != 'Y' || userInputInit != 'y' || userInputInit != 'yes' ) {
-      console.log('Skipping theme setup.'.green);
     }
   }
 
