@@ -12,8 +12,7 @@ const replace = require('replace'),
       slugify = require ('slugify'),
       prompt = require('prompt');
 
-exports.themeInfo = () => {
-  //prompt.start();
+  prompt.start();
 
   prompt.get(['Theme_Name', 'Theme_URI', 'Author', 'Author_URI', 'Description', 'License', 'License_URI', 'Text_Domain'], function (err, result) {
      let themeName = result.Theme_Name,
@@ -126,4 +125,3 @@ exports.themeInfo = () => {
      }
 
    });
-}
