@@ -12,6 +12,7 @@
 
 const prompt = require('prompt'),
       colors = require('colors'),
+      themeInfo = require('./init.js'),
       { exec } = require('child_process');
 
 prompt.start();
@@ -49,20 +50,9 @@ prompt.get([promptTextMove, promptTextInit], (err, result) => {
 
     // init prompt
     if( userInputInit === 'Y' || userInputInit === 'y' || userInputInit === 'yes' ) {
-      exec('npm run init', (err, stdout, stderr) => {
-        if(err) {
-          console.error(err+'There was an error running the init script.'.red);
-          return;
-        }
 
-        if( stdout ) {
-          console.log(stdout);
-        }
+      themeInfo();
 
-        if( stderr ){
-          console.log(stderr);
-        }
-      });
     } else if( userInputInit != 'Y' || userInputInit != 'y' || userInputInit != 'yes' ) {
       console.log('Skipping theme setup.'.green);
     }
