@@ -3,6 +3,7 @@
   "version": "4.0.0",
   "description": "Prelude is a Wordpress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.",
   "main": "index.php",
+  "bin" : {"prelude-init" : "./init.js"},
   "scripts": {
     "test": "echo \"Error: no test specified doggie\" && exit 1",
     "postinstall": "node moveFiles.js",
