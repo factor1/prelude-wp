@@ -51,7 +51,7 @@ prompt.get([promptTextMove, promptTextInit], (err, result) => {
     if( userInputInit === 'Y' || userInputInit === 'y' || userInputInit === 'yes' ) {
       exec('npm explore prelude-wp -- npm run init', (err, stdout, stderr) => {
         if(err) {
-          console.error('There was an error running the init script.');
+          console.error(err+'There was an error running the init script.'.red);
           return;
         }
 
