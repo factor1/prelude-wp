@@ -16,10 +16,11 @@ const prompt = require('prompt'),
 
 prompt.start();
 
-const promptText = 'Attempt to move prelude files into project directory? Y/N (Note this may not work on all OS)';
+const promptTextMove = 'Attempt to move prelude files into project directory? Y/N (Note this may not work on all OS)',
+      promptTextInit = 'Run Prelude init script now to run theme setup? Y/N (Can be ran later with [npm explore prelude-wp -- npm run init])';
 
-prompt.get([promptText], function (err, result) {
-  let userInput = result[promptText];
+prompt.get([promptTextMove], (err, result) => {
+  let userInput = result[promptTextMove];
 
   if( userInput === 'Y' || userInput === 'y' || userInput === 'yes' ) {
     console.log('You answered yes... Attempting move.'.green);
@@ -42,5 +43,28 @@ prompt.get([promptText], function (err, result) {
 
   } else if (userInput === 'N' || userInput === 'n' || userInput === 'no') {
     console.log('No move attempted... Happy Pressing!.'.green);
+  }
+});
+
+prompt.get([promptTextInit], (err, result) => {
+  let userInput = result[promptTextInit];
+
+  if( userInput === 'Y' || userInput === 'y' || userInput === 'yes' ) {
+    exec('npm explore prelude-wp -- npm run init', (err, stdout, stderr) => {
+      if(err) {
+        console.error('There was an error running the init script.');
+        return;
+      }
+
+      if( stdout ) {
+        console.log(stdout);
+      }
+
+      if( stderr ){
+        console.log(stderr);
+      }
+    });
+  } else {
+    console.log('Skipping theme setup.'.green);
   }
 });
