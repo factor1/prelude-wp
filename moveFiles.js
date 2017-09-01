@@ -68,4 +68,6 @@ prompt.get([promptTextMove, promptTextInit], (err, result) => {
     }
   }
 
+  getResponse();
+
 });
