@@ -5,6 +5,7 @@
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified doggie\" && exit 1",
+    "postinstall": "node moveFiles.js",
     "prelude-init": "node init.js"
   },
   "repository": {
