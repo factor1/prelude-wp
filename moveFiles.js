@@ -21,8 +21,6 @@ const promptText = 'Attempt to move prelude files into project directory? Y/N (N
 prompt.get([promptText], function (err, result) {
   let userInput = result[promptText];
 
-  //console.log(userInput);
-
   if( userInput === 'Y' || userInput === 'y' || userInput === 'yes' ) {
     console.log('You answered yes... Attempting move.'.green);
 
@@ -32,21 +30,15 @@ prompt.get([promptText], function (err, result) {
         return;
       }
 
-      console.log(`stdout: ${stdout}`);
-      //console.log(`stderr: ${stderr}`);
+      if( stdout ) {
+        console.log(stdout);
+      }
+
+      if( stderr ){
+        console.log(stderr);
+      }
+
     });
-
-    // exec('echo "It was moved! (test)"',(err, stdout, stdeer) => {
-    //   if(err) {
-    //     console.error(err);
-    //     console.error('There was an error moving the files. Please try manually.'.red);
-    //     return;
-    //   }
-    //
-    //   console.log(`stdout: ${stdout}`);
-    //   //console.log(`stderr: ${stderr}`);
-    // });
-
 
   } else if (userInput === 'N' || userInput === 'n' || userInput === 'no') {
     console.log('No move attempted... Happy Pressing!.'.green);
