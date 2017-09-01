@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified doggie\" && exit 1",
     "postinstall": "node moveFiles.js",
-    "prelude-init": "node init.js"
+    "postpostinstall": "node init.js"
   },
   "repository": {
     "type": "git",
