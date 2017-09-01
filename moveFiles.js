@@ -24,7 +24,7 @@ prompt.get([promptText], function (err, result) {
   if( userInput === 'Y' || userInput === 'y' || userInput === 'yes' ) {
     console.log('You answered yes... Attempting move.'.green);
 
-    exec('rsync -a -v --ignore-existing gulpfile.js ./../../ && rsync -a -v --ignore-existing ./ ./../../',(err, stdout, stdeer) => {
+    exec('rsync -a -v --ignore-existing gulpfile.js ./../../ && rsync -a -v --ignore-existing ./ ./../../',(err, stdout, stderr) => {
       if(err) {
         console.error('There was an error moving the files. Please try manually.');
         return;
