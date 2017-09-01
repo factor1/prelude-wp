@@ -12,7 +12,7 @@
 
 const prompt = require('prompt'),
       colors = require('colors'),
-      themeInfo = require('./init.js'),
+      init = require('./init.js'),
       { exec } = require('child_process');
 
 prompt.start();
@@ -51,7 +51,7 @@ prompt.get([promptTextMove, promptTextInit], (err, result) => {
     // init prompt
     if( userInputInit === 'Y' || userInputInit === 'y' || userInputInit === 'yes' ) {
 
-      themeInfo();
+      init.themeInfo();
 
     } else if( userInputInit != 'Y' || userInputInit != 'y' || userInputInit != 'yes' ) {
       console.log('Skipping theme setup.'.green);
