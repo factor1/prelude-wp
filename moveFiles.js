@@ -19,10 +19,11 @@ prompt.start();
 const promptTextMove = 'Attempt to move prelude files into project directory? Y/N (Note this may not work on all OS)',
       promptTextInit = 'Run Prelude init script now to run theme setup? Y/N (Can be ran later with [npm explore prelude-wp -- npm run init])';
 
-prompt.get([promptTextMove], (err, result) => {
-  let userInput = result[promptTextMove];
+prompt.get([promptTextMove, promptTextInit], (err, result) => {
+  let userInputMove = result[promptTextMove],
+      userInputInit = result[promptTextInit],
 
-  if( userInput === 'Y' || userInput === 'y' || userInput === 'yes' ) {
+  if( userInputMove === 'Y' || userInputMove === 'y' || userInputMove === 'yes' ) {
     console.log('You answered yes... Attempting move.'.green);
 
     exec('rsync -a -v --ignore-existing gulpfile.js ./../../ && rsync -a -v --ignore-existing ./ ./../../',(err, stdout, stderr) => {
@@ -41,15 +42,11 @@ prompt.get([promptTextMove], (err, result) => {
 
     });
 
-  } else if (userInput === 'N' || userInput === 'n' || userInput === 'no') {
+  } else if (userInputMove === 'N' || userInputMove === 'n' || userInputMove === 'no') {
     console.log('No move attempted... Happy Pressing!.'.green);
   }
-});
 
-prompt.get([promptTextInit], (err, result) => {
-  let userInput = result[promptTextInit];
-
-  if( userInput === 'Y' || userInput === 'y' || userInput === 'yes' ) {
+  if( userInputInit === 'Y' || userInputInit === 'y' || userInputInit === 'yes' ) {
     exec('npm explore prelude-wp -- npm run init', (err, stdout, stderr) => {
       if(err) {
         console.error('There was an error running the init script.');
@@ -64,7 +61,7 @@ prompt.get([promptTextInit], (err, result) => {
         console.log(stderr);
       }
     });
-  } else {
+  } else if( userInputInit != 'Y' || userInputInit != 'y' || userInputInit != 'yes' ) {
     console.log('Skipping theme setup.'.green);
   }
 });
