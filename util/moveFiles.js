@@ -18,9 +18,8 @@ prompt.start();
 
 const promptTextMove = 'Attempt to move prelude files into project directory? Y/N (Note this may not work on all OS)';
 
-prompt.get([promptTextMove, promptTextInit], (err, result) => {
-  let userInputMove = result[promptTextMove],
-      userInputInit = result[promptTextInit];
+prompt.get([promptTextMove], (err, result) => {
+  let userInputMove = result[promptTextMove];
 
   const getResponse = () => {
     if( userInputMove === 'Y' || userInputMove === 'y' || userInputMove === 'yes' ) {
