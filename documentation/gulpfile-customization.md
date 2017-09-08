@@ -7,7 +7,8 @@ to it to better suite your needs.
 Prelude uses [BrowserSync](https://www.browsersync.io/) to allow for a great coding experience. It provides
 the ability to see your work instantly in the browser without the need to refresh.
 It should work out of the box by simply updating the `url` variable in `gulpfile.js`
-with your local development URL.
+with your local development URL. ([See Browsersync + Gulp.js Documentation](https://www.browsersync.io/docs/gulp)
+for more options)
 
 ## File Paths
 We set some variables to common file paths so that we can reference them
@@ -52,4 +53,4 @@ the sass files from its package would look something like this:
 ```
 
 Now when trying to use `@import ginger` sass will check that path for the relevant
-sass file to import and it will be included in your compiled styles. 
+sass file to import and it will be included in your compiled styles.
