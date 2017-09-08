@@ -86,3 +86,32 @@ The `featuredURL` function will echo the URL of a featured post.
 
 #### Arguments
 - `$size` - pass the thumbnail size you wish to use. (Accepts a string, default: `'full'`)
+
+##### Function:
+```php
+function featuredURL($size = 'full'){
+  $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), $size );
+  $url = $thumb['0'];
+  echo $url;
+}
+```
+
+## Widgets
+> File Location: `inc/widgets.php`
+
+The widgets file adds a few useful widget areas as well as removing some lesser
+used widgets.
+
+**Widgets Added**
+- Sidebar (id: `sidebar-1`)
+- Footer Area 1 (id: `footer-widget`)
+- Footer Area 2 (id: `footer-widget-2`)
+- Footer Area 3 (id: `footer-widget-3`)
+- Footer Area 4 (id: `footer-widget-4`)
+
+**Widgets Removed**
+- `WP_Widget_Calendar`
+- `WP_Widget_Links`
+- `WP_Widget_Meta`
+- `WP_Widget_Search`
+- `WP_Widget_Recent_Comments`
