@@ -17,6 +17,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 # Removes
 - Remove JSHint - close #110
+- Removes `featuredBG` php function from `inc/thumbnails.php`
 
 ## [3.5.1] - 2017-06-02
 # Fixes
