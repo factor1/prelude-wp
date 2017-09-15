@@ -38,3 +38,9 @@ class.
   <iframe width="560" height="315" src="https://www.youtube.com/embed/_cOV_S3S8Yc" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
+
+## Social Menu Styles
+> File Location: `assets/scss/components/_social-menu.scss`
+
+The social menu styles can be found here. Adjust these when using the `prelude_social_menu()`
+function. 
