@@ -96,6 +96,188 @@ function featuredURL($size = 'full'){
 }
 ```
 
+## WordPress Tweaks
+> File Location: `inc/tweaks.php`
+
+The tweaks file makes some adjustments to your WordPress install. You may adjust
+them as you see fit.
+
+### Theme Support Additions
+The following theme supports have been added by default:
+- automatic-feed-links
+- post-formats
+- post-thumbnails
+- HTML5
+- title-tag
+
+### Theme Support Removals
+The following theme supports have been removed by default:
+- wp-head
+ - rsd_link
+ - wlwmanifest_link
+ - wp_generator
+ - start_post_rel_link
+ - index_rel_link
+ - adjacent_posts_rel_link
+
+### Content Width (`prelude_content_width()`)
+`prelude_content_width()` sets the maximum allowed width for any content in the
+theme. See: [WordPress Codex](https://codex.wordpress.org/Content_Width)
+
+```php
+function prelude_content_width() {
+    $GLOBALS[ 'content_width' ] = apply_filters( 'prelude_content_width', 1200 );
+  }
+  add_action( 'after_setup_theme', 'prelude_content_width', 0 );
+```
+### Page Excerpts
+There are a few functions to help you control the excerpts that are displayed on
+your theme.
+
+#### Add Page Excerpts
+`prelude_page_excerpt()` adds support for excerpts in pages.
+
+```php
+function prelude_page_excerpt() {
+    add_post_type_support( 'page', array('excerpt') );
+  }
+add_action( 'init', 'prelude_page_excerpt' );
+```
+
+#### Customize Default Read More Link
+Customize the Read More link that is appended to posts/pages.
+
+```php
+// Customize the default read more link
+function prelude_continue_reading_link() {
+  return ' <a href="' . get_permalink() . '">' .
+   __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'theme-slug' ) .
+   '</a>';
+}
+```
+
+#### Customize the default ellipsis
+By default, this customizes the default ellipses and appends the output from
+`prelude_continue_reading_link()`.
+
+```php
+// Customize the default ellipsis (...)
+function prelude_auto_excerpt_more( $more ) {
+  return '&hellip;' . prelude_continue_reading_link();
+}
+add_filter( 'excerpt_more', 'prelude_auto_excerpt_more'
+```
+
+### Remove Default Gallery Styling (`prelude_remove_gallery_css`)
+Removes the default WordPress gallery styling.
+
+```php
+function prelude_remove_gallery_css( $css ) {
+  return preg_replace( "#<style type='text/css'>(.*?)</style>#s", '', $css );
+}
+add_filter( 'gallery_style', 'prelude_remove_gallery_css' );
+```
+
+### Customize Dashboard Widgets (`prelude_remove_dashboard_boxes`)
+Removes certain meta boxes from the WordPress dashboard.
+
+```php
+// Customize which dashboard widgets show
+function prelude_remove_dashboard_boxes() {
+  remove_meta_box('dashboard_right_now', 'dashboard', 'core' ); // Right Now Overview Box
+  remove_meta_box('dashboard_incoming_links', 'dashboard', 'core' ); // Incoming Links Box
+  remove_meta_box('dashboard_quick_press', 'dashboard', 'core' ); // Quick Press Box
+  remove_meta_box( 'dashboard_plugins', 'dashboard', 'core' ); // Plugins Box
+  remove_meta_box('dashboard_recent_drafts', 'dashboard', 'core' ); // Recent Drafts Box
+  remove_meta_box('dashboard_recent_comments', 'dashboard', 'core' ); // Recent Comments
+  remove_meta_box('dashboard_primary', 'dashboard', 'core' ); // WordPress Development Blog
+  remove_meta_box('dashboard_secondary', 'dashboard', 'core' ); // Other WordPress News
+}
+add_action( 'admin_menu', 'prelude_remove_dashboard_boxes' );
+```
+
+### Remove meta boxes from default posts screen
+Removes certain meta boxes from post screens. (Some are commented out for easy
+reference.)
+
+```php
+function prelude_remove_default_post_metaboxes() {
+  remove_meta_box( 'postcustom', 'post', 'normal' ); // Custom Fields Metabox
+  //remove_meta_box( 'postexcerpt', 'post', 'normal' ); // Excerpt Metabox
+  //remove_meta_box( 'commentstatusdiv', 'post', 'normal' ); // Comments Metabox
+  remove_meta_box( 'trackbacksdiv', 'post', 'normal' ); // Talkback Metabox
+  //remove_meta_box( 'authordiv', 'post', 'normal' ); // Author Metabox
+}
+add_action( 'admin_menu', 'prelude_remove_default_post_metaboxes' );
+```
+
+### Remove meta boxes from default pages screens
+Removes certain meta boxes from page screens. (Some are commented out for easy
+reference)
+
+```php
+// Remove meta boxes from default pages screen
+function prelude_remove_default_page_metaboxes() {
+  remove_meta_box( 'postcustom', 'page', 'normal' ); // Custom Fields Metabox
+  //remove_meta_box('commentstatusdiv', 'page', 'normal' ); // Discussion Metabox
+  remove_meta_box( 'authordiv', 'page', 'normal' ); // Author Metabox
+}
+add_action( 'admin_menu', 'prelude_remove_default_page_metaboxes' );
+```
+
+### Stop automatically linking photos to themselves
+Stops WordPress from linking to full-size photos.
+
+```php
+// Stop automatically hyper-linking images to themselves
+$image_set = get_option( 'image_default_link_type' );
+if ( !$image_set == 'none' ) {
+  update_option( 'image_default_link_type', 'none' );
+}
+```
+
+### Customize Yoast SEO Columns
+Adjust the Yoast SEO Columns when used.
+
+```php
+// Customize the Yoast SEO columns
+add_filter( 'wpseo_use_page_analysis', '__return_false' );
+```
+
+### Touch Detection (`be_body_classes()`)
+Add touch detection class to body.
+
+```php
+// Add touch detection class to body
+function be_body_classes( $classes ) {
+  $classes[] = 'no-touch';
+  return $classes;
+}
+add_filter( 'body_class', 'be_body_classes' );
+```
+
+### Keep the WordPress Kitchen Sink Toolkit open (`enable_more_buttons()`)
+Keeps the WordPress Kitchen Sink Toolkit open for all users. This can help the
+end user(s) edit their content inside of WYSIWYGs.
+
+```php
+// Keep the WordPress Kitchen Sink Toolkit open for all users.
+function enable_more_buttons($buttons) {
+  $buttons[] = 'fontselect';
+  $buttons[] = 'fontsizeselect';
+  $buttons[] = 'styleselect';
+  $buttons[] = 'backcolor';
+  $buttons[] = 'newdocument';
+  $buttons[] = 'cut';
+  $buttons[] = 'copy';
+  $buttons[] = 'charmap';
+  $buttons[] = 'hr';
+  $buttons[] = 'visualaid';
+  return $buttons;
+}
+add_filter("mce_buttons_3", "enable_more_buttons");
+```
+
 ## Widgets
 > File Location: `inc/widgets.php`
 
