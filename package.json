@@ -1,10 +1,12 @@
 {
   "name": "prelude-wp",
-  "version": "3.5.1",
+  "version": "4.0.0",
   "description": "Prelude is a Wordpress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.",
   "main": "index.php",
   "scripts": {
-    "test": "echo \"Error: no test specified doggie\" && exit 1"
+    "test": "echo \"Error: no test specified doggie\" && exit 1",
+    "postinstall": "node ./util/moveFiles.js",
+    "init": "node ./util/theme-init.js"
   },
   "repository": {
     "type": "git",
@@ -24,27 +26,30 @@
   },
   "homepage": "https://github.com/factor1/Prelude#readme",
   "dependencies": {
-    "browser-sync": "^2.13.0",
+    "bowser": "^1.7.2",
+    "browser-sync": "^2.18.13",
     "colors": "^1.1.2",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.0",
+    "gulp-autoprefixer": "^4.0.0",
     "gulp-clean": "^0.3.2",
-    "gulp-concat": "^2.6.0",
+    "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
-    "gulp-imagemin": "^3.0.1",
-    "gulp-jshint": "^2.0.1",
-    "gulp-notify": "^2.2.0",
+    "gulp-eslint": "^4.0.0",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-merge-media-queries": "^0.2.1",
+    "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.0.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^2.0.0",
-    "gulp-zip": "^3.2.0",
-    "imagemin-pngquant": "^5.0.0",
-    "jshint": "^2.9.2",
-    "jshint-stylish": "^2.2.0",
-    "normalize-scss": "^6.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-zip": "^4.0.0",
+    "imagemin-pngquant": "^5.0.1",
+    "normalize-scss": "^7.0.0",
+    "prompt": "^1.0.0",
     "replace": "^0.3.0",
-    "yargs": "^7.0.2"
+    "slugify": "^1.2.1",
+    "standard": "^10.0.3",
+    "yargs": "^8.0.2"
   }
 }

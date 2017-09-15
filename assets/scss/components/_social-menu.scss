@@ -4,18 +4,16 @@
 ----------------------------------------------------------------------------*/
 .menu-social {
   ul {
+    margin: 0;
+    padding: 0;
     text-align: inherit;
     list-style: none;
-    padding: 0;
     li{
-      position: relative;
       display: inline-block;
+      position: relative;
       padding: 0 .625rem;
       a{
         display: inline-block;
-        width: 22px;
-        height: 22px;
-        border-radius: 10px;
         text-align: center;
         &:before{
           padding-bottom: .25rem;
@@ -24,7 +22,6 @@
           font-family: 'FontAwesome';
           font-size: .7rem;
           color: red;
-          -webkit-font-smoothing: antialiased;
         }
         &:hover {
           font-style: normal;
@@ -93,11 +90,4 @@
 // Hide the default Screen Reader text
 .screen-reader-text {
   display: none;
-}
-
-@media only screen and (max-width: 640px) {
-  .menu-social {
-    float: none;
-    text-align: center;
-  }
 }

@@ -2,6 +2,23 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.0.0] - In-Progress
+# Updates
+- Clean up of global scss from #104
+- Remove vistited link style from #105
+- Remove extra css from social menu - close #106
+- Update nav menu registration - close #112
+
+# Additions
+- Add browser detection via Bowser - closes #107
+- Add ESlint - close #110
+- Add Merge Media Queries - closes #108
+- Add prelude-init npm script to autopopulate `style.css` and parts of `gulpfile.js` - closes #99
+
+# Removes
+- Remove JSHint - close #110
+- Removes `featuredBG` php function from `inc/thumbnails.php`
+
 ## [3.5.1] - 2017-06-02
 # Fixes
 - Missing git commit in gulp version tasks
