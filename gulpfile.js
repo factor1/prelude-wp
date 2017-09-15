@@ -2,8 +2,8 @@
   Gulpfile.js
 ------------------------------------------------------------------------------*/
 // Theme information (name, starting theme version)
-var theme        = 'your-theme-name',
-    version      = '0.0.1';
+var theme        = 'your-theme-name', // will be autocompleted by prelude-init
+    version      = '0.0.1'; // updated with gulp version task
 
 // Set the paths you will be working with
 var phpFiles     = ['./**/*.php', './*.php'],
@@ -12,17 +12,23 @@ var phpFiles     = ['./**/*.php', './*.php'],
     sassFiles    = ['./assets/scss/**/*.scss'],
     styleFiles   = [cssFiles, sassFiles],
     jsFiles      = ['./assets/js/theme.js'],
-    imageFiles   = ['./assets/img/*.{jpg,png,gif,svg}'],
-    concatFiles  = ['./assets/js/*.js', '!./assets/js/theme.min.js', '!./assets/js/all.js'],
+    imageFiles   = ['./assets/img/*.{jpg,png,gif}'],
+    concatFiles  = [
+      './node_modules/bowser/bowser.js',
+      './assets/js/*.js',
+      '!./assets/js/theme.min.js',
+      '!./assets/js/all.js'
+    ],
     url          = 'wp-dev:8888'; // See https://browsersync.io/docs/options/#option-proxy
 
 // Include gulp
 var gulp         = require('gulp');
 
 // Include plugins
-var jshint       = require('gulp-jshint'),
-    sass         = require('gulp-sass'),
+var sass         = require('gulp-sass'),
+    mmq          = require('gulp-merge-media-queries'),
     concat       = require('gulp-concat'),
+    eslint       = require('gulp-eslint'),
     uglify       = require('gulp-uglify'),
     rename       = require('gulp-rename'),
     imagemin     = require('gulp-imagemin'),
@@ -31,7 +37,6 @@ var jshint       = require('gulp-jshint'),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync  = require('browser-sync'),
     plumber      = require('gulp-plumber'),
-    stylish      = require('jshint-stylish'),
     notify       = require('gulp-notify'),
     replace      = require('replace'),
     argv         = require('yargs').usage('Usage: $ gulp version [--major, --minor, --patch, --current]').argv,
@@ -67,6 +72,9 @@ gulp.task('sass', function() {
         browsers: ['last 3 versions', 'Safari > 7'],
         cascade: false
       }))
+    .pipe(mmq({
+      log: true
+    }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest( './assets/css' ))
     .pipe(browserSync.reload({
@@ -77,16 +85,10 @@ gulp.task('sass', function() {
 // Lint JavaScript
 gulp.task('lint', function() {
   return gulp.src( jsFiles )
-    .pipe(sourcemaps.init())
-      .pipe(plumber())
-      .pipe(jshint())
-      .pipe(jshint.reporter(stylish))
-      .pipe(jshint.reporter('fail'))
-      .on('error', notify.onError({ message: 'Error compiling JavaScript!'}))
-    .pipe(sourcemaps.write())
-    .pipe(browserSync.reload({
-      stream: true
-    }));
+  .pipe(plumber())
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError());
 });
 
 /*------------------------------------------------------------------------------
@@ -120,7 +122,10 @@ gulp.task('scripts', ['lint'], function() {
     .pipe(gulp.dest( './assets/js/' ))
     .pipe(rename('theme.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest( './assets/js/' ));
+    .pipe(gulp.dest( './assets/js/' ))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 // Compress Images
@@ -176,7 +181,7 @@ gulp.task('version', function(cb) {
       silent: true,
     });
 
-    exec(`git commit -am "Bumps theme version" && git tag ${newVersion}`, function (err, stdout, stderr) {
+    exec(`git commit -am "Bumps theme version to ${newVersion}"`, function (err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
       cb(err);
@@ -207,7 +212,7 @@ gulp.task('version', function(cb) {
       silent: true,
     });
 
-    exec(`git commit -am "Bumps theme version" && git tag ${newVersion}`, function (err, stdout, stderr) {
+    exec(`git commit -am "Bumps theme version to ${newVersion}"`, function (err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
       cb(err);
@@ -238,7 +243,7 @@ gulp.task('version', function(cb) {
        silent: true,
      });
 
-     exec(`git commit -am "Bumps theme version" && git tag ${newVersion}`, function (err, stdout, stderr) {
+     exec(`git commit -am "Bumps theme version to ${newVersion}"`, function (err, stdout, stderr) {
        console.log(stdout);
        console.log(stderr);
        cb(err);

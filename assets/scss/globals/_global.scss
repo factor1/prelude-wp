@@ -10,25 +10,22 @@
 
 html,
 body {
-  border      : 0;
-  margin      : 0;
-  padding     : 0;
-  width       : 100%;
-  min-height  : 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  border: 0;
 }
 
 html,
 html a {
-  -webkit-font-smoothing : antialiased !important;
-  text-shadow            : 1px 1px 1px rgba(0, 0, 0, 0.004);
+  -webkit-font-smoothing: antialiased !important;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
 }
 
 body {
-  font                       : 100%/1.25 arial, helvetica, sans-serif;
-  min-height                 : 100%;
-  overflow-y                 : scroll;
-  /* has to be scroll, not auto */
-  -webkit-overflow-scrolling : touch;
+  font: 100%/1.25 arial, helvetica, sans-serif;
+  min-height: 100%;
 }
 
 // Hide empty paragraphs
@@ -38,7 +35,7 @@ p:empty{
 
 // Tables
 table {
-  margin  : 0 0 18px;
+  margin: 0 0 18px;
 }
 
 /* keep images from spilling out of columns */
