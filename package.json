@@ -1,6 +1,6 @@
 {
   "name": "prelude-wp",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Prelude is a Wordpress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.",
   "main": "index.php",
   "scripts": {
@@ -49,7 +49,6 @@
     "prompt": "^1.0.0",
     "replace": "^0.3.0",
     "slugify": "^1.2.1",
-    "standard": "^10.0.3",
     "yargs": "^8.0.2"
   }
 }
