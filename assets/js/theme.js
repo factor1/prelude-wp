@@ -10,7 +10,7 @@ jQuery( document ).ready(function( $ ) {
 	}
 
   // Browser detection via Bowser (https://github.com/lancedikson/bowser) - add detection as needed
-  if( bowser.msie && bower.version === 11 ) {
+  if( bowser.msie && bowser.version == 11 ) {
     $('body').addClass('ie-11');
   } else if ( bowser.safari ) {
     $('body').addClass('safari');
