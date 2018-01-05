@@ -33,7 +33,7 @@ When working with sass that may live in a package manager, you will need to incl
 those paths so that when any gulp tasks that run sass know where to look. By
 default, there is already one sass path that you can use as an example:
 
-```scss
+```js
 .pipe(sass({
   includePaths: [
     './node_modules/normalize-scss/sass/'
@@ -43,7 +43,7 @@ default, there is already one sass path that you can use as an example:
 Let's say that you add [Ginger Grid](https://gingergrid.com) via npm, including
 the sass files from its package would look something like this:
 
-```scss
+```js
 .pipe(sass({
   includePaths: [
     './node_modules/normalize-scss/sass/',
