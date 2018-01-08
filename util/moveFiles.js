@@ -14,38 +14,45 @@ const prompt = require('prompt'),
       colors = require('colors'),
       { exec } = require('child_process');
 
-prompt.start();
+// only run if we aren't a travis test
+console.log('postinstall');
+console.log(process.env.CI);
+console.log(process.env.TRAVIS);
 
-const promptTextMove = 'Attempt to move prelude files into project directory? Y/N (Note this may not work on all OS)';
+if( !process.env.CI && !process.env.TRAVIS ) {
+  // prompt.start();
+  //
+  // const promptTextMove = 'Attempt to move prelude files into project directory? Y/N (Note this may not work on all OS)';
+  //
+  // prompt.get([promptTextMove], (err, result) => {
+  //   let userInputMove = result[promptTextMove];
+  //
+  //   const getResponse = () => {
+  //     if( userInputMove === 'Y' || userInputMove === 'y' || userInputMove === 'yes' ) {
+  //       console.log('You answered yes... Attempting move.'.green);
+  //
+  //       exec('rsync -a -v --ignore-existing ./gulpfile.js ./../../ && rsync -a -v --ignore-existing ./ ./../../',(err, stdout, stderr) => {
+  //         if(err) {
+  //           console.error('There was an error moving the files. Please try manually.');
+  //           return;
+  //         }
+  //
+  //         if( stdout ) {
+  //           console.log(stdout);
+  //         }
+  //
+  //         if( stderr ){
+  //           console.log(stderr);
+  //         }
+  //
+  //       });
+  //
+  //     } else if (userInputMove === 'N' || userInputMove === 'n' || userInputMove === 'no') {
+  //       console.log('No move attempted... Happy Pressing!.'.green);
+  //     }
+  //   }
+  //
+  //   getResponse();
 
-prompt.get([promptTextMove], (err, result) => {
-  let userInputMove = result[promptTextMove];
-
-  const getResponse = () => {
-    if( userInputMove === 'Y' || userInputMove === 'y' || userInputMove === 'yes' ) {
-      console.log('You answered yes... Attempting move.'.green);
-
-      exec('rsync -a -v --ignore-existing ./gulpfile.js ./../../ && rsync -a -v --ignore-existing ./ ./../../',(err, stdout, stderr) => {
-        if(err) {
-          console.error('There was an error moving the files. Please try manually.');
-          return;
-        }
-
-        if( stdout ) {
-          console.log(stdout);
-        }
-
-        if( stderr ){
-          console.log(stderr);
-        }
-
-      });
-
-    } else if (userInputMove === 'N' || userInputMove === 'n' || userInputMove === 'no') {
-      console.log('No move attempted... Happy Pressing!.'.green);
-    }
-  }
-
-  getResponse();
-
-});
+  });
+}
