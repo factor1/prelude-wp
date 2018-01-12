@@ -29,7 +29,8 @@ if( process.env.CI !== 'true' && process.env.TRAVIS !== 'true') {
 
         exec(`rsync -a -v --ignore-existing --exclude-from 'exclude.txt' ./ ./../../`,(err, stdout, stderr) => {
           if(err) {
-            console.error('There was an error moving the files. Please try manually.');
+            console.error(err);
+            console.error('There was an error moving the files. Please try manually.'.red);
             return;
           }
 
