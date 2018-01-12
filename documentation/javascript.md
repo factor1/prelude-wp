@@ -16,7 +16,7 @@ Prelude includes [Bowser](https://github.com/lancedikson/bowser) to aid in
 browser detection. You can modify these as needed but by default is as follows:
 
 ```js
-if( bowser.msie && bower.version === 11 ) {
+if( bowser.msie && bower.version == 11 ) {
   $('body').addClass('ie-11');
 } else if ( bowser.safari ) {
   $('body').addClass('safari');
