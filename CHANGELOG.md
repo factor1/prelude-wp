@@ -6,6 +6,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 # Fixes
 - Fixes file move node script to ignore `util/` folder and all `.md` files.
 
+# Updates
+- Update bowser documentation to reflect correct comparison operator.
+
 ## [4.0.2] - 2017-10-20
 # Fixes
 - Fixes typo in bowser function, adjust operator for browser version check.
