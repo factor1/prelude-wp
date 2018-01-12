@@ -27,7 +27,7 @@ if( process.env.CI !== 'true' && process.env.TRAVIS !== 'true') {
       if( userInputMove === 'Y' || userInputMove === 'y' || userInputMove === 'yes' ) {
         console.log('You answered yes... Attempting move.'.green);
 
-        exec(`rsync -a -v --ignore-existing --exclude '*.md' ./ ./../../`,(err, stdout, stderr) => {
+        exec(`rsync -a -v --ignore-existing --exclude '*.md' --exclude 'util/' ./ ./../../`,(err, stdout, stderr) => {
           if(err) {
             console.error('There was an error moving the files. Please try manually.');
             return;
