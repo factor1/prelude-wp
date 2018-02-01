@@ -8,6 +8,9 @@
     "postinstall": "node ./util/moveFiles.js",
     "init": "node ./util/theme-init.js"
   },
+  "config": {
+    "dev" : true
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/factor1/Prelude.git"
@@ -26,14 +29,11 @@
   },
   "homepage": "https://github.com/factor1/Prelude#readme",
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.39",
-    "@babel/preset-env": "^7.0.0-beta.39",
     "bowser": "^1.7.2",
     "browser-sync": "^2.18.13",
     "colors": "^1.1.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
-    "gulp-babel": "^7.0.1",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
@@ -54,5 +54,9 @@
     "slugify": "^1.2.1",
     "yargs": "^8.0.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.39",
+    "@babel/preset-env": "^7.0.0-beta.39",
+    "gulp-babel": "^7.0.1"
+  }
 }
