@@ -27,6 +27,7 @@
   "homepage": "https://github.com/factor1/Prelude#readme",
   "dependencies": {
     "@babel/core": "^7.0.0-beta.39",
+    "@babel/preset-env": "^7.0.0-beta.39",
     "bowser": "^1.7.2",
     "browser-sync": "^2.18.13",
     "colors": "^1.1.2",
@@ -53,7 +54,5 @@
     "slugify": "^1.2.1",
     "yargs": "^8.0.2"
   },
-  "devDependencies": {
-    "babel-preset-env": "^1.6.1"
-  }
+  "devDependencies": {}
 }
