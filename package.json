@@ -8,9 +8,6 @@
     "postinstall": "node ./util/moveFiles.js",
     "init": "node ./util/theme-init.js"
   },
-  "config": {
-    "dev" : true
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/factor1/Prelude.git"
