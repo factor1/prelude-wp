@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+# Adds
+- Adds ES6 support with babel
+- Adds Babel ESLint Plugin 
+
+## Updates
+- Update ESLint rules for ES6/Babel
+
 ## [4.0.3] - 2018-01-12
 # Fixes
 - Fixes file move node script to ignore `util/` folder and all `.md` files.
