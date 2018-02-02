@@ -14,7 +14,8 @@ var phpFiles     = ['./**/*.php', './*.php'],
     jsFiles      = ['./assets/js/theme.js'],
     imageFiles   = ['./assets/img/*.{jpg,png,gif}'],
     concatFiles  = [
-      './node_modules/bowser/bowser.js',
+      './node_modules/babel-polyfill/dist/polyfill.js',
+      // './node_modules/bowser/bowser.js',
       './assets/js/*.js',
       '!./assets/js/theme.min.js',
       '!./assets/js/all.js'

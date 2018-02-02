@@ -30,6 +30,7 @@
   "homepage": "https://github.com/factor1/Prelude#readme",
   "dependencies": {
     "babel-core": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "bowser": "^1.7.2",
     "browser-sync": "^2.18.13",

@@ -54,7 +54,7 @@
     "array-bracket-spacing": [1,"always",{"singleValue":true,"objectsInArrays":true,"arraysInArrays":true}],
     "camelcase": [1,{"properties":"always"}],
     "comma-spacing": [1,{"after":true}],
-    "indent": [1,2],
+    "indent": [1,"tab"],
     "quotes": [1,"single","avoid-escape"]
   }
 }
