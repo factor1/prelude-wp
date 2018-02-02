@@ -117,16 +117,23 @@ gulp.task('minify-css', ['sass'], function() {
 });
 
 // Concatenate & Minify JavaScript
-gulp.task('scripts', ['lint'], function() {
+gulp.task('compile-scripts', ['lint'], function() {
   return gulp.src( concatFiles )
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(concat( 'all.js' ))
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest( './assets/js/' ))
-    // .pipe(rename('theme.min.js'))
-    // .pipe(uglify())
-    // .pipe(gulp.dest( './assets/js/' ))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
+});
+
+gulp.task('scripts', ['compile-scripts'], function() {
+  return gulp.src( './assets/js/all.js' )
+    .pipe(rename('theme.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest( './assets/js/' ))
     .pipe(browserSync.reload({
       stream: true
     }));
@@ -266,7 +273,7 @@ gulp.task('version', function(cb) {
 });
 
 // Build task to run all tasks and and package for distribution
-gulp.task('build', ['sass', 'scripts', 'images', 'package']);
+gulp.task('build', ['sass', 'compile-scripts', 'images', 'package']);
 
 // Styles Task - minify-css is the only task we call, because it is dependent upon sass running first.
 gulp.task('styles', ['minify-css']);
@@ -275,12 +282,12 @@ gulp.task('styles', ['minify-css']);
   Default Tasks
 ------------------------------------------------------------------------------*/
 // Default Task
-gulp.task('default', ['styles', 'scripts', 'serve', 'watch']);
+gulp.task('default', ['styles', 'compile-scripts', 'serve', 'watch']);
 
 // Watch Files For Changes
 gulp.task('watch', function() {
   gulp.watch( sassFiles, ['styles']);
-  gulp.watch( jsFiles, ['scripts']);
+  gulp.watch( jsFiles, ['compile-scripts']);
   gulp.watch( phpFiles, browserSync.reload );
   gulp.watch( htmlFiles, browserSync.reload );
 });

@@ -34,6 +34,7 @@
     "bowser": "^1.7.2",
     "browser-sync": "^2.18.13",
     "colors": "^1.1.2",
+    "eslint-plugin-babel": "^4.1.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-babel": "^7.0.1",

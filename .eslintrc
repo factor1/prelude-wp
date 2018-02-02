@@ -1,4 +1,22 @@
 {
+  "plugins": [
+    "babel"
+  ],
+  "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "script",
+      "ecmaFeatures": {
+          "jsx": false
+      }
+  },
+  "env": {
+    "browser": true,
+    "jquery": true,
+    "amd": true
+  },
+  "globals": {
+    "bowser": true
+  },
   "rules": {
     "comma-dangle": [2,"always"],
     "no-cond-assign": [1,"except-parens"],
