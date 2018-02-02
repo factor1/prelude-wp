@@ -26,6 +26,7 @@ var gulp         = require('gulp');
 
 // Include plugins
 var sass         = require('gulp-sass'),
+    babel        = require('gulp-babel'),
     mmq          = require('gulp-merge-media-queries'),
     concat       = require('gulp-concat'),
     eslint       = require('gulp-eslint'),
@@ -84,7 +85,7 @@ gulp.task('sass', function() {
 
 // Lint JavaScript
 gulp.task('lint', function() {
-  return gulp.src( jsFiles )
+  return gulp.src( './assets/js/theme.js' )
   .pipe(plumber())
   .pipe(eslint())
   .pipe(eslint.format())
@@ -118,11 +119,14 @@ gulp.task('minify-css', ['sass'], function() {
 // Concatenate & Minify JavaScript
 gulp.task('scripts', ['lint'], function() {
   return gulp.src( concatFiles )
+    .pipe(sourcemaps.init())
+    .pipe(babel())
     .pipe(concat( 'all.js' ))
+    .pipe(sourcemaps.write("."))
     .pipe(gulp.dest( './assets/js/' ))
-    .pipe(rename('theme.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest( './assets/js/' ))
+    // .pipe(rename('theme.min.js'))
+    // .pipe(uglify())
+    // .pipe(gulp.dest( './assets/js/' ))
     .pipe(browserSync.reload({
       stream: true
     }));
