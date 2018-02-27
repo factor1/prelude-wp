@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.0.4] - 2018-02-26
+# Fix
+- Travis file being included in copy script.
+
 ## [4.0.3] - 2018-01-12
 # Fixes
 - Fixes file move node script to ignore `util/` folder and all `.md` files.
