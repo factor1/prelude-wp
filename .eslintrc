@@ -1,4 +1,11 @@
 {
+  "env": {
+    "browser": true,
+    "jquery": true,
+  },
+  "globals": {
+    "bowser": true
+  },
   "rules": {
     "comma-dangle": [2,"always"],
     "no-cond-assign": [1,"except-parens"],
@@ -36,7 +43,7 @@
     "array-bracket-spacing": [1,"always",{"singleValue":true,"objectsInArrays":true,"arraysInArrays":true}],
     "camelcase": [1,{"properties":"always"}],
     "comma-spacing": [1,{"after":true}],
-    "indent": [1,2],
+    "indent": [1,"tab"],
     "quotes": [1,"single","avoid-escape"]
   }
 }
