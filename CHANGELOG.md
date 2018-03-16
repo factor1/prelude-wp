@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.1.0] - 2018-03-16
+# Added
+- Font Awesome 5 CDN to enqueues file
+- Font Awesome 5 config file per the [Font Awesome documentation](https://fontawesome.com/how-to-use/svg-with-js#pseudo-elements)
+
+# Update
+- Changed social menu syntax to use Font Awesome 5 inline svgs
+
 ## [4.0.5] - 2018-02-27
 # Update
 - ESLint rules to be more in line with prelude settings/vision
