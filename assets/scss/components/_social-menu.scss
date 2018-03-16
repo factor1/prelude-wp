@@ -16,15 +16,15 @@
         display: inline-block;
         text-align: center;
         &:before{
-          padding-bottom: .25rem;
-          display: inline-block;
-          vertical-align: middle;
-          font-family: 'FontAwesome';
-          font-size: .7rem;
-          color: red;
+          display: none;
+          font-family: 'Font Awesome 5 Brands';
+          color: blue;
+        }
+        .svg-inline--fa {
+          font-size: rem(30);
         }
         &:hover {
-          font-style: normal;
+          color: purple;
         }
       } // end anchor
       // Adding the icons
