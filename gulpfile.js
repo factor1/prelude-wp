@@ -16,6 +16,7 @@ var phpFiles     = ['./**/*.php', './*.php'],
     concatFiles  = [
       './node_modules/bowser/bowser.js',
       './assets/js/*.js',
+      '!./assets/js/font-awesome.config.js',
       '!./assets/js/theme.min.js',
       '!./assets/js/all.js'
     ],
