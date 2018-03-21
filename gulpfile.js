@@ -182,7 +182,7 @@ gulp.task('version', function(cb) {
       silent: true,
     });
 
-    exec(`git commit -am "Bumps theme version to ${newVersion}"`, function (err, stdout, stderr) {
+    exec(`git commit -am "Bumps theme version to ${newVersion}" && npm version patch`, function (err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
       cb(err);
@@ -213,7 +213,7 @@ gulp.task('version', function(cb) {
       silent: true,
     });
 
-    exec(`git commit -am "Bumps theme version to ${newVersion}"`, function (err, stdout, stderr) {
+    exec(`git commit -am "Bumps theme version to ${newVersion}" && npm version minor`, function (err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
       cb(err);
@@ -244,7 +244,7 @@ gulp.task('version', function(cb) {
        silent: true,
      });
 
-     exec(`git commit -am "Bumps theme version to ${newVersion}"`, function (err, stdout, stderr) {
+     exec(`git commit -am "Bumps theme version to ${newVersion}" && npm version major`, function (err, stdout, stderr) {
        console.log(stdout);
        console.log(stderr);
        cb(err);
