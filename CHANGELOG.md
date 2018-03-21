@@ -2,6 +2,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.2.0] - 2018-03-21
+# Updated
+- All node_modules to their current versions
+
+# Fixed
+- Syntax error in Sass Gulp task
+
+# Added
+- npm version command to `gulp version` to auto update npm package versioning
+
+
 ## [4.1.0] - 2018-03-16
 # Added
 - Font Awesome 5 CDN to enqueues file

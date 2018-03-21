@@ -2,8 +2,8 @@
   Gulpfile.js
 ------------------------------------------------------------------------------*/
 // Theme information (name, starting theme version)
-var theme        = 'your-theme-name', // will be autocompleted by prelude-init
-    version      = '0.0.1'; // updated with gulp version task
+var theme        = 'your-theme-name',
+    version      = '0.0.1'; // updated with gulp version task, do not edit here.
 
 // Set the paths you will be working with
 var phpFiles     = ['./**/*.php', './*.php'],
@@ -66,8 +66,8 @@ gulp.task('sass', function() {
           './node_modules/normalize-scss/sass/'
         ]
       })
-        .on('error', sass.logError))
-        .on('error', notify.onError("Error compiling scss!")
+        .on('error', sass.logError)
+        .on('error', notify.onError("Error compiling scss!"))
       )
       .pipe(autoprefixer({
         browsers: ['last 3 versions', 'Safari > 7'],
@@ -182,7 +182,7 @@ gulp.task('version', function(cb) {
       silent: true,
     });
 
-    exec(`git commit -am "Bumps theme version to ${newVersion}"`, function (err, stdout, stderr) {
+    exec(`git commit -am "Bumps theme version to ${newVersion}" && npm version patch`, function (err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
       cb(err);
@@ -213,7 +213,7 @@ gulp.task('version', function(cb) {
       silent: true,
     });
 
-    exec(`git commit -am "Bumps theme version to ${newVersion}"`, function (err, stdout, stderr) {
+    exec(`git commit -am "Bumps theme version to ${newVersion}" && npm version minor`, function (err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
       cb(err);
@@ -244,7 +244,7 @@ gulp.task('version', function(cb) {
        silent: true,
      });
 
-     exec(`git commit -am "Bumps theme version to ${newVersion}"`, function (err, stdout, stderr) {
+     exec(`git commit -am "Bumps theme version to ${newVersion}" && npm version major`, function (err, stdout, stderr) {
        console.log(stdout);
        console.log(stderr);
        cb(err);
