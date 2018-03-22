@@ -12,7 +12,7 @@ Below are a list of the default gulp tasks.
 - `gulp scripts` - concatenates and minifies JS files (in the order you declare via the [`concatFiles` array](gulpfile-customization.md))
 - `gulp images` - compresses images in as defined in the [`imageFiles` array](gulpfile-customization.md)
 - `gulp watch` - watches files for changes and runs tasks based on what file changes
-- `gulp version` - updates WordPress theme version by passing one of three flags, `--major, --minor, --patch`. Alternatively you can also check version by passing no flags to the task.
+- `gulp version` - updates WordPress theme version by passing one of three flags, `--major, --minor, --patch`. Alternatively you can also check version by passing no flags to the task. This also runs the corresponding `npm version` command to update the npm version.
 - `gulp package` - creates a production ready `.zip` file based on your production theme folder
 - `gulp build` - runs all tasks except `serve` and `watch`
 
