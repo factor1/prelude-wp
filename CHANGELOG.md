@@ -2,13 +2,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.2.2] - 2018-04-26
+# Updated
+- Travis node build
+
 ## [4.2.1] - 2018-04-26
 # Updated
 - browser-sync
 - gulp-cssnano
 
 # Removed
-- yards 
+- yards
 
 ## [4.2.0] - 2018-03-21
 # Updated
