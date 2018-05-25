@@ -119,10 +119,12 @@ gulp.task('minify-css', ['sass'], function() {
 // Concatenate & Minify JavaScript
 gulp.task('scripts', ['lint'], function() {
   return gulp.src( concatFiles )
+    .pipe(sourcemaps.init())
     .pipe(concat( 'all.js' ))
     .pipe(gulp.dest( './assets/js/' ))
     .pipe(rename('theme.min.js'))
     .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest( './assets/js/' ))
     .pipe(browserSync.reload({
       stream: true
