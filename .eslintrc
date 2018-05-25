@@ -7,7 +7,7 @@
     "bowser": true
   },
   "rules": {
-    "comma-dangle": [2,"always"],
+    "comma-dangle": 0,
     "no-cond-assign": [1,"except-parens"],
     "no-console": 1,
     "no-constant-condition": 1,
