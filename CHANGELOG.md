@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [4.2.3] - In Progress
+## [4.2.3] - 3018-05-25
 # Updated
 - npm dependencies
 - eslint rule for comma dangle now is silenced 🤫
