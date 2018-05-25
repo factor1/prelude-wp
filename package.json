@@ -27,8 +27,8 @@
   "homepage": "https://github.com/factor1/Prelude#readme",
   "dependencies": {
     "bowser": "^1.9.3",
-    "browser-sync": "^2.23.7",
-    "colors": "^1.2.1",
+    "browser-sync": "^2.24.4",
+    "colors": "^1.3.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-clean": "^0.4.0",
@@ -39,16 +39,16 @@
     "gulp-merge-media-queries": "^0.2.1",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
+    "gulp-rename": "^1.2.3",
+    "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-zip": "^4.1.0",
     "imagemin-pngquant": "^5.1.0",
     "normalize-scss": "^7.0.1",
     "prompt": "^1.0.0",
-    "replace": "^0.3.0",
-    "slugify": "^1.2.9",
+    "replace": "^1.0.0",
+    "slugify": "^1.3.0",
     "yargs": "^11.0.0"
   }
 }
