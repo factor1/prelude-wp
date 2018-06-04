@@ -59,28 +59,26 @@ gulp.task( 'serve', function() {
 // Compile Sass
 gulp.task('sass', function() {
   return gulp.src( sassFiles )
-    .pipe(sourcemaps.init())
-      .pipe(plumber())
-      .pipe(sass({
-        includePaths: [
-          './node_modules/normalize-scss/sass/'
-        ]
-      })
-        .on('error', sass.logError)
-        .on('error', notify.onError("Error compiling scss!"))
-      )
-      .pipe(autoprefixer({
-        browsers: ['last 3 versions', 'Safari > 7'],
-        cascade: false
-      }))
-    .pipe(mmq({
-      log: true
+    .pipe(plumber())
+    .pipe(sass({
+      includePaths: [
+        './node_modules/normalize-scss/sass/'
+      ]
+    })
+      .on('error', sass.logError)
+      .on('error', notify.onError("Error compiling scss!"))
+    )
+    .pipe(autoprefixer({
+      browsers: ['last 3 versions', 'Safari > 7'],
+      cascade: false
     }))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest( './assets/css' ))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
+  .pipe(mmq({
+    log: true
+  }))
+  .pipe(gulp.dest( './assets/css/' ))
+  .pipe(browserSync.reload({
+    stream: true
+  }));
 });
 
 // Lint JavaScript
@@ -98,11 +96,12 @@ gulp.task('lint', function() {
 // Minimize CSS
 gulp.task('minify-css', ['sass'], function() {
 	return gulp.src( cssFiles )
+    .pipe(sourcemaps.init())
   	.pipe(rename({
       suffix: '.min'
     }))
     .pipe(nano({
-      discardComments: {removeAll: true},
+      discardComments: {removeAll: false},
       autoprefixer: false,
       discardUnused: false,
       mergeIdents: false,
@@ -110,6 +109,7 @@ gulp.task('minify-css', ['sass'], function() {
       calc: {mediaQueries: true},
       zindex: false
     }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest( './assets/css' ))
     .pipe(browserSync.reload({
       stream: true
