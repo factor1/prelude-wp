@@ -2,7 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [4.2.3] - 3018-05-25
+## [4.2.4] - 2018-06-04
+# Adds
+- Better source mapping for styles, while it still does not point to the correct scss file, you can now see where it appears in `theme.css`
+
+## [4.2.3] - 2018-05-25
 # Updated
 - npm dependencies
 - eslint rule for comma dangle now is silenced 🤫
