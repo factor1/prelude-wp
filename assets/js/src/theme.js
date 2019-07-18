@@ -1,3 +1,5 @@
+const Bowser = require("bowser");
+
 window.FontAwesomeConfig = { searchPseudoElements: true };
 
 jQuery( document ).ready(function( $ ) {
@@ -12,7 +14,10 @@ jQuery( document ).ready(function( $ ) {
   }
 
   // Browser detection via Bowser (https://github.com/lancedikson/bowser) - add detection as needed
-  if( bowser.msie && bowser.version == 11 ) {
+  const userBrowser = Bowser.getParser(window.navigator.userAgent);
+  const browser = userBrowser.getBrowser();
+
+  if( browser.name === "Internet Explorer" && browser.version == "11.0" ) {
     $("body").addClass("ie-11");
   } else if ( bowser.safari ) {
     $("body").addClass("safari");
