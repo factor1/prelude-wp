@@ -70,7 +70,8 @@ const compile = () => {
     .pipe(babel())
     .pipe(mode.production(uglify()))
     .pipe(sourcemaps.write())
-    .pipe(dest(jsOutput));
+    .pipe(dest(jsOutput))
+    .pipe(browserSync.stream());
 };
 
 const lintJs = () => {
