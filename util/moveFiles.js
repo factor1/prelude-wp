@@ -10,9 +10,10 @@
  * unsupported OS's.
  */
 
-const prompt = require("prompt"),
-  colors = require("colors"),
-  { exec } = require("child_process");
+/* eslint-disable no-console */
+
+const prompt = require("prompt");
+const { exec } = require("child_process");
 
 // only run if we aren't a travis test
 if( process.env.CI !== "true" && process.env.TRAVIS !== "true") {

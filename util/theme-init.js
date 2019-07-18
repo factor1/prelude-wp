@@ -24,7 +24,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     licenseURI = result.License_URI,
     textdomain = result.Text_Domain;
 
-  if( themeName != undefined ){
+  if( themeName  ){
     replace({
       regex: "Theme Name:",
       replacement: "Theme Name: "+themeName,
@@ -35,11 +35,11 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
 
     // make it a slug for the gulpfile theme name
-    const themeName_slug = slugify(themeName, {lower: true});
+    const themeNameSlug = slugify(themeName, {lower: true});
 
     replace({
       regex: "your-theme-name",
-      replacement: themeName_slug,
+      replacement: themeNameSlug,
       paths: [
         "./gulpfile.js"
       ],
@@ -47,7 +47,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( themeURI != undefined ){
+  if( themeURI  ){
     replace({
       regex: "Theme URI:",
       replacement: "Theme URI: "+themeURI,
@@ -58,7 +58,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( author != undefined ){
+  if( author  ){
     replace({
       regex: "Author:",
       replacement: "Author: "+author,
@@ -69,7 +69,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( authorURI != undefined ){
+  if( authorURI  ){
     replace({
       regex: "Author URI:",
       replacement: "Author URI: "+authorURI,
@@ -80,7 +80,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( description != undefined ){
+  if( description  ){
     replace({
       regex: "Description:",
       replacement: "Description: "+description,
@@ -91,7 +91,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( license != undefined ){
+  if( license  ){
     replace({
       regex: "License:",
       replacement: "License: "+license,
@@ -102,7 +102,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( licenseURI != undefined ){
+  if( licenseURI  ){
     replace({
       regex: "License URI:",
       replacement: "License URI: "+licenseURI,
@@ -113,7 +113,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( textdomain != undefined ){
+  if( textdomain  ){
     replace({
       regex: "Text Domain:",
       replacement: "Text Domain: "+textdomain,
