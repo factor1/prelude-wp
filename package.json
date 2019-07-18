@@ -1,54 +1,38 @@
 {
   "name": "prelude-wp",
-  "version": "4.2.5",
+  "version": "5.0.0",
   "description": "Prelude is a Wordpress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.",
-  "main": "index.php",
-  "scripts": {
-    "test": "echo \"Test Ran\"",
-    "postinstall": "node ./util/moveFiles.js",
-    "init": "node ./util/theme-init.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/factor1/Prelude.git"
-  },
-  "keywords": [
-    "Wordpress",
-    "Theme",
-    "Blank",
-    "Prelude",
-    "Factor1"
-  ],
-  "author": "Factor1 Studios <http://factor1studios.com>",
+  "main": "./util/moveFiles.js",
+  "repository": "git@github.com:factor1/prelude-wp.git",
+  "author": "Eric Stout <ericwstout@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/factor1/Prelude/issues"
+  "private": false,
+  "scripts": {
+    "start": "NODE_ENV=development gulp serve",
+    "build": "NODE_ENV=production gulp build",
+    "test": "eslint ."
   },
-  "homepage": "https://github.com/factor1/Prelude#readme",
   "dependencies": {
-    "bowser": "^1.9.4",
-    "browser-sync": "^2.26.3",
-    "colors": "^1.3.2",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-cssnano": "^2.1.3",
-    "gulp-eslint": "^4.0.2",
-    "gulp-imagemin": "^4.1.0",
-    "gulp-merge-media-queries": "^0.2.1",
-    "gulp-notify": "^3.2.0",
-    "gulp-plumber": "^1.2.0",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.0.2",
+    "browser-sync": "^2.26.7",
+    "colors": "^1.3.3",
+    "del": "^5.0.0",
+    "dotenv": "^8.0.0",
+    "eslint": "^6.0.1",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-eslint": "^6.0.0",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-mode": "^1.0.2",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.1",
-    "gulp-zip": "^4.2.0",
-    "imagemin-pngquant": "^5.1.0",
-    "normalize-scss": "^7.0.1",
-    "prompt": "^1.0.0",
-    "replace": "^1.0.0",
-    "slugify": "^1.3.3",
-    "yargs": "^11.1.0"
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "node-sass": "^4.12.0",
+    "normalize-scss": "^7.0.1"
   }
 }
