@@ -70,6 +70,7 @@ const compile = () => {
     .pipe(babel())
     .pipe(mode.production(uglify()))
     .pipe(sourcemaps.write())
+    .pipe(rename("theme.min.js"))
     .pipe(dest(jsOutput))
     .pipe(browserSync.stream());
 };
