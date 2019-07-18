@@ -1,6 +1,6 @@
 "use strict";
 
-require('dot-env').config();
+require('dotenv').config();
 
 const autoprefixer = require("gulp-autoprefixer");
 const babel = require("gulp-babel");

@@ -3,6 +3,7 @@
     "browser": true,
     "jquery": true,
     "node": true,
+    "es6": true,
   },
   "globals": {
     "bowser": true
