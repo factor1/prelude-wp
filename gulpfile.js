@@ -35,7 +35,11 @@ const imageFiles = [ "./assets/img/*.{jpg,png,gif}" ];
 const sassTask = () => {
   return src(scssFiles)
     .pipe(sourcemaps.init())
-    .pipe(sass().on("error", sass.logError))
+    .pipe(sass({
+      includePaths: [
+        "./node_modules/normalize-scss/sass/"
+      ]
+    }).on("error", sass.logError))
     .pipe(
       autoprefixer({
         cascade: false
@@ -104,5 +108,6 @@ module.exports = {
   clean: series(cleanStyles, cleanJs),
   compile: series(cleanJs, lintJs, compile),
   serve: series(cleanStyles, cleanJs, sassTask, minifyCssTask, lintJs, compile, server),
-  styles: series(cleanStyles, sassTask, minifyCssTask)
+  styles: series(cleanStyles, sassTask, minifyCssTask),
+  sassTask,
 };
