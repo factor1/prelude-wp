@@ -21,6 +21,7 @@
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.2.0",
     "gulp-eslint": "^6.0.0",
+    "gulp-imagemin": "^6.0.0",
     "gulp-mode": "^1.0.2",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
