@@ -24,7 +24,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     licenseURI = result.License_URI,
     textdomain = result.Text_Domain;
 
-  if( themeName  ){
+  if( themeName ){
     replace({
       regex: "Theme Name:",
       replacement: "Theme Name: "+themeName,
@@ -47,7 +47,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( themeURI  ){
+  if( themeURI ){
     replace({
       regex: "Theme URI:",
       replacement: "Theme URI: "+themeURI,
@@ -58,7 +58,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( author  ){
+  if( author ){
     replace({
       regex: "Author:",
       replacement: "Author: "+author,
@@ -69,7 +69,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( authorURI  ){
+  if( authorURI ){
     replace({
       regex: "Author URI:",
       replacement: "Author URI: "+authorURI,
@@ -80,7 +80,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( description  ){
+  if( description ){
     replace({
       regex: "Description:",
       replacement: "Description: "+description,
@@ -91,7 +91,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( license  ){
+  if( license ){
     replace({
       regex: "License:",
       replacement: "License: "+license,
@@ -102,7 +102,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( licenseURI  ){
+  if( licenseURI ){
     replace({
       regex: "License URI:",
       replacement: "License URI: "+licenseURI,
@@ -113,7 +113,7 @@ prompt.get([ "Theme_Name", "Theme_URI", "Author", "Author_URI", "Description", "
     });
   }
 
-  if( textdomain  ){
+  if( textdomain ){
     replace({
       regex: "Text Domain:",
       replacement: "Text Domain: "+textdomain,
