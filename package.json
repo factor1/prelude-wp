@@ -7,6 +7,11 @@
   "author": "Eric Stout <ericwstout@gmail.com>",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "NODE_ENV=development gulp serve",
+    "build": "NODE_ENV=production gulp build",
+    "test": "eslint ."
+  },
   "dependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
