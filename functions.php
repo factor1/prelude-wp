@@ -1,6 +1,10 @@
 <?php
 
-  define( 'THEME_VERSION', '0.0.1' );
+  $NPM_PACKAGE = file_get_contents(get_template_directory() . '/package.json');
+  $NPM_PACKAGE = json_decode($NPM_PACKAGE, true);
+  $THEME_VERSION = $NPM_PACKAGE['theme_version'];
+
+  define( 'THEME_VERSION', $THEME_VERSION );
 
   /**
    * Load tweaks
