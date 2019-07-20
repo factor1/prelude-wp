@@ -10,8 +10,9 @@
   "private": false,
   "scripts": {
     "start": "NODE_ENV=development gulp serve",
-    "build": "NODE_ENV=production gulp build",
+    "build": "yarn format && NODE_ENV=production gulp build",
     "test": "eslint .",
+    "format": "prettier *.js *css --write",
     "release-major": "yarn test && node ./util/versionUpdate.js --major && yarn build",
     "release-minor": "yarn test && node ./util/versionUpdate.js --minor && yarn build",
     "release-patch": "yarn test && node ./util/versionUpdate.js --patch && yarn build"
@@ -39,6 +40,7 @@
     "gulp-uglify": "^3.0.2",
     "node-sass": "^4.12.0",
     "normalize-scss": "^7.0.1",
+    "prettier": "^1.18.2",
     "replace": "^1.1.0",
     "yargs": "^13.3.0"
   }

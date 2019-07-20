@@ -22,24 +22,24 @@ sass.compiler = require("node-sass");
 const NODE_ENV = process.env.NODE_ENV;
 const URL = process.env.WP_URL;
 
-// Project Paths 
-const phpFiles = [ "./**/*.php", "./*.php" ];
+// Project Paths
+const phpFiles = ["./**/*.php", "./*.php"];
 const cssFiles = "./assets/css/";
-const scssFiles = [ "./assets/scss/**/*.scss" ];
+const scssFiles = ["./assets/scss/**/*.scss"];
 const jsEntry = "./assets/js/src/theme.js";
 const jsOutput = "./assets/js/dist/";
 const themeCssFile = "./assets/css/theme.css";
-const imageFiles = [ "./assets/img/*.{jpg,png,gif}" ];
+const imageFiles = ["./assets/img/*.{jpg,png,gif}"];
 
 // Compile Sass
 const sassTask = () => {
   return src(scssFiles)
     .pipe(sourcemaps.init())
-    .pipe(sass({
-      includePaths: [
-        "./node_modules/normalize-scss/sass/"
-      ]
-    }).on("error", sass.logError))
+    .pipe(
+      sass({
+        includePaths: ["./node_modules/normalize-scss/sass/"]
+      }).on("error", sass.logError)
+    )
     .pipe(
       autoprefixer({
         cascade: false
@@ -79,18 +79,18 @@ const lintJs = () => {
   return src(jsEntry)
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
-}
+    .pipe(eslint.failAfterError());
+};
 
 // clean js dist folder
 const cleanJs = () => del(`${jsOutput}/**/*`);
 
-// compress images 
+// compress images
 const compressImages = () => {
   return src(imageFiles)
     .pipe(imagemin())
-    .pipe(dest("./assets/img/"))
-}
+    .pipe(dest("./assets/img/"));
+};
 
 // browser sync server
 const server = () => {
@@ -106,10 +106,26 @@ const server = () => {
 
 module.exports = {
   "minify-css": minifyCssTask,
-  build: series(cleanStyles, cleanJs, compressImages, sassTask, minifyCssTask, lintJs, compile),
+  build: series(
+    cleanStyles,
+    cleanJs,
+    compressImages,
+    sassTask,
+    minifyCssTask,
+    lintJs,
+    compile
+  ),
   clean: series(cleanStyles, cleanJs),
   compile: series(cleanJs, lintJs, compile),
-  serve: series(cleanStyles, cleanJs, sassTask, minifyCssTask, lintJs, compile, server),
+  serve: series(
+    cleanStyles,
+    cleanJs,
+    sassTask,
+    minifyCssTask,
+    lintJs,
+    compile,
+    server
+  ),
   styles: series(cleanStyles, sassTask, minifyCssTask),
-  sassTask,
+  sassTask
 };
