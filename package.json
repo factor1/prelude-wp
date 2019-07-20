@@ -12,7 +12,9 @@
     "start": "NODE_ENV=development gulp serve",
     "build": "NODE_ENV=production gulp build",
     "test": "eslint .",
-    "release": "yarn test && node ./util/versionUpdate.js && yarn build"
+    "release-major": "yarn test && node ./util/versionUpdate.js --major && yarn build",
+    "release-minor": "yarn test && node ./util/versionUpdate.js --minor && yarn build",
+    "release-patch": "yarn test && node ./util/versionUpdate.js --patch && yarn build"
   },
   "dependencies": {
     "@babel/core": "^7.5.5",

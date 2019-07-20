@@ -3,7 +3,7 @@
 const package = require("../package.json");
 const version = package.theme_version;
 const argv = require("yargs").argv;
-const colors = require("colors");
+const colors = require("colors"); // eslint-disable-line no-unused-vars
 const replace = require("replace");
 
 const updateVersion = (version, releaseType) => {
@@ -14,7 +14,7 @@ const updateVersion = (version, releaseType) => {
   let newVersion;
   console.log(`Current theme version: ${version}`.yellow);
 
-  if( releaseType === "patch" ) {
+  if( releaseType.patch ) {
     console.log("Updating theme version as a patch release.".cyan);
 
     // increment patch number
@@ -26,7 +26,7 @@ const updateVersion = (version, releaseType) => {
     console.log("New theme version is: ".green+ newVersion.green.bold);
   }
 
-  if( releaseType === "minor" ) {
+  if( releaseType.minor ) {
     console.log("Updating theme version as a minor release.".cyan);
 
     // increment minor number
@@ -38,7 +38,7 @@ const updateVersion = (version, releaseType) => {
     console.log("New theme version is: ".green+ newVersion.green.bold);
   }
 
-  if( releaseType === "major" ) {
+  if( releaseType.major ) {
     console.log("Updating theme version as a major release.".cyan);
 
     // increment minor number
@@ -62,8 +62,8 @@ const updateVersion = (version, releaseType) => {
   });
 
   replace({
-    regex: `"theme_version": ${version}`,
-    replacement: `"theme_version": ${newVersion}`,
+    regex: `"theme_version": "${version}"`,
+    replacement: `"theme_version": "${newVersion}"`,
     paths: [
       "./package.json"
     ],
