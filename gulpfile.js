@@ -1,285 +1,131 @@
-/*------------------------------------------------------------------------------
-  Gulpfile.js
-------------------------------------------------------------------------------*/
-// Theme information (name, starting theme version)
-var theme        = 'your-theme-name',
-    version      = '0.0.1'; // updated with gulp version task, do not edit here.
+"use strict";
 
-// Set the paths you will be working with
-var phpFiles     = ['./**/*.php', './*.php'],
-    htmlFiles    = ['./**/*.html', './*.html'],
-    cssFiles     = ['./assets/css/*.css', '!./assets/css/*.min.css'],
-    sassFiles    = ['./assets/scss/**/*.scss'],
-    styleFiles   = [cssFiles, sassFiles],
-    jsFiles      = ['./assets/js/theme.js'],
-    imageFiles   = ['./assets/img/*.{jpg,png,gif}'],
-    concatFiles  = [
-      './node_modules/bowser/bowser.js',
-      './assets/js/*.js',
-      '!./assets/js/font-awesome.config.js',
-      '!./assets/js/theme.min.js',
-      '!./assets/js/all.js'
-    ],
-    url          = 'wp-dev:8888'; // See https://browsersync.io/docs/options/#option-proxy
+require("dotenv").config();
 
-// Include gulp
-var gulp         = require('gulp');
+const autoprefixer = require("gulp-autoprefixer");
+const babel = require("gulp-babel");
+const browserSync = require("browser-sync").create();
+const cleanCSS = require("gulp-clean-css");
+const colors = require("colors");
+const del = require("del");
+const eslint = require("gulp-eslint");
+const mode = require("gulp-mode")();
+const rename = require("gulp-rename");
+const sass = require("gulp-sass");
+const sourcemaps = require("gulp-sourcemaps");
+const uglify = require("gulp-uglify");
+const imagemin = require("gulp-imagemin");
+const { series, src, dest, watch } = require("gulp");
 
-// Include plugins
-var sass         = require('gulp-sass'),
-    mmq          = require('gulp-merge-media-queries'),
-    concat       = require('gulp-concat'),
-    eslint       = require('gulp-eslint'),
-    uglify       = require('gulp-uglify'),
-    rename       = require('gulp-rename'),
-    imagemin     = require('gulp-imagemin'),
-    nano         = require('gulp-cssnano'),
-    sourcemaps   = require('gulp-sourcemaps'),
-    autoprefixer = require('gulp-autoprefixer'),
-    browserSync  = require('browser-sync'),
-    plumber      = require('gulp-plumber'),
-    notify       = require('gulp-notify'),
-    replace      = require('replace'),
-    argv         = require('yargs').usage('Usage: $ gulp version [--major, --minor, --patch, --current]').argv,
-    colors       = require('colors'),
-    exec         = require('child_process').exec,
-    zip          = require('gulp-zip');
+sass.compiler = require("node-sass");
 
-/*------------------------------------------------------------------------------
-  Development Tasks
-------------------------------------------------------------------------------*/
-// Launch a development server
-gulp.task( 'serve', function() {
-  browserSync.init({
-    proxy: url
-      // port: 3000
-  });
-});
+const NODE_ENV = process.env.NODE_ENV;
+const URL = process.env.WP_URL;
+
+// Project Paths
+const phpFiles = ["./**/*.php", "./*.php"];
+const cssFiles = "./assets/css/";
+const scssFiles = ["./assets/scss/**/*.scss"];
+const jsEntry = "./assets/js/src/theme.js";
+const jsOutput = "./assets/js/dist/";
+const themeCssFile = "./assets/css/theme.css";
+const imageFiles = ["./assets/img/*.{jpg,png,gif}"];
 
 // Compile Sass
-gulp.task('sass', function() {
-  return gulp.src( sassFiles )
-    .pipe(plumber())
-    .pipe(sass({
-      includePaths: [
-        './node_modules/normalize-scss/sass/'
-      ]
-    })
-      .on('error', sass.logError)
-      .on('error', notify.onError("Error compiling scss!"))
+const sassTask = () => {
+  return src(scssFiles)
+    .pipe(sourcemaps.init())
+    .pipe(
+      sass({
+        includePaths: ["./node_modules/normalize-scss/sass/"]
+      }).on("error", sass.logError)
     )
-    .pipe(autoprefixer({
-      browsers: ['last 3 versions', 'Safari > 7'],
-      cascade: false
-    }))
-  .pipe(mmq({
-    log: true
-  }))
-  .pipe(gulp.dest( './assets/css/' ))
-  .pipe(browserSync.reload({
-    stream: true
-  }));
-});
-
-// Lint JavaScript
-gulp.task('lint', function() {
-  return gulp.src( jsFiles )
-  .pipe(plumber())
-  .pipe(eslint())
-  .pipe(eslint.format())
-  .pipe(eslint.failAfterError());
-});
-
-/*------------------------------------------------------------------------------
-  Production Tasks
-------------------------------------------------------------------------------*/
-// Minimize CSS
-gulp.task('minify-css', ['sass'], function() {
-	return gulp.src( cssFiles )
-    .pipe(sourcemaps.init())
-  	.pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(nano({
-      discardComments: {removeAll: false},
-      autoprefixer: false,
-      discardUnused: false,
-      mergeIdents: false,
-      reduceIdents: false,
-      calc: {mediaQueries: true},
-      zindex: false
-    }))
+    .pipe(
+      autoprefixer({
+        cascade: false
+      })
+    )
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest( './assets/css' ))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-});
+    .pipe(dest(cssFiles))
+    .pipe(browserSync.stream());
+};
 
-// Concatenate & Minify JavaScript
-gulp.task('scripts', ['lint'], function() {
-  return gulp.src( concatFiles )
+// Minify CSS
+const minifyCssTask = () => {
+  return src(themeCssFile)
     .pipe(sourcemaps.init())
-    .pipe(concat( 'all.js' ))
-    .pipe(gulp.dest( './assets/js/' ))
-    .pipe(rename('theme.min.js'))
-    .pipe(uglify())
+    .pipe(mode.production(cleanCSS()))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest( './assets/js/' ))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-});
+    .pipe(rename("theme.min.css"))
+    .pipe(dest(cssFiles));
+};
 
-// Compress Images
-gulp.task('images', function() {
-  return gulp.src( imageFiles )
-  .pipe(plumber())
-  .pipe(imagemin())
-  .pipe(gulp.dest( './assets/img/' ));
-});
+// Clean CSS folder
+const cleanStyles = () => del(`${cssFiles}/**/*`);
 
-// Package a zip for theme upload
-gulp.task('package', function() {
-  return gulp.src( [
-    './**/*',
-    '!bower_components',
-    '!node_modules',
-    '!bower_components/**',
-    '!node_modules/**'
-  ] )
-		.pipe(zip( theme + '.zip' ))
-		.pipe(gulp.dest( './' ));
-});
+// compile JS with Babel
+const compile = () => {
+  return src(jsEntry)
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    .pipe(mode.production(uglify()))
+    .pipe(sourcemaps.write())
+    .pipe(rename("theme.min.js"))
+    .pipe(dest(jsOutput))
+    .pipe(browserSync.stream());
+};
 
-// Update Theme Version
-gulp.task('version', function(cb) {
+const lintJs = () => {
+  return src(jsEntry)
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+};
 
-  // get current version
-  var currentVersion = version.split(/[.]+/);
+// clean js dist folder
+const cleanJs = () => del(`${jsOutput}/**/*`);
 
-  if( argv.patch ){
-    // log current version
-    console.log('Current version is: '+version.yellow);
+// compress images
+const compressImages = () => {
+  return src(imageFiles)
+    .pipe(imagemin())
+    .pipe(dest("./assets/img/"));
+};
 
-    console.log('Updating theme version as a patch.'.cyan);
+// browser sync server
+const server = () => {
+  console.log(colors.green.bold(`🛠  Running in ${NODE_ENV} mode`)); // eslint-disable-line no-console
+  browserSync.init({
+    proxy: URL ? URL : "http://localhost:3000"
+  });
 
-    // increment patch number
-    currentVersion[2]++
-    var newPatch = currentVersion[2];
+  watch(scssFiles, series(cleanStyles, sassTask, minifyCssTask));
+  watch(jsEntry, series(lintJs, compile, browserSync.reload));
+  watch(phpFiles).on("change", browserSync.reload);
+};
 
-    // New Version Number
-    var newVersion = currentVersion[0]+'.'+currentVersion[1]+'.'+newPatch;
-    console.log('New theme version is: '.green+ newVersion.green.bold);
-
-    // first replace updates strings
-    replace({
-      regex: version,
-      replacement: newVersion,
-      paths: [
-        './style.css',
-        './functions.php',
-        './gulpfile.js'
-      ],
-      silent: true,
-    });
-
-    exec(`git commit -am "Bumps theme version to ${newVersion}" && npm version patch`, function (err, stdout, stderr) {
-      console.log(stdout);
-      console.log(stderr);
-      cb(err);
-    });
-
-  } else if ( argv.minor ) {
-    // log current version
-    console.log('Current version is: '+version.yellow);
-
-    console.log('Updating theme version as a minor release.'.cyan);
-
-    // increment minor number
-    currentVersion[1]++
-    var newMinor = currentVersion[1];
-
-    // New Version Number
-    var newVersion = currentVersion[0]+'.'+newMinor+'.'+'0';
-    console.log('New theme version is: '.green+ newVersion.green.bold);
-
-    replace({
-      regex: version,
-      replacement: newVersion,
-      paths: [
-        './style.css',
-        './functions.php',
-        './gulpfile.js'
-      ],
-      silent: true,
-    });
-
-    exec(`git commit -am "Bumps theme version to ${newVersion}" && npm version minor`, function (err, stdout, stderr) {
-      console.log(stdout);
-      console.log(stderr);
-      cb(err);
-    });
-
-  } else if ( argv.major ) {
-    // log current version
-    console.log('Current version is: '+version.yellow);
-
-     console.log('Updating theme version as a major release.'.cyan);
-
-     // increment minor number
-     currentVersion[0]++
-     var newMajor = currentVersion[0];
-
-     // New Version Number
-     var newVersion = newMajor+'.'+'0'+'.'+'0';
-     console.log('New theme version is: '.green+ newVersion.green.bold);
-
-     replace({
-       regex: version,
-       replacement: newVersion,
-       paths: [
-         './style.css',
-         './functions.php',
-         './gulpfile.js'
-       ],
-       silent: true,
-     });
-
-     exec(`git commit -am "Bumps theme version to ${newVersion}" && npm version major`, function (err, stdout, stderr) {
-       console.log(stdout);
-       console.log(stderr);
-       cb(err);
-     });
-
-   } else if ( argv.current ) {
-
-     // log current version
-     console.log('Current version is: '+version.yellow);
-
-   } else{
-     // log current version
-     console.log('Current version is: '+version.yellow);
-     console.error('🚨 No arguments or invalid arguments were passed. Include one of the following arguments: [--major, --minor, --patch, --current]'.red.bold);
-  }
-});
-
-// Build task to run all tasks and and package for distribution
-gulp.task('build', ['sass', 'scripts', 'images', 'package']);
-
-// Styles Task - minify-css is the only task we call, because it is dependent upon sass running first.
-gulp.task('styles', ['minify-css']);
-
-/*------------------------------------------------------------------------------
-  Default Tasks
-------------------------------------------------------------------------------*/
-// Default Task
-gulp.task('default', ['styles', 'scripts', 'serve', 'watch']);
-
-// Watch Files For Changes
-gulp.task('watch', function() {
-  gulp.watch( sassFiles, ['styles']);
-  gulp.watch( jsFiles, ['scripts']);
-  gulp.watch( phpFiles, browserSync.reload );
-  gulp.watch( htmlFiles, browserSync.reload );
-});
+module.exports = {
+  "minify-css": minifyCssTask,
+  build: series(
+    cleanStyles,
+    cleanJs,
+    compressImages,
+    sassTask,
+    minifyCssTask,
+    lintJs,
+    compile
+  ),
+  clean: series(cleanStyles, cleanJs),
+  compile: series(cleanJs, lintJs, compile),
+  serve: series(
+    cleanStyles,
+    cleanJs,
+    sassTask,
+    minifyCssTask,
+    lintJs,
+    compile,
+    server
+  ),
+  styles: series(cleanStyles, sassTask, minifyCssTask),
+  sassTask
+};
