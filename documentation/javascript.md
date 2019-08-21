@@ -1,5 +1,5 @@
 # JavaScript
-Prelude includes two JavaScript helpers to aid in your theme's development.
+Prelude includes two JavaScript helpers to aid in your theme's development. It also uses Babel so you can use the latest JavaScript functionality such as arrow functions and more. 
 
 ## Touch Detection
 Removes `no-touch` body class if device has touch.
