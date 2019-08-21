@@ -8,10 +8,9 @@ and more.
 Prelude uses Gulp to:
 - Compile & minify Sass/CSS with sourcemaps
 - Auto-prefix your Sass/CSS
-- Minify and concatenate JavaScript/jQuery
+- Minify and concatenate JavaScript using Babel
 - Compress images
 - Bump Theme Versions
-- Package a theme for upload to WordPress or distribution
 
 ### WordPress Functions
 Prelude has some nifty features built into `functions.php` to make developing a
