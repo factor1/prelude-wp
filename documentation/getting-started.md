@@ -23,3 +23,17 @@ WP_URL="http://testproject.local/"
 ```
 
 After these three steps, you are ready to start developing your theme.
+
+## Working on your theme
+To work locally run `yarn start` and the environment will start.
+
+#### Building For Production
+To build for production, run `yarn build`.
+
+#### Testing Javascript
+To run tests on your javascript, run `yarn test`
+
+#### Format code
+Use prettier to format your code by running `yarn format`
+
+> Testing and Formatting will happen automattically with other processes. You do not need to run independently.
