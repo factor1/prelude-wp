@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
 const packageJson = require("../package.json");
-const version = packageJson.theme_version;
+const version = packageJson.version;
 const argv = require("yargs").argv;
 const colors = require("colors"); // eslint-disable-line no-unused-vars
 const replace = require("replace");
@@ -59,8 +59,8 @@ const updateVersion = (version, releaseType) => {
   });
 
   replace({
-    regex: `"theme_version": "${version}"`,
-    replacement: `"theme_version": "${newVersion}"`,
+    regex: `"version": "${version}"`,
+    replacement: `"version": "${newVersion}"`,
     paths: ["./package.json"],
     silent: true
   });
