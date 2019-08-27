@@ -1,6 +1,6 @@
 {
   "name": "prelude-wp",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Prelude is a Wordpress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.",
   "main": "./util/moveFiles.js",
   "repository": "git@github.com:factor1/prelude-wp.git",
@@ -20,16 +20,23 @@
     "prelude-wp": "./bin/cli.js"
   },
   "dependencies": {
-    "bowser": "^2.5.2"
+    "bowser": "^2.5.2",
+    "fs-extra": "^8.1.0",
+    "colors": "^1.3.3",
+    "del": "^5.0.0",
+    "dotenv": "^8.0.0",
+    "lodash": "^4.17.15",
+    "prompt": "^1.0.0",
+    "replace": "^1.1.1",
+    "slugify": "^1.3.4",
+    "yargs": "^13.3.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "babel-eslint": "8",
     "browser-sync": "^2.26.7",
-    "colors": "^1.3.3",
-    "del": "^5.0.0",
-    "dotenv": "^8.0.0",
     "eslint": "^6.0.1",
     "fs-extra": "^8.1.0",
     "gulp": "^4.0.2",
@@ -43,14 +50,8 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
-    "lodash": "^4.17.15",
     "node-sass": "^4.12.0",
     "normalize-scss": "^7.0.1",
-    "path": "^0.12.7",
-    "prettier": "^1.18.2",
-    "prompt": "^1.0.0",
-    "replace": "^1.1.1",
-    "slugify": "^1.3.4",
-    "yargs": "^13.3.0"
+    "prettier": "^1.18.2"
   }
 }
