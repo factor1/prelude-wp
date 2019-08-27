@@ -2,7 +2,7 @@
 
   $NPM_PACKAGE = file_get_contents(get_template_directory() . '/package.json');
   $NPM_PACKAGE = json_decode($NPM_PACKAGE, true);
-  $THEME_VERSION = $NPM_PACKAGE['theme_version'];
+  $THEME_VERSION = $NPM_PACKAGE['version'];
 
   define( 'THEME_VERSION', $THEME_VERSION );
 
