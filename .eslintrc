@@ -3,14 +3,15 @@
     "browser": true,
     "jquery": true,
     "node": true,
-    "es6": true,
+    "es6": true
   },
+  "parser": "babel-eslint",
   "globals": {
     "bowser": true
   },
   "rules": {
     "comma-dangle": 0,
-    "no-cond-assign": [1,"except-parens"],
+    "no-cond-assign": [1, "except-parens"],
     "no-console": 1,
     "no-constant-condition": 1,
     "no-control-regex": 1,
@@ -22,10 +23,10 @@
     "no-empty": 1,
     "no-ex-assign": 1,
     "no-extra-boolean-cast": 1,
-    "no-extra-parens": [1,"all"],
+    "no-extra-parens": [1, "all"],
     "no-extra-semi": 1,
     "no-func-assign": 1,
-    "no-inner-declarations": [1,"both"],
+    "no-inner-declarations": [1, "both"],
     "no-invalid-regexp": 1,
     "no-irregular-whitespace": 1,
     "no-negated-in-lhs": 1,
@@ -42,10 +43,14 @@
     "no-undef": 1,
     "no-undefined": 1,
     "no-unused-vars": 1,
-    "array-bracket-spacing": [1,"always",{"singleValue":true,"objectsInArrays":true,"arraysInArrays":true}],
-    "camelcase": [1,{"properties":"always"}],
-    "comma-spacing": [1,{"after":true}],
+    "array-bracket-spacing": [
+      0,
+      "always",
+      { "singleValue": true, "objectsInArrays": true, "arraysInArrays": true }
+    ],
+    "camelcase": [1, { "properties": "always" }],
+    "comma-spacing": [1, { "after": true }],
     "indent": ["error", 2],
-    "quotes": [1,"double","avoid-escape"]
+    "quotes": [1, "double", "avoid-escape"]
   }
 }

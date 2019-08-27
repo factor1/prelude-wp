@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
-const package = require("../package.json");
-const version = package.theme_version;
+const packageJson = require("../package.json");
+const version = packageJson.theme_version;
 const argv = require("yargs").argv;
 const colors = require("colors"); // eslint-disable-line no-unused-vars
 const replace = require("replace");
@@ -14,61 +14,56 @@ const updateVersion = (version, releaseType) => {
   let newVersion;
   console.log(`Current theme version: ${version}`.yellow);
 
-  if( releaseType.patch ) {
+  if (releaseType.patch) {
     console.log("Updating theme version as a patch release.".cyan);
 
     // increment patch number
-    currentVersion[2]++
+    currentVersion[2]++;
     newPatch = currentVersion[2];
 
     // New Version Number
-    newVersion = currentVersion[0]+"."+currentVersion[1]+"."+newPatch;
-    console.log("New theme version is: ".green+ newVersion.green.bold);
+    newVersion = currentVersion[0] + "." + currentVersion[1] + "." + newPatch;
+    console.log("New theme version is: ".green + newVersion.green.bold);
   }
 
-  if( releaseType.minor ) {
+  if (releaseType.minor) {
     console.log("Updating theme version as a minor release.".cyan);
 
     // increment minor number
-    currentVersion[1]++
+    currentVersion[1]++;
     newMinor = currentVersion[1];
 
     // New Version Number
-    newVersion = currentVersion[0]+"."+newMinor+"."+"0";
-    console.log("New theme version is: ".green+ newVersion.green.bold);
+    newVersion = currentVersion[0] + "." + newMinor + "." + "0";
+    console.log("New theme version is: ".green + newVersion.green.bold);
   }
 
-  if( releaseType.major ) {
+  if (releaseType.major) {
     console.log("Updating theme version as a major release.".cyan);
 
     // increment minor number
-    currentVersion[0]++
+    currentVersion[0]++;
     newMajor = currentVersion[0];
 
     // New Version Number
-    newVersion = newMajor+"."+"0"+"."+"0";
-    console.log("New theme version is: ".green+ newVersion.green.bold);
-
+    newVersion = newMajor + "." + "0" + "." + "0";
+    console.log("New theme version is: ".green + newVersion.green.bold);
   }
 
   // first replace updates strings
   replace({
     regex: version,
     replacement: newVersion,
-    paths: [
-      "./style.css",
-    ],
-    silent: true,
+    paths: ["./style.css"],
+    silent: true
   });
 
   replace({
     regex: `"theme_version": "${version}"`,
     replacement: `"theme_version": "${newVersion}"`,
-    paths: [
-      "./package.json"
-    ],
-    silent: true,
-  })
-}
+    paths: ["./package.json"],
+    silent: true
+  });
+};
 
 updateVersion(version, argv);
