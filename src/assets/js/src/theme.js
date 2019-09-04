@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
 
   if (browser.name === "Internet Explorer" && browser.version == "11.0") {
     $("body").addClass("ie-11");
-  } else if (bowser.safari) {
+  } else if (Bowser.safari) {
     $("body").addClass("safari");
   }
 });

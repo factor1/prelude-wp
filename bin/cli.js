@@ -226,13 +226,16 @@ const setupProject = async () => {
 
         const packageScripts = `
           "scripts": {
-            "start": "NODE_ENV=development gulp serve",
-            "build": "yarn format && NODE_ENV=production gulp build",
+            "start": "NODE_ENV=development concurrently \\"yarn watch-js\\" \\"yarn watch-scss\\" \\"gulp serve\\"",
+            "build": "yarn test && yarn format && parcel build ./assets/js/src/theme.js --out-dir ./assets/js/dist --no-content-hash --log-level 4 && parcel build ./assets/scss/theme.scss --out-dir ./assets/css --no-content-hash --log-level 4 && NODE_ENV=production gulp build",
             "test": "eslint .",
-            "format": "prettier *.js *css --write",
+            "format": "prettier *.js *.css --write",
             "release-major": "yarn test && node ./util/versionUpdate.js --major && yarn build",
             "release-minor": "yarn test && node ./util/versionUpdate.js --minor && yarn build",
-            "release-patch": "yarn test && node ./util/versionUpdate.js --patch && yarn build"
+            "release-patch": "yarn test && node ./util/versionUpdate.js --patch && yarn build",
+            "watch-js": "parcel watch ./assets/js/src/theme.js --out-dir ./assets/js/dist --log-level 4",
+            "watch-scss": "parcel watch ./assets/scss/theme.scss --out-dir ./assets/css --log-level 4",
+            "watch": "concurrently \\"yarn watch-js\\" \\"yarn watch-scss\\""
           }
           `;
 
