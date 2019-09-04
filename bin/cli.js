@@ -226,7 +226,7 @@ const setupProject = async () => {
 
         const packageScripts = `
           "scripts": {
-            "start": "NODE_ENV=development concurrently \"yarn watch-js\" \"yarn watch-scss\" \"gulp serve\"",
+            "start": "NODE_ENV=development concurrently \\"yarn watch-js\\" \\"yarn watch-scss\\" \\"gulp serve\\"",
             "build": "yarn test && yarn format && parcel build ./assets/js/src/theme.js --out-dir ./assets/js/dist --no-content-hash --log-level 4 && parcel build ./assets/scss/theme.scss --out-dir ./assets/css --no-content-hash --log-level 4 && NODE_ENV=production gulp build",
             "test": "eslint .",
             "format": "prettier *.js *.css --write",
@@ -235,7 +235,7 @@ const setupProject = async () => {
             "release-patch": "yarn test && node ./util/versionUpdate.js --patch && yarn build",
             "watch-js": "parcel watch ./assets/js/src/theme.js --out-dir ./assets/js/dist --log-level 4",
             "watch-scss": "parcel watch ./assets/scss/theme.scss --out-dir ./assets/css --log-level 4",
-            "watch": "concurrently \"yarn watch-js\" \"yarn watch-scss\""
+            "watch": "concurrently \\"yarn watch-js\\" \\"yarn watch-scss\\""
           }
           `;
 

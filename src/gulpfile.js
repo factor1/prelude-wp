@@ -33,8 +33,8 @@ const server = () => {
     proxy: URL ? URL : "http://localhost:3000"
   });
 
-  watch(`${cssFiles}/**/*.css`).on("change", browserSync.reload);
-  watch(`${jsOutput}/**/*.js`).on("change", browserSync.reload);
+  watch(`${cssFiles}/theme.css`).on("change", browserSync.reload);
+  watch(`${jsOutput}/theme.js`).on("change", browserSync.reload);
   watch(phpFiles).on("change", browserSync.reload);
 };
 
