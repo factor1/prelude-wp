@@ -1,6 +1,6 @@
 {
   "name": "prelude-wp-next",
-  "version": "6.0.2",
+  "version": "6.1.0",
   "description": "Prelude is a Wordpress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.",
   "main": "./bin/cli.js",
   "repository": "git@github.com:factor1/prelude-wp.git",
