@@ -1,6 +1,6 @@
 {
-  "name": "prelude-wp",
-  "version": "6.0.1",
+  "name": "prelude-wp-next",
+  "version": "6.0.2",
   "description": "Prelude is a Wordpress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.",
   "main": "./bin/cli.js",
   "repository": "git@github.com:factor1/prelude-wp.git",
@@ -9,7 +9,7 @@
   "private": false,
   "scripts": {
     "start": "NODE_ENV=development concurrently \"yarn watch-js\" \"yarn watch-scss\" \"gulp serve\"",
-    "build": "yarn test && yarn format && NODE_ENV=production gulp build && parcel build ./assets/js/src/theme.js --out-dir ./assets/js/dist --no-content-hash --log-level 4 && parcel build ./assets/scss/theme.scss --out-dir ./assets/css --no-content-hash --log-level 4",
+    "build": "yarn test && yarn format && parcel build ./assets/js/src/theme.js --out-dir ./assets/js/dist --no-content-hash --log-level 4 && parcel build ./assets/scss/theme.scss --out-dir ./assets/css --no-content-hash --log-level 4 && NODE_ENV=production gulp build",
     "test": "eslint .",
     "format": "prettier *.js *.css --write",
     "release-major": "yarn test && node ./util/versionUpdate.js --major && yarn build",
