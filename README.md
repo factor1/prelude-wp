@@ -6,22 +6,19 @@
 Prelude is a WordPress starter theme that helps you craft custom themes. It uses Gulp to compile and minify scss/css, concatenate and minify JS, compress images, and more.
 
 ## Features
-### Gulp Tasks
-Prelude uses Gulp to:
+### Compiling
 - Compile & minify Sass/CSS with sourcemaps
 - Auto-prefix your Sass/CSS
-- Minify and concatenate JavaScript/jQuery
+- Minify and concatenate JavaScript/jQuery with support for ES5/ES6
 - Compress images
-- Package a theme for upload to WordPress or distribution
 
 ### WordPress Functions
 Prelude has some nifty features built into `functions.php` to make developing a custom WordPress theme a little easier.
 
 ## Getting Started
-Prelude requires that you have Node and npm installed on your machine. If you need help with that, please visit the [npm documentation](https://docs.npmjs.com/getting-started/installing-node).
+Prelude requires that you have Node 10+ installed on your machine. If you need help with that, please visit the [npm documentation](https://docs.npmjs.com/getting-started/installing-node).
 
-**Via npm:**
-`npm install prelude-wp --save`
+`npx prelude-wp your-theme-name`
 
 ## Documentation
 Documentation can be found at http://prelude.factor1.org.
