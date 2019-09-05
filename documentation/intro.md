@@ -1,11 +1,11 @@
 # What Is Prelude?
-Prelude is a WordPress starter theme that helps you craft custom themes. It uses
-Gulp to compile and minify scss/css, concatenate and minify JS, compress images,
-and more.
+
+Prelude is a WordPress starter theme that helps you craft custom themes. It handles your entire build system with no configuration needed.
 
 ## Features
-### Gulp Tasks
-Prelude uses Gulp to:
+
+### Compiling
+
 - Compile & minify Sass/CSS with sourcemaps
 - Auto-prefix your Sass/CSS
 - Minify and concatenate JavaScript using Babel
@@ -13,8 +13,10 @@ Prelude uses Gulp to:
 - Bump Theme Versions
 
 ### WordPress Functions
+
 Prelude has some nifty features built into `functions.php` to make developing a
 custom WordPress theme a little easier.
+
 - Defer jQuery Parsing using the HTML5 defer property
 - Customized Read More Links
 - Get Featured image as URL
