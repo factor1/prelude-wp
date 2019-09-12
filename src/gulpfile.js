@@ -4,19 +4,15 @@ require("dotenv").config();
 
 const browserSync = require("browser-sync").create();
 const colors = require("colors");
-const sass = require("gulp-sass");
 const imagemin = require("gulp-imagemin");
-const { series, src, dest, watch } = require("gulp");
-
-sass.compiler = require("node-sass");
+const { src, dest, watch } = require("gulp");
 
 const NODE_ENV = process.env.NODE_ENV;
 const URL = process.env.WP_URL;
 
 // Project Paths
 const phpFiles = ["./**/*.php", "./*.php"];
-const cssFiles = "./assets/css/";
-const jsOutput = "./assets/js/dist/";
+const dist = "./dist/";
 const imageFiles = ["./assets/img/*.{jpg,png,gif}"];
 
 // compress images
@@ -33,12 +29,12 @@ const server = () => {
     proxy: URL ? URL : "http://localhost:3000"
   });
 
-  watch(`${cssFiles}/theme.css`).on("change", browserSync.reload);
-  watch(`${jsOutput}/theme.js`).on("change", browserSync.reload);
+  watch(`${dist}/theme.css`).on("change", browserSync.reload);
+  watch(`${dist}/theme.js`).on("change", browserSync.reload);
   watch(phpFiles).on("change", browserSync.reload);
 };
 
 module.exports = {
-  build: series(compressImages),
-  serve: series(server)
+  build: compressImages,
+  serve: server
 };

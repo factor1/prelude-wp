@@ -226,16 +226,18 @@ const setupProject = async () => {
 
         const packageScripts = `
           "scripts": {
-            "start": "NODE_ENV=development concurrently \\"yarn watch-js\\" \\"yarn watch-scss\\" \\"gulp serve\\"",
-            "build": "yarn test && yarn format && parcel build ./assets/js/src/theme.js --out-dir ./assets/js/dist --no-content-hash --log-level 4 && parcel build ./assets/scss/theme.scss --out-dir ./assets/css --no-content-hash --log-level 4 && NODE_ENV=production gulp build",
-            "test": "eslint .",
+            "build": "yarn test && yarn format && NODE_ENV=production gulp build && yarn build-js && yarn build-scss",
+            "build-js": "parcel build ./assets/js/src/theme.js --out-dir ./dist/ --no-content-hash --log-level 4 --public-url ./dist/",
+            "build-scss": "parcel build ./assets/scss/theme.scss --out-dir ./dist/ --no-content-hash --log-level 4 --public-url ./dist/",
             "format": "prettier *.js *.css --write",
             "release-major": "yarn test && node ./util/versionUpdate.js --major && yarn build",
             "release-minor": "yarn test && node ./util/versionUpdate.js --minor && yarn build",
             "release-patch": "yarn test && node ./util/versionUpdate.js --patch && yarn build",
-            "watch-js": "parcel watch ./assets/js/src/theme.js --out-dir ./assets/js/dist --log-level 4",
-            "watch-scss": "parcel watch ./assets/scss/theme.scss --out-dir ./assets/css --log-level 4",
-            "watch": "concurrently \\"yarn watch-js\\" \\"yarn watch-scss\\""
+            "start": "NODE_ENV=development yarn test && concurrently \"yarn watch-js\" \"yarn watch-scss\" \"gulp serve\"",
+            "test": "eslint .",
+            "watch": "concurrently \"yarn watch-js\" \"yarn watch-scss\"",
+            "watch-js": "parcel watch ./assets/js/src/theme.js --out-dir ./dist --log-level 4 --public-url ./dist/",
+            "watch-scss": "parcel watch ./assets/scss/theme.scss --out-dir ./dist --log-level 4 --public-url ./dist/"
           }
           `;
 
