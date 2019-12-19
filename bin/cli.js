@@ -233,9 +233,9 @@ const setupProject = async () => {
             "release-major": "yarn test && node ./util/versionUpdate.js --major && yarn build",
             "release-minor": "yarn test && node ./util/versionUpdate.js --minor && yarn build",
             "release-patch": "yarn test && node ./util/versionUpdate.js --patch && yarn build",
-            "start": "NODE_ENV=development yarn test && concurrently \"yarn watch-js\" \"yarn watch-scss\" \"gulp serve\"",
+            "start": "NODE_ENV=development yarn test && concurrently \\"yarn watch-js\\" \\"yarn watch-scss\\" \\"gulp serve\\"",
             "test": "eslint .",
-            "watch": "concurrently \"yarn watch-js\" \"yarn watch-scss\"",
+            "watch": "concurrently \\"yarn watch-js\\" \\"yarn watch-scss\\"",
             "watch-js": "parcel watch ./assets/js/src/theme.js --out-dir ./dist --log-level 4 --public-url ./dist/",
             "watch-scss": "parcel watch ./assets/scss/theme.scss --out-dir ./dist --log-level 4 --public-url ./dist/"
           }
