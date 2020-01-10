@@ -40,3 +40,8 @@
    * Load shortcodes
    */
   require get_template_directory() . '/inc/shortcodes.php';
+
+   /**
+   * Load Responsive Media Options
+   */
+  require get_template_directory() . '/inc/responsive-media.php';
