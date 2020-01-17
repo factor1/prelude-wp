@@ -9,7 +9,7 @@
   "private": false,
   "scripts": {
     "build": "yarn test && yarn format && NODE_ENV=production gulp build && yarn build-js && yarn build-scss",
-    "build-js": "parcel build ./assets/js//theme.js --out-dir ./dist/ --no-content-hash --log-level 4 --public-url ./ --no-cache",
+    "build-js": "parcel build ./assets/js/theme.js --out-dir ./dist/ --no-content-hash --log-level 4 --public-url ./ --no-cache",
     "build-scss": "parcel build ./assets/scss/theme.scss --out-dir ./dist/ --no-content-hash --log-level 4 --public-url ./ --no-cache",
     "format": "prettier *.js *.css --write",
     "release-major": "yarn test && node ./util/versionUpdate.js --major && yarn build",
