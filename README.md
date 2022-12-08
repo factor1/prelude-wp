@@ -21,7 +21,7 @@ Prelude requires that you have Node 10+ installed on your machine. If you need h
 `npx prelude-wp your-theme-name`
 
 ## Documentation
-Documentation can be found at http://prelude.factor1.org.
+Documentation can be found at /documentation
 
 ## Bugs, Contributions & Questions
 We are always looking for ways to improve. If you find a bug, have a question, or wish to add a contribution please open an issue.
